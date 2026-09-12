@@ -1,6 +1,9 @@
 {
   "id": "ragnarok-reborn-npcs",
   "title": "The New Ragnarok Reborn — NPCs",
+  "url": "https://github.com/lisasdungeon/ragnarok-reborn-npcs",
+  "manifest": "https://github.com/lisasdungeon/ragnarok-reborn-npcs/releases/latest/download/module.json",
+  "download": "https://github.com/lisasdungeon/ragnarok-reborn-npcs/releases/latest/download/ragnarok-reborn-npcs.zip",
   "description": "Five ready-to-play dnd5e 6.0 NPC actors for The New Ragnarok Reborn: Ewoklin (CR 8), the Ewokling (CR 2), Umbrathor at CR 18 and CR 13, and Vorath (CR 15) — with embedded weapons, spells, activities, effects, loot, and working summons.",
   "version": "1.1.0",
   "authors": [
