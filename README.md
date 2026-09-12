@@ -14,13 +14,16 @@ in a compendium pack, built for Foundry **v14** (minimum 14.367).
 ## Packs
 
 - **The New Ragnarok Reborn — NPCs** (Actor pack, player-observable) — the five creatures.
-- **The New Ragnarok Reborn — GM Guides** (Journal pack) — three entries:
+- **The New Ragnarok Reborn — GM Guides** (Journal pack) — four entries:
   *Umbrathor's Shadow Cavern — Scene Guide* (five-page core-Foundry arena build),
-  *Umbrathor — Phase-by-Phase Encounter Runbook* (HP thresholds, summon timing,
+  *Vorath's Hellheim Throne Room — Scene Guide* (its infernal twin: braziers, chasm,
+  hover-and-truesight interplay), *Umbrathor — Phase-by-Phase
+  Encounter Runbook* (HP thresholds, summon timing,
   lair-action picker, legendary-action priorities), and *Vorath — Phase-by-Phase
   Encounter Runbook* (spell-slot decisions, Legendary Resistance doctrine, fear
-  engine, throne room lair actions). A markdown twin of the scene guide lives
-  next to the module at `Shadow Cavern Scene Guide.md`.
+  engine, throne room lair actions). Markdown twins of the scene guides live
+  next to the module (`Shadow Cavern Scene Guide.md`,
+  `Hellheim Throne Room Scene Guide.md`).
 - **The New Ragnarok Reborn — Party Handouts** (Journal pack, **player-readable**) —
   *Treasures of the Shadow Tyrant*: read-aloud rumor hooks, in-world descriptions, and
   clean player rules for the **Cloak of Shadows** and **Amulet of the Night**, plus one
@@ -34,6 +37,12 @@ in a compendium pack, built for Foundry **v14** (minimum 14.367).
   actors.
 
 ## Changelog
+
+### 1.2.0
+- Added **Vorath's Hellheim Throne Room — Scene Guide** to the GM Guides pack: the
+  infernal twin of the Shadow Cavern guide (braziers, throne glow, hellfire fissures,
+  chasm-and-colonnade walls, hover/truesight interplay, Ember Storm & Throne of Chains
+  props, death beat, difficulty dials). Markdown twin added at the campaign root.
 
 ### 1.1.0 — Bosses, lairs, guides & loot
 
