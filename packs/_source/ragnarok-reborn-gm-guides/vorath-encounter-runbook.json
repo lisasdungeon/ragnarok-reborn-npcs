@@ -1,0 +1,177 @@
+{
+  "name": "Vorath — Phase-by-Phase Encounter Runbook",
+  "pages": [
+    {
+      "name": "Before the Fight",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Actor:</strong> Vorath, Demon Lord of Helheim (CR 15) — 250 HP, AC 20, spell save DC 20, +12 spell attacks, 2 Legendary Resistances, 2 legendary actions, one 5th-level slot. Tune for four to five level-11–13 PCs; at higher optimization add fiendish allies from your bestiary, not more HP.</p><p><strong>Scene:</strong> the throne room from the Hellheim regional effects — Smoldering Air, Watchful Dread, Burning Whispers (all three are on his sheet's <em>Regional Effects (Hellheim Throne Room)</em> trait; tick <strong>Inside Lair?</strong> only if you want the +1 CR adjustment while he's enthroned). Put a <strong>\"Lair\" combatant at initiative 20</strong> on the tracker.</p><p><strong>The one big decision:</strong> his single 5th-level slot casts <strong>Cloudkill</strong> <em>or</em> <strong>Dominate Person</strong> — he cannot cast both. Everything below shows what each choice buys, so pick based on the party you're actually facing.</p>",
+        "markdown": ""
+      },
+      "_id": "VorRunPrep00001",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 100000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_key": "!journal.pages!VorEncRunbook01.VorRunPrep00001"
+    },
+    {
+      "name": "Phase 1 — Dread Aura (250 → 180 HP)",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Goal:</strong> establish the fear engine before the party commits to melee.</p><ul><li><strong>Round 1 opener:</strong> <em>Dark Burst (Recharge 5–6)</em> — 20-ft radius, DC 20 DEX, 10d8 necrotic, half on save. It's his biggest hit and it's back 5–6 rounds later; always spend it on round 1.</li><li><strong>Aura of Despair</strong> does the passive work: creatures within 15 ft start their turn on a DC 20 WIS save or are frightened — and frightened creatures take 3d6 psychic. Martials must choose: eat the aura to reach him, or fight at range and ignore him.</li><li><strong>Legendary Resistance (×2)</strong>: do <em>not</em> spend these here — a failed fear save from the aura is fine for him. Save both for a <strong>Dominate Person</strong> or a <strong>banishment/hold</strong> from the party. That's what they're for.</li><li><strong>Lair actions:</strong> <em>Gates of Dread</em> stacks fear with the aura, or <em>Hellfire Bolt</em> to poke the back line at range.</li><li><strong>Legendary actions (2/round):</strong> mostly the free-economy <em>Shadow Teleportation</em> to keep his 15-ft aura orbit moving, plus a second-attack <em>Shadow Fork</em> (+10, 4d8+4, half-heals him).</li></ul>",
+        "markdown": ""
+      },
+      "_id": "VorRunPhase1_1",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 200000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_key": "!journal.pages!VorEncRunbook01.VorRunPhase1_1"
+    },
+    {
+      "name": "Phase 2 — The Spell (180 → 100 HP)",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Goal:</strong> cash the 5th-level slot against whatever the party is worst at.</p><ul><li><strong>If they're melee-heavy or clustered:</strong> <em>Cloudkill</em>. 20-ft radius poison cloud, DC 20 CON, 5d8 poison on a failure each turn, and it moves 10 ft every round. Park it on the martials and drift it across the room. Concentration: DC 20 to break is steep, but if it drops, he still has the slot? No — spent is spent; pivot to lair actions.</li><li><strong>If they have one obvious lynchpin (healer, controller, twilight-cleric):</strong> <em>Dominate Person</em>, DC 20 WIS. A dominated PC is a round of friendly fire and a moral problem. If the save succeeds, this is where <strong>Legendary Resistance #1</strong> goes — Dominate is the single strongest thing he casts, make it stick.</li><li><strong>While concentrating:</strong> he can still act — Shadow Fork, <em>Necrotic Grasp</em> (+12, 8d6, max-HP drain on a failed DC 20 CON), and the lair action keep pressure up.</li><li><strong>Misty Escape discipline:</strong> his reaction teleports him 30 ft and turns him invisible when hit. Use it to break melee <em>without</em> dropping concentration. Don't be shy — but remember it ends his aura threat for a round; alternate between escaping and tanking.</li><li><strong>Animate Dead (3rd-level slot):</strong> cast it the first round he isn't concentrating on anything — the Zombie rises on his next turn and occupies a martial for several rounds (undead fortitude makes it annoyingly durable).</li></ul>",
+        "markdown": ""
+      },
+      "_id": "VorRunPhase2_1",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 300000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_key": "!journal.pages!VorEncRunbook01.VorRunPhase2_1"
+    },
+    {
+      "name": "Phase 3 — Desperation of a God (100 → 0 HP)",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Goal:</strong> spend everything; the demon lord does not retreat.</p><ul><li><strong>Legendary Resistance #2</strong> goes to whatever threatens his life — a failed save against banishment, hold person, or a second Dominate bounce. Never let him be disabled; that's the party's real win condition.</li><li><strong>Lair actions every round now:</strong> <em>Ember Storm</em> when they cluster (2d10 fire + catch-fire), <em>Throne of Chains</em> on the biggest damage dealer (restrained + 1d6/turn), <em>Hellfire Bolt</em> (6d10 if the target is frightened — stack it with Gates of Dread or the aura).</li><li><strong>Dark Burst comes back</strong> on recharge — round 6–7, another 10d8 nova.</li><li><strong>Horrifying Visage (2 legendary actions)</strong> when two or more PCs are within 30 ft — mass frighten feeds both Watchful Dread psychic damage and his Hellfire Bolt rider.</li><li><strong>Death beat:</strong> Vorath doesn't flee — the throne rejects him. On the killing blow the braziers flare violet then die, the chains shatter, and his Regional Effects fade over 1d10 days. The one 5th-level slot he never spent? That's your hook: what was he saving it for?</li></ul><p><strong>Escalation valves:</strong> too easy → he starts the fight with the Zombie already animate and Dominate pre-picked; too hard → the Smoldering Air regional damage only ticks on turns the PC starts frightened, or skip the catch-fire rider on Ember Storm.</p>",
+        "markdown": ""
+      },
+      "_id": "VorRunPhase3_1",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 400000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_key": "!journal.pages!VorEncRunbook01.VorRunPhase3_1"
+    },
+    {
+      "name": "Cheat Sheet",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Slot economy (one 5th-level slot):</strong> Cloudkill = area denial for a melee party; Dominate Person = remove their lynchpin; Animate Dead (3rd) is separate — cast it the first free round. Dominate is worth a Legendary Resistance to make stick; nothing else is.</p><p><strong>Legendary Resistances (2):</strong> save them for save-or-lose effects (Dominate bounce, banishment, hold). Never for fear or damage rider saves.</p><p><strong>Lair action picker:</strong></p><ul><li><em>Hellfire Bolt</em> — ranged pressure; +6d10 when the target is frightened.</li><li><em>Gates of Dread</em> — AoE fear that feeds the aura and the bolt rider.</li><li><em>Ember Storm</em> — cluster punisher; catch-fire rider taxes healer actions.</li><li><em>Throne of Chains</em> — restrain the biggest damage threat.</li><li><em>Lair Shadow Step</em> — grappled or cornered; reposition to the throne.</li></ul><p><strong>Fear engine math:</strong> Aura of Despair (15 ft, WIS 20) + Gates of Dread + Watchful Dread (1d6 psychic per frightened turn) + Hellfire Bolt 6d10 rider = frightened PCs take psychic every round and feed his biggest attacks. Break the engine by spreading out and burning the aura down.</p><p><strong>Concentration watch:</strong> Cloudkill or Dominate is his only ongoing threat — DC 20 to break, but a frightened-and-restrained caster PC still tries. If it drops early, his next big action is always Dark Burst on the cluster that broke it.</p><p><strong>The nobody-sees clock:</strong> Necrotic Grasp reduces hit point maximum; Shadow Fork half-heals him. Track both — a healed-up Vorath in round 5 with a drained party is the fight actually working as designed.</p>",
+        "markdown": ""
+      },
+      "_id": "VorRunCheat001",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 500000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_key": "!journal.pages!VorEncRunbook01.VorRunCheat001"
+    }
+  ],
+  "folder": null,
+  "sort": 200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "core": {
+      "viewMode": 2
+    }
+  },
+  "_stats": {
+    "duplicateSource": null,
+    "coreVersion": "13.344",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.1",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "exportSource": null
+  },
+  "_id": "VorEncRunbook01",
+  "_key": "!journal!VorEncRunbook01"
+}

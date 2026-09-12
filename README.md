@@ -150,12 +150,13 @@ Actors sidebar of any dnd5e 6.0 world, as before.
   and a passive Regional Effects trait (smoldering air, watchful dread, burning whispers).
   His `Lair Action` resource toggle is likewise enabled at initiative 20.
 
-## Rebuilding the pack
+## Rebuilding the packs
 
 ```
 cd ragnarok-reborn-npcs
 npm install            # not possible on exFAT drives — use a native-FS folder or /tmp
-node build-pack.mjs    # compiles packs/_source/ragnarok-reborn-npcs → packs/ragnarok-reborn-npcs
+npm run build          # compiles all packs/_source/<pack-name> → packs/<pack-name>
+npm run verify         # round-trips each compiled pack back to JSON and checks every document
 ```
 
 The build uses the official `@foundryvtt/foundryvtt-cli` (`compilePack`, LevelDB format),
@@ -164,3 +165,20 @@ the same tool the dnd5e system itself uses. `build-pack.mjs` compiles all four p
 (`!actors!ID`, `!actors.items!actorId.itemId`, `!actors.items.effects!actorId.itemId.effectId`)
 as required by the compiler; the root-level loose JSONs are intentionally kept key-free so
 they remain simple drag-and-drop imports.
+
+## Automated releases
+
+Cutting a release is a one-commit affair:
+
+1. Bump `version` in `module.json`.
+2. Add a `### X.Y.Z` section under **Changelog** in this README.
+3. Commit to `master` with the message `Bump version to X.Y.Z` and push.
+
+GitHub Actions then recompiles all packs from source, round-trip-verifies them, builds the
+zip, tags `vX.Y.Z`, and publishes the release — the stable installer URLs
+(`releases/latest/download/...`) pick it up automatically. The workflow lives at
+`.github/workflows/release.yml`; "Run workflow" in the Actions tab can also build any
+branch on demand (as a draft release).
+
+If your drive is exFAT, don't install dependencies locally — just push the bump and let CI
+drive (or work in a `/tmp` checkout like the manual instructions above).

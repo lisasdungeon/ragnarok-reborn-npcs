@@ -1,0 +1,15 @@
+2026/09/12-18:37:59.934877 74fdd3bff6c0 Recovering log #9
+2026/09/12-18:37:59.937759 74fdd3bff6c0 Delete type=0 #9
+2026/09/12-18:37:59.937780 74fdd3bff6c0 Delete type=3 #8
+2026/09/12-18:37:59.939296 74fdd1bfb6c0 Level-0 table #13: started
+2026/09/12-18:37:59.940262 74fdd1bfb6c0 Level-0 table #13: 4487 bytes OK
+2026/09/12-18:37:59.942118 74fdd1bfb6c0 Delete type=0 #11
+2026/09/12-18:37:59.942185 74fdd1bfb6c0 Manual compaction at level-0 from '!journal!LootHandoutsUmbr01' @ 72057594037927935 : 1 .. '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 0 : 0; will stop at (end)
+2026/09/12-18:37:59.942208 74fdd1bfb6c0 Manual compaction at level-1 from '!journal!LootHandoutsUmbr01' @ 72057594037927935 : 1 .. '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 0 : 0; will stop at '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 7 : 1
+2026/09/12-18:37:59.942212 74fdd1bfb6c0 Compacting 1@1 + 1@2 files
+2026/09/12-18:37:59.943378 74fdd1bfb6c0 Generated table #14@1: 5 keys, 4487 bytes
+2026/09/12-18:37:59.943385 74fdd1bfb6c0 Compacted 1@1 + 1@2 files => 4487 bytes
+2026/09/12-18:37:59.945255 74fdd1bfb6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/09/12-18:37:59.945300 74fdd1bfb6c0 Delete type=2 #13
+2026/09/12-18:37:59.945350 74fdd1bfb6c0 Delete type=2 #5
+2026/09/12-18:37:59.945401 74fdd1bfb6c0 Manual compaction at level-1 from '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 7 : 1 .. '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 0 : 0; will stop at (end)

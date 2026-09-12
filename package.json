@@ -2,10 +2,12 @@
   "name": "ragnarok-reborn-npcs",
   "version": "1.0.0",
   "private": true,
-  "description": "Build script: compiles the _source JSON into a Foundry LevelDB compendium pack.",
+  "description": "Build and verify scripts for the Foundry VTT compendium packs.",
   "type": "module",
   "scripts": {
-    "pack": "node build-pack.mjs"
+    "pack": "node build-pack.mjs",
+    "build": "node build-pack.mjs",
+    "verify": "node verify-packs.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "^3.0.4"

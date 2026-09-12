@@ -1,5 +1,3 @@
-2026/09/12-16:36:06.098843 7c791bfff6c0 Delete type=3 #1
-2026/09/12-16:36:06.099913 7c7919ffb6c0 Level-0 table #5: started
-2026/09/12-16:36:06.101047 7c7919ffb6c0 Level-0 table #5: 4487 bytes OK
-2026/09/12-16:36:06.103337 7c7919ffb6c0 Delete type=0 #3
-2026/09/12-16:36:06.103409 7c7919ffb6c0 Manual compaction at level-0 from '!journal!LootHandoutsUmbr01' @ 72057594037927935 : 1 .. '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 0 : 0; will stop at (end)
+2026/09/12-18:38:00.297478 7db972ffd6c0 Recovering log #12
+2026/09/12-18:38:00.300621 7db972ffd6c0 Delete type=3 #10
+2026/09/12-18:38:00.300653 7db972ffd6c0 Delete type=0 #12

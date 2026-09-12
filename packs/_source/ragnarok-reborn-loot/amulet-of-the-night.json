@@ -1,0 +1,144 @@
+{
+  "_id": "LootAmuletNite01",
+  "name": "Amulet of the Night",
+  "type": "equipment",
+  "img": "icons/commodities/treasure/brooch-skull-dagger-grey.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>Wondrous item (requires attunement)</em></p><p>While wearing this amulet of black crystal, when you deal necrotic damage to a creature with a melee or ranged spell attack, you deal an extra [[/r 1d6]] necrotic damage to that target.</p><p><em>Along the chain hang three knots. Nobody who has counted them can say whether they were always three.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "The New Ragnarok Reborn Campaign",
+      "book": "",
+      "page": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0.1,
+      "units": "lb"
+    },
+    "price": {
+      "value": 3000,
+      "denomination": "gp"
+    },
+    "attunement": "required",
+    "equipped": false,
+    "rarity": "rare",
+    "identified": true,
+    "cover": null,
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "damage": {
+      "base": {
+        "number": null,
+        "denomination": null,
+        "types": [],
+        "custom": {
+          "enabled": false
+        },
+        "scaling": {
+          "number": 1
+        }
+      },
+      "replace": false
+    },
+    "type": {
+      "value": "trinket",
+      "subtype": ""
+    },
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "properties": [
+      "mgc"
+    ],
+    "magicalBonus": null,
+    "activities": {},
+    "attuned": false,
+    "identifier": "amulet-of-the-night",
+    "armor": {
+      "magicalBonus": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Amulet of the Night",
+      "img": "icons/commodities/treasure/brooch-skull-dagger-grey.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "LootAmuletEff001",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.bonuses.rsak.damage",
+            "mode": 2,
+            "value": "1d6[necrotic]",
+            "phase": "later",
+            "priority": null
+          },
+          {
+            "key": "system.bonuses.msak.damage",
+            "mode": 2,
+            "value": "1d6[necrotic]",
+            "phase": "later",
+            "priority": null
+          }
+        ],
+        "require": [
+          "equipped"
+        ]
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>While worn, your attacks that deal necrotic damage deal an extra 1d6 necrotic damage. (Activate when equipped.)</p>",
+      "tint": "#331044",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "_key": "!items.effects!LootAmuletNite01.LootAmuletEff001",
+      "ownership": {
+        "default": 0
+      }
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "duplicateSource": null,
+    "coreVersion": "13.344",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.1",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "exportSource": null
+  },
+  "_key": "!items!LootAmuletNite01"
+}

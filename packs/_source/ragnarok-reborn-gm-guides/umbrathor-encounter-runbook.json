@@ -1,0 +1,177 @@
+{
+  "name": "Umbrathor — Phase-by-Phase Encounter Runbook",
+  "pages": [
+    {
+      "name": "Before the Fight",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Actors:</strong> Umbrathor, the Shadow Tyrant (CR 18) plus up to four Shadows. For parties of levels 8–10, use <em>Umbrathor, the Shadow Tyrant (Level 8)</em> (CR 13) instead — everything below still applies with the smaller numbers (DC 18, 6d8 bolt, 50-ft step, 2 legendary actions).</p><p><strong>Scene:</strong> run the arena from <em>Umbrathor's Shadow Cavern — Scene Guide</em> in this pack. The short version: pitch black, four braziers, terrain-wall stalagmites, dais with the Shadow Heart light.</p><p><strong>Tracker setup:</strong> tick <strong>Inside Lair?</strong> on his sheet (official +1 CR / +1 legendary action adjustment) and add a <strong>\"Lair\" combatant at initiative 20</strong> — dnd5e 6.0.x doesn't auto-insert one. When that combatant's turn comes up, roll one of his five lair actions from the sheet's Lair Actions section.</p><p><strong>Balance dials:</strong> 300 HP, AC 18, +12 to hit, DC 20 saves — tuned for a tier-3 party at the end of a long adventuring day. If the party is fresh, open with fewer shadows and hold phase 3 tricks longer (see the cheat sheet).</p>",
+        "markdown": ""
+      },
+      "_id": "UmbRunPrep00001",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 100000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_key": "!journal.pages!UmbEncRunbook01.UmbRunPrep00001"
+    },
+    {
+      "name": "Phase 1 — The Dark Welcome (300 → 225 HP)",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Goal:</strong> teach the party the room is the monster. Don't spend everything yet.</p><ul><li><strong>Round 1:</strong> open from the dais: <em>Dark Bolt</em> (+12, 8d8 necrotic, max-HP drain) at the biggest threat, then summon <strong>2 Shadows</strong> (Summon Shadows is 1/encounter — you have one shot, but phase 3 assumes you saved some budget... you didn't; 2 now is right).</li><li><strong>Terrifying Presence</strong> (DC 20 WIS) on whoever just hit him — frightened PCs attack with disadvantage, which keeps his AC 18 feeling unbreakable.</li><li><strong>Legendary actions (3):</strong> end of each player turn, mostly <em>Shadow Grasp</em> (DC 20 STR, restrained) on the martial inside 30 ft — restraint in the dark is how Shadows get their Strength-drain hits.</li><li><strong>Lair action rhythm:</strong> round 1–2, use <em>Shadow Flood</em> or <em>Creeping Chill</em>. Save <em>Shadow Tendrils</em> (4d8, potential Shadow spawn) for phase 2.</li></ul><p><strong>Read the room:</strong> if two PCs are already frightened and restrained by 75% HP, skip ahead — he's winning on schedule.</p>",
+        "markdown": ""
+      },
+      "_id": "UmbRunPhase1_1",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 200000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_key": "!journal.pages!UmbEncRunbook01.UmbRunPhase1_1"
+    },
+    {
+      "name": "Phase 2 — Shadows Close In (225 → 120 HP)",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Goal:</strong> split the party across the darkness and starve them of targets.</p><ul><li><strong>Summon the rest:</strong> if you opened with 2 Shadows, the summon action is spent — this is why round 1 matters. (Alternate pacing for strong parties: summon 1 in phase 1, and use the action again... you can't — so instead re-position and let lair actions carry.)</li><li><strong>Shadow Step every round</strong> (bonus action, 60 ft): appear behind the back line, bolt the healer, step into a stalagmite shadow. With <em>Shadow Manipulation</em> (bonus-action Hide, at-will invisibility in darkness) he can genuinely vanish — spend a Hide turn when a paladin stacks advantage on him.</li><li><strong>Nightmare Visions</strong> (2 actions, DC 20 WIS, 8d8 psychic) on full casters — it's his hardest hit; the max-HP bleed from repeated bolts is the real clock.</li><li><strong>Lair actions:</strong> <em>Shadow Tendrils</em> at any PC below half HP — if it drops them to 0, a new Shadow rises on his next turn (CR 18 rider). <em>Lair Shadow Grasp</em> on whoever's grinding down the Shadows.</li><li><strong>Legendary actions:</strong> alternate Shadow Grasp and <em>Dark Rejuvenation</em> (1d8, only in dim light/darkness — which is everywhere here).</li></ul><p><strong>Fear engine:</strong> Whispers in the Void (regional effect, DC 18 WIS) triggers on wounded creatures every round — frightened, wounded PCs take the triple squeeze: disadvantage, fear whispers, and tendrils.</p>",
+        "markdown": ""
+      },
+      "_id": "UmbRunPhase2_1",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 300000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_key": "!journal.pages!UmbEncRunbook01.UmbRunPhase2_1"
+    },
+    {
+      "name": "Phase 3 — The Heart of Darkness (120 → 0 HP)",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Goal:</strong> make the last third feel like drowning. He stops playing defense.</p><ul><li><strong>Every round:</strong> <em>Shadow Flood</em> (darkness he can strike out of) or <em>Shadow Tendrils</em> at the clustered wounded, then double bolts via legendary actions if any remain.</li><li><strong>Dark Pact</strong> (cantrip, 1d8+6, +1d4 in the dark) every action his bolts would miss — he out-sustains attrition.</li><li><strong>The choke:</strong> at ~40 HP he stops teleporting away and stands on the Shadow Heart — telegraphing the end. Smart parties read it; panicking ones burn their last slots into his AC.</li><li><strong>Death beat:</strong> on the killing blow, the braziers gutter out (kill the brazier lights on the scene) and the Shadows dissolve — the cavern goes truly dark for one round. Then darkvision works again and the regional effects are gone.</li></ul><p><strong>If it's too easy:</strong> you saved the Shadow-rise rider and the flood stack for nothing — next time open with 4 Shadows. If it's too hard: let the Amulet of the Night loot drop early, or have a fleeing Shadow lead wounded PCs to the entrance tunnel.</p>",
+        "markdown": ""
+      },
+      "_id": "UmbRunPhase3_1",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 400000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_key": "!journal.pages!UmbEncRunbook01.UmbRunPhase3_1"
+    },
+    {
+      "name": "Cheat Sheet",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Lair actions — what to pick:</strong></p><ul><li><em>Shadow Flood</em> — default. Darkness = his Hide/Step engine.</li><li><em>Shadow Tendrils</em> — a PC is below half HP (Shadow-rise rider, CR 18).</li><li><em>Creeping Chill</em> — party clusters; halves speed so martials can't chase after his Shadow Step.</li><li><em>Lair Shadow Grasp</em> — a martial is eating his Shadows.</li><li><em>Lair Shadow Step</em> — he's grappled/restrained and needs out (bonus).</li></ul><p><strong>Legendary action priorities (3 points):</strong> 1) Shadow Grasp the biggest martial threat in 30 ft, 2) Dark Rejuvenation if he's in the dark and below half, 3) Nightmare Visions (2 pts) when a caster is isolated.</li></p><p><strong>Summons:</strong> Summon Shadows is <strong>1/encounter</strong> — 1 to 4 Shadows, once, in the first two rounds. Shadows drain Strength and die to light: if the PCs start winning the light war (Daylight, torch walls), Shadows flee to stalagmite shadows rather than die on schedule.</p><p><strong>The clock nobody sees:</strong> Dark Bolt reduces HP maximum. Track it — a party that wins but is all at 70 max HP needs the Amulet of the Night's Greater Restoration charge or a temple visit. That's the adventure hook.</p>",
+        "markdown": ""
+      },
+      "_id": "UmbRunCheat001",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 500000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_key": "!journal.pages!UmbEncRunbook01.UmbRunCheat001"
+    }
+  ],
+  "folder": null,
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "core": {
+      "viewMode": 2
+    }
+  },
+  "_stats": {
+    "duplicateSource": null,
+    "coreVersion": "13.344",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.1",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "exportSource": null
+  },
+  "_id": "UmbEncRunbook01",
+  "_key": "!journal!UmbEncRunbook01"
+}

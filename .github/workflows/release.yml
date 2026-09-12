@@ -1,0 +1,173 @@
+# Cuts a release automatically whenever `version` in module.json changes.
+#
+#   • Normal flow: push a commit to master whose message starts with
+#     "Bump version to X.Y.Z" and whose module.json version changed — packs are
+#     recompiled from packs/_source, verified, zipped, tagged vX.Y.Z (created by
+#     the release step), and published as a GitHub Release with notes from the
+#     README changelog.
+#   • Tag flow: pushing tag vX.Y.Z triggers the same release for that commit.
+#   • Manual: "Run workflow" in the Actions tab builds any branch (as a draft).
+#
+# Requirements for a release to succeed:
+#   • module.json version must differ from the previous commit (or be a new tag)
+#   • tag vX.Y.Z must not already exist
+#   • README.md must contain a "### X.Y.Z" changelog section (becomes the notes)
+name: Release
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  # Cheap gate: decides whether this push is a version bump worth releasing.
+  version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.diff.outputs.version }}
+      changed: ${{ steps.diff.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Decide whether this push is a release
+        id: diff
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          HEAD_MSG: ${{ github.event.head_commit.message }}
+        run: |
+          set -euo pipefail
+
+          MODE=skip
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            MODE=manual
+          elif [[ "${GITHUB_REF_TYPE:-branch}" == "tag" ]]; then
+            MODE=tag
+          elif [[ "${GITHUB_REF:-}" == "refs/heads/master" && "$HEAD_MSG" == "Bump version to "* ]]; then
+            MODE=bump
+          fi
+
+          VERSION=$(jq -r '.version // empty' module.json)
+          if [[ -z "$VERSION" ]]; then
+            echo "::error::module.json is missing a version field."
+            exit 1
+          fi
+
+          if git cat-file -e "HEAD~1:module.json" 2>/dev/null; then
+            PREV_VERSION=$(git show "HEAD~1:module.json" | jq -r '.version // empty')
+          else
+            PREV_VERSION=""
+          fi
+
+          CHANGED=false
+          case "$MODE" in
+            manual|tag)
+              CHANGED=true
+              ;;
+            bump)
+              if [[ "$PREV_VERSION" == "$VERSION" ]]; then
+                echo "::notice::Commit says 'Bump version to' but module.json version is unchanged ($VERSION). Nothing to release."
+              else
+                CHANGED=true
+              fi
+              ;;
+            *)
+              echo "::notice::Not a version bump (ref ${GITHUB_REF:-unknown}, event ${EVENT_NAME}). Skipping release."
+              ;;
+          esac
+
+          {
+            echo "version=$VERSION"
+            echo "changed=$CHANGED"
+          } >> "$GITHUB_OUTPUT"
+
+          {
+            echo "### Release gate"
+            echo "- Event: \`${EVENT_NAME}\`"
+            echo "- Ref: \`${GITHUB_REF:-unknown}\`"
+            echo "- Version: \`${VERSION}\` (previous: \`${PREV_VERSION:-none}\`)"
+            if [[ "$CHANGED" == "true" ]]; then
+              echo "- Release: yes ✅"
+            else
+              echo "- Release: no — skipped"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Ensure tag is free
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          VERSION: ${{ steps.diff.outputs.version }}
+        run: |
+          if git ls-remote --exit-code --tags origin "refs/tags/v${VERSION}" >/dev/null 2>&1; then
+            echo "::error::Tag v${VERSION} already exists on the remote. Bump the version or delete the tag."
+            exit 1
+          fi
+
+  # The actual release: only runs when the gate says the version changed.
+  release:
+    needs: version
+    if: needs.version.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build packs
+        run: npm run build
+
+      - name: Verify packs round-trip
+        run: npm run verify
+
+      - name: Build release zip
+        run: |
+          zip -qr "ragnarok-reborn-npcs.zip" module.json README.md packs -x "packs/_source/*"
+          unzip -l "ragnarok-reborn-npcs.zip"
+
+      - name: Extract release notes from README changelog
+        id: notes
+        env:
+          VERSION: ${{ needs.version.outputs.version }}
+        run: |
+          set -euo pipefail
+          NOTES=$(VERSION="$VERSION" awk '
+            BEGIN { start = "^### " ENVIRON["VERSION"] "([[:space:]]|$)" }
+            $0 ~ start { printing = 1; print; next }
+            printing && (/^### / || /^## /) { exit }
+            printing { print }
+          ' README.md)
+          if [[ -z "$NOTES" ]]; then
+            echo "::error::README.md has no '### ${VERSION}' changelog section. Add release notes before releasing."
+            exit 1
+          fi
+          {
+            echo "notes<<GH_NOTES_EOF_7f3a"
+            echo "$NOTES"
+            echo "GH_NOTES_EOF_7f3a"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.version.outputs.version }}
+          name: v${{ needs.version.outputs.version }}
+          body: ${{ steps.notes.outputs.notes }}
+          draft: ${{ github.event_name == 'workflow_dispatch' }}
+          files: |
+            ragnarok-reborn-npcs.zip
+            module.json
+          fail_on_unmatched_files: true

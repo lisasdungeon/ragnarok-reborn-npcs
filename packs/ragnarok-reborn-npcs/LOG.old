@@ -1,0 +1,15 @@
+2026/09/12-18:37:59.892122 74fdd2bfd6c0 Recovering log #9
+2026/09/12-18:37:59.895453 74fdd2bfd6c0 Delete type=0 #9
+2026/09/12-18:37:59.895474 74fdd2bfd6c0 Delete type=3 #8
+2026/09/12-18:37:59.911464 74fdd1bfb6c0 Level-0 table #13: started
+2026/09/12-18:37:59.913692 74fdd1bfb6c0 Level-0 table #13: 87021 bytes OK
+2026/09/12-18:37:59.915780 74fdd1bfb6c0 Delete type=0 #11
+2026/09/12-18:37:59.915898 74fdd1bfb6c0 Manual compaction at level-0 from '!actors!EwoklinNPC0000001' @ 72057594037927935 : 1 .. '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 0 : 0; will stop at (end)
+2026/09/12-18:37:59.915928 74fdd1bfb6c0 Manual compaction at level-1 from '!actors!EwoklinNPC0000001' @ 72057594037927935 : 1 .. '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 0 : 0; will stop at '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 168 : 1
+2026/09/12-18:37:59.915934 74fdd1bfb6c0 Compacting 1@1 + 1@2 files
+2026/09/12-18:37:59.918100 74fdd1bfb6c0 Generated table #14@1: 93 keys, 87021 bytes
+2026/09/12-18:37:59.918108 74fdd1bfb6c0 Compacted 1@1 + 1@2 files => 87021 bytes
+2026/09/12-18:37:59.920081 74fdd1bfb6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/09/12-18:37:59.920143 74fdd1bfb6c0 Delete type=2 #13
+2026/09/12-18:37:59.920218 74fdd1bfb6c0 Delete type=2 #5
+2026/09/12-18:37:59.920295 74fdd1bfb6c0 Manual compaction at level-1 from '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 168 : 1 .. '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 0 : 0; will stop at (end)
