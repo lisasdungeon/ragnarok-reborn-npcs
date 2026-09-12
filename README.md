@@ -95,12 +95,22 @@ in a compendium pack, built for Foundry **v14** (minimum 14.367).
 
 ## Install
 
-### Option A — Zip (recommended)
-1. Copy the module zip or folder into your Foundry `Data/modules/` directory
-   (Foundry Config → *Show Data Location*).
-2. In Foundry: **Game Settings → Manage Modules → find "The New Ragnarok Reborn — NPCs" → Enable**.
-   The **dnd5e system (6.0.x)** is required and Foundry will prompt if missing.
-3. Open the **Compendium Packs** sidebar → *The New Ragnarok Reborn — NPCs* → drag any
+### Option A — Foundry installer (recommended)
+In Foundry: **Game Settings → Add-on Modules → Install Module**, paste this manifest URL:
+
+```
+https://github.com/lisasdungeon/ragnarok-reborn-npcs/releases/latest/download/module.json
+```
+
+The **dnd5e system (6.0.x)** is required; Foundry will prompt if missing. Future releases
+install through the same URL via **Update Available** in Manage Modules.
+
+### Option B — Zip
+1. Download `ragnarok-reborn-npcs.zip` from the
+   [releases page](https://github.com/lisasdungeon/ragnarok-reborn-npcs/releases) and extract
+   into your Foundry `Data/modules/` directory (Foundry Config → *Show Data Location*).
+2. **Game Settings → Manage Modules → find "The New Ragnarok Reborn — NPCs" → Enable**.
+3. Open the **Compendium Packs** sidebar → *The New Ragnarok Reborn* packs → drag any
    actor onto a scene or into the Actors directory.
 
 ### Option B — Manual (no module install)
