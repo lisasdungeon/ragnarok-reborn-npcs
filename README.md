@@ -38,6 +38,12 @@ in a compendium pack, built for Foundry **v14** (minimum 14.367).
 
 ## Changelog
 
+### 1.2.1
+- **Automated releases**: a GitHub Actions workflow now recompiles all four packs from
+  source, round-trip-verifies every document, and publishes the release automatically
+  whenever `module.json`'s version is bumped. No local build needed — even on exFAT
+  drives. Pack sources now live in the repo so CI can rebuild them.
+
 ### 1.2.0
 - Added **Vorath's Hellheim Throne Room — Scene Guide** to the GM Guides pack: the
   infernal twin of the Shadow Cavern guide (braziers, throne glow, hellfire fissures,
