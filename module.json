@@ -1,0 +1,72 @@
+{
+  "id": "ragnarok-reborn-npcs",
+  "title": "The New Ragnarok Reborn — NPCs",
+  "description": "Five ready-to-play dnd5e 6.0 NPC actors for The New Ragnarok Reborn: Ewoklin (CR 8), the Ewokling (CR 2), Umbrathor at CR 18 and CR 13, and Vorath (CR 15) — with embedded weapons, spells, activities, effects, loot, and working summons.",
+  "version": "1.1.0",
+  "authors": [
+    {
+      "name": "The New Ragnarok Reborn",
+      "flags": {}
+    }
+  ],
+  "compatibility": {
+    "minimum": "14.367",
+    "verified": "14"
+  },
+  "relationships": {
+    "requires": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json"
+      }
+    ]
+  },
+  "packs": [
+    {
+      "name": "ragnarok-reborn-npcs",
+      "label": "The New Ragnarok Reborn — NPCs",
+      "path": "packs/ragnarok-reborn-npcs",
+      "type": "Actor",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "ragnarok-reborn-gm-guides",
+      "label": "The New Ragnarok Reborn — GM Guides",
+      "path": "packs/ragnarok-reborn-gm-guides",
+      "type": "JournalEntry",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "ragnarok-reborn-handouts",
+      "label": "The New Ragnarok Reborn — Party Handouts",
+      "path": "packs/ragnarok-reborn-handouts",
+      "type": "JournalEntry",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "ragnarok-reborn-loot",
+      "label": "The New Ragnarok Reborn — Treasures",
+      "path": "packs/ragnarok-reborn-loot",
+      "type": "Item",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "LIMITED",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "flags": {}
+}

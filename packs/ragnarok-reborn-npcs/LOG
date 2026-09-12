@@ -1,0 +1,5 @@
+2026/09/12-16:36:06.063532 7c791affd6c0 Delete type=3 #1
+2026/09/12-16:36:06.077519 7c7919ffb6c0 Level-0 table #5: started
+2026/09/12-16:36:06.079753 7c7919ffb6c0 Level-0 table #5: 87005 bytes OK
+2026/09/12-16:36:06.082102 7c7919ffb6c0 Delete type=0 #3
+2026/09/12-16:36:06.082197 7c7919ffb6c0 Manual compaction at level-0 from '!actors!EwoklinNPC0000001' @ 72057594037927935 : 1 .. '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 0 : 0; will stop at (end)
