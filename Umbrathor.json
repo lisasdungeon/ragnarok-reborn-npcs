@@ -1,38 +1,11 @@
 {
-  "name": "Umbrathor, the Shadow Tyrant (Level 8)",
-  "_id": "UmbrathorCR1300001",
+  "name": "Umbrathor, the Shadow Tyrant",
+  "_id": "UmbrathorCR1800001",
   "type": "npc",
   "img": "icons/magic/death/skull-humanoid-white-red.webp",
   "system": {
     "abilities": {
       "str": {
-        "value": 14,
-        "proficient": 0,
-        "bonuses": {
-          "check": "",
-          "save": ""
-        },
-        "max": null
-      },
-      "dex": {
-        "value": 18,
-        "proficient": 0,
-        "bonuses": {
-          "check": "",
-          "save": ""
-        },
-        "max": null
-      },
-      "con": {
-        "value": 20,
-        "proficient": 0,
-        "bonuses": {
-          "check": "",
-          "save": ""
-        },
-        "max": null
-      },
-      "int": {
         "value": 16,
         "proficient": 0,
         "bonuses": {
@@ -41,8 +14,35 @@
         },
         "max": null
       },
+      "dex": {
+        "value": 20,
+        "proficient": 0,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        },
+        "max": null
+      },
+      "con": {
+        "value": 24,
+        "proficient": 0,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        },
+        "max": null
+      },
+      "int": {
+        "value": 18,
+        "proficient": 0,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        },
+        "max": null
+      },
       "wis": {
-        "value": 14,
+        "value": 16,
         "proficient": 0,
         "bonuses": {
           "check": "",
@@ -51,7 +51,7 @@
         "max": null
       },
       "cha": {
-        "value": 20,
+        "value": 22,
         "proficient": 0,
         "bonuses": {
           "check": "",
@@ -62,16 +62,16 @@
     },
     "attributes": {
       "ac": {
-        "flat": 16,
+        "flat": 18,
         "calc": "natural",
         "formula": ""
       },
       "hp": {
-        "value": 184,
-        "max": 184,
+        "value": 300,
+        "max": 300,
         "temp": 0,
         "tempmax": 0,
-        "formula": "23d8 + 69"
+        "formula": "24d8 + 168"
       },
       "init": {
         "ability": "",
@@ -85,7 +85,7 @@
       "movement": {
         "burrow": 0,
         "climb": 0,
-        "fly": 50,
+        "fly": 60,
         "swim": 0,
         "walk": 30,
         "units": "ft",
@@ -132,7 +132,7 @@
     },
     "details": {
       "biography": {
-        "value": "<p>A lesser manifestation of the Shadow Tyrant, suited to harrying adventurer parties in gloomy, torchlit caverns. He hides among shadows, calls minor shade minions, and strikes from darkness with bolts of devouring night.</p>",
+        "value": "<p>A tyrant of living shadow, half construct and half undead, Umbrathor commands darkness itself. He fades from sight in dim light, tears the warmth from the living with bolts of night, and bends lesser shadows to his will. Slaying him may yield his Cloak of Shadows and Amulet of the Night.</p>",
         "public": ""
       },
       "alignment": "Neutral Evil",
@@ -144,7 +144,7 @@
         "custom": ""
       },
       "environment": "Underdark",
-      "cr": 13,
+      "cr": 18,
       "spellLevel": 0,
       "ideal": "",
       "bond": "",
@@ -154,6 +154,7 @@
       "size": "med",
       "di": {
         "value": [
+          "necrotic",
           "poison",
           "force"
         ],
@@ -514,8 +515,8 @@
     },
     "resources": {
       "legact": {
-        "value": 2,
-        "max": 2
+        "value": 3,
+        "max": 3
       },
       "legres": {
         "value": 0,
@@ -631,7 +632,7 @@
   },
   "items": [
     {
-      "_id": "Ub8ShadowManip01",
+      "_id": "UmbShadowManip01",
       "name": "Shadow Manipulation",
       "type": "feat",
       "img": "icons/magic/perception/silhouette-stealth-shadow.webp",
@@ -662,8 +663,8 @@
           "trait"
         ],
         "activities": {
-          "Ub8HideBonusAct01": {
-            "_id": "Ub8HideBonusAct01",
+          "UmbHideBonusAct01": {
+            "_id": "UmbHideBonusAct01",
             "type": "check",
             "sort": 0,
             "name": "Hide",
@@ -751,64 +752,16 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!UmbrathorCR1300001.Ub8ShadowManip01"
+      "flags": {}
     },
     {
-      "_id": "Ub8Multiattack001",
-      "name": "Multiattack",
-      "type": "feat",
-      "img": "icons/skills/melee/weapons-crossed-swords-teal.webp",
-      "system": {
-        "description": {
-          "value": "<p>Umbrathor makes two Dark Bolt attacks.</p>",
-          "chat": ""
-        },
-        "source": {
-          "custom": "",
-          "book": "",
-          "page": "",
-          "license": "",
-          "rules": "2014",
-          "revision": 1
-        },
-        "uses": {
-          "max": "",
-          "spent": 0,
-          "recovery": []
-        },
-        "type": {
-          "value": "monster",
-          "subtype": ""
-        },
-        "requirements": "",
-        "properties": [
-          "trait"
-        ],
-        "activities": {},
-        "enchant": {},
-        "prerequisites": {
-          "level": null
-        },
-        "identifier": "multiattack"
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 150000,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {},
-      "_key": "!actors.items!UmbrathorCR1300001.Ub8Multiattack001"
-    },
-    {
-      "_id": "Ub8DarkBolt00001",
+      "_id": "UmbDarkBolt0001",
       "name": "Dark Bolt",
       "type": "weapon",
       "img": "icons/magic/death/projectile-skull-fire-orange-red.webp",
       "system": {
         "description": {
-          "value": "<p>Ranged Spell Attack: +9 to hit, range 100 ft., one target. <em>Hit:</em> 28 (6d8) necrotic damage, and the target's hit point maximum is reduced by an amount equal to the necrotic damage taken. This reduction lasts until the target finishes a long rest.</p>",
+          "value": "<p>Ranged Spell Attack: +12 to hit, range 120 ft., one target. <em>Hit:</em> 36 (8d8) necrotic damage, and the target's hit point maximum is reduced by an amount equal to the necrotic damage taken. This reduction lasts until the target finishes a long rest.</p>",
           "chat": "<p>A bolt of devouring night streaks from Umbrathor's talons!</p>"
         },
         "source": {
@@ -834,7 +787,7 @@
         "identified": true,
         "cover": null,
         "range": {
-          "value": 100,
+          "value": 120,
           "long": null,
           "units": "ft",
           "reach": null
@@ -861,7 +814,7 @@
             }
           },
           "base": {
-            "number": 6,
+            "number": 8,
             "denomination": 8,
             "bonus": "",
             "types": [
@@ -899,8 +852,8 @@
         "container": null,
         "crewed": false,
         "activities": {
-          "Ub8DarkBoltAtk01": {
-            "_id": "Ub8DarkBoltAtk01",
+          "UmbDarkBoltAtk01": {
+            "_id": "UmbDarkBoltAtk01",
             "type": "attack",
             "sort": 0,
             "name": "Attack",
@@ -932,7 +885,7 @@
             },
             "effects": [
               {
-                "_id": "Ub8DrainEffect01",
+                "_id": "UmbDrainEffect01",
                 "level": {
                   "min": null,
                   "max": null
@@ -940,7 +893,7 @@
               }
             ],
             "range": {
-              "value": "100",
+              "value": "120",
               "units": "ft",
               "special": "",
               "override": false
@@ -972,7 +925,7 @@
             },
             "attack": {
               "ability": "",
-              "bonus": "+9",
+              "bonus": "+12",
               "critical": {
                 "threshold": null
               },
@@ -993,7 +946,7 @@
                     "enabled": false,
                     "formula": ""
                   },
-                  "number": 6,
+                  "number": 8,
                   "denomination": 8,
                   "bonus": "",
                   "types": [
@@ -1029,9 +982,9 @@
         {
           "name": "Dark Bolt: Max HP Reduced",
           "img": "icons/magic/death/hand-withered-gray.webp",
-          "origin": "Actor.UmbrathorCR1300001.Item.Ub8DarkBolt00001",
+          "origin": "Actor.UmbrathorCR1800001.Item.UmbDarkBolt0001",
           "transfer": false,
-          "_id": "Ub8DrainEffect01",
+          "_id": "UmbDrainEffect01",
           "type": "base",
           "system": {
             "changes": [
@@ -1061,16 +1014,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!UmbrathorCR1300001.Ub8DarkBolt00001.Ub8DrainEffect01",
-          "ownership": {
-            "default": 0
           }
         }
       ],
@@ -1079,17 +1025,16 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!UmbrathorCR1300001.Ub8DarkBolt00001"
+      "flags": {}
     },
     {
-      "_id": "Ub8TerrifyingP01",
+      "_id": "UmbTerrifyingP01",
       "name": "Terrifying Presence",
       "type": "feat",
       "img": "icons/magic/control/fear-fright-monster-red.webp",
       "system": {
         "description": {
-          "value": "<p>Each creature of Umbrathor's choice within 30 feet must succeed on a DC 18 Wisdom saving throw or become frightened of him for 1 minute. A frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</p>",
+          "value": "<p>Each creature of Umbrathor's choice within 30 feet must succeed on a DC 20 Wisdom saving throw or become frightened of him for 1 minute. A frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</p>",
           "chat": "<p>Umbrathor's presence crushes the courage from the room!</p>"
         },
         "source": {
@@ -1112,8 +1057,8 @@
         "requirements": "",
         "properties": [],
         "activities": {
-          "Ub8FearSave0001": {
-            "_id": "Ub8FearSave0001",
+          "UmbFearSave0001": {
+            "_id": "UmbFearSave0001",
             "type": "save",
             "sort": 0,
             "name": "Fear Save",
@@ -1145,7 +1090,7 @@
             },
             "effects": [
               {
-                "_id": "Ub8FearEffect001",
+                "_id": "UmbFearEffect001",
                 "onSave": false,
                 "level": {
                   "min": null,
@@ -1195,7 +1140,7 @@
               "bonus": "",
               "dc": {
                 "calculation": "",
-                "formula": "18"
+                "formula": "20"
               },
               "visible": true
             },
@@ -1221,9 +1166,9 @@
         {
           "name": "Terrifying Presence",
           "img": "icons/magic/control/fear-fright-monster-red.webp",
-          "origin": "Actor.UmbrathorCR1300001.Item.Ub8TerrifyingP01",
+          "origin": "Actor.UmbrathorCR1800001.Item.UmbTerrifyingP01",
           "transfer": false,
-          "_id": "Ub8FearEffect001",
+          "_id": "UmbFearEffect001",
           "type": "base",
           "system": {
             "changes": []
@@ -1247,16 +1192,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!UmbrathorCR1300001.Ub8TerrifyingP01.Ub8FearEffect001",
-          "ownership": {
-            "default": 0
           }
         }
       ],
@@ -1265,17 +1203,16 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!UmbrathorCR1300001.Ub8TerrifyingP01"
+      "flags": {}
     },
     {
-      "_id": "Ub8SummonShad01",
+      "_id": "UmbSummonShad01",
       "name": "Summon Shadows (1/Encounter)",
       "type": "feat",
       "img": "icons/magic/death/undead-skeleton-deformed-red.webp",
       "system": {
         "description": {
-          "value": "<p>Once per encounter, Umbrathor can summon [[/r 1d3]] shadow minions (use the Shadow stat block) to fight alongside him. They last for 1 minute or until reduced to 0 hit points.</p>",
+          "value": "<p>Once per encounter, Umbrathor can summon [[/r 1d4]] shadow minions (use the Shadow stat block) to fight alongside him. They last for 1 minute or until reduced to 0 hit points.</p>",
           "chat": "<p>The darkness coalesces into shambling silhouettes!</p>"
         },
         "source": {
@@ -1303,10 +1240,10 @@
         "requirements": "",
         "properties": [],
         "activities": {
-          "Ub8SummonAct0001": {
-            "_id": "Ub8SummonAct0001",
+          "UmbSummonAct0001": {
+            "_id": "UmbSummonAct0001",
             "type": "summon",
-            "name": "Summon 1d3 Shadows",
+            "name": "Summon 1d4 Shadows",
             "sort": 0,
             "img": "",
             "activation": {
@@ -1329,7 +1266,7 @@
               ]
             },
             "description": {
-              "value": "<p>[[/r 1d3]] @UUID[Compendium.dnd5e.monsters.Actor.QGcQYZbVl4bWzi4E]{shadows} rise from the gloom and fight for Umbrathor for 1 minute.</p>",
+              "value": "<p>[[/r 1d4]] @UUID[Compendium.dnd5e.monsters.Actor.QGcQYZbVl4bWzi4E]{shadows} rise from the gloom and fight for Umbrathor for 1 minute.</p>",
               "chatFlavor": ""
             },
             "duration": {
@@ -1395,7 +1332,7 @@
               {
                 "count": "1",
                 "name": "Shadow",
-                "_id": "Ub8ShadProf0001",
+                "_id": "UmbShadProf0001",
                 "uuid": "Compendium.dnd5e.monsters.Actor.QGcQYZbVl4bWzi4E",
                 "level": {
                   "min": null,
@@ -1406,7 +1343,7 @@
               {
                 "count": "2",
                 "name": "Shadows (2)",
-                "_id": "Ub8ShadProf0002",
+                "_id": "UmbShadProf0002",
                 "uuid": "Compendium.dnd5e.monsters.Actor.QGcQYZbVl4bWzi4E",
                 "level": {
                   "min": null,
@@ -1417,7 +1354,18 @@
               {
                 "count": "3",
                 "name": "Shadows (3)",
-                "_id": "Ub8ShadProf0003",
+                "_id": "UmbShadProf0003",
+                "uuid": "Compendium.dnd5e.monsters.Actor.QGcQYZbVl4bWzi4E",
+                "level": {
+                  "min": null,
+                  "max": null
+                },
+                "types": []
+              },
+              {
+                "count": "4",
+                "name": "Shadows (4)",
+                "_id": "UmbShadProf0004",
                 "uuid": "Compendium.dnd5e.monsters.Actor.QGcQYZbVl4bWzi4E",
                 "level": {
                   "min": null,
@@ -1445,17 +1393,16 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!UmbrathorCR1300001.Ub8SummonShad01"
+      "flags": {}
     },
     {
-      "_id": "Ub8ShadowStep001",
+      "_id": "UmbShadowStep001",
       "name": "Shadow Step",
       "type": "feat",
       "img": "icons/magic/control/debuff-energy-hold-levitate-pink.webp",
       "system": {
         "description": {
-          "value": "<p>As a bonus action, Umbrathor can teleport from one shadow to another within 50 feet.</p>",
+          "value": "<p>As a bonus action, Umbrathor can teleport from one shadow to another within 60 feet.</p>",
           "chat": "<p>Umbrathor melts into one shadow and flows out of another!</p>"
         },
         "source": {
@@ -1478,8 +1425,8 @@
         "requirements": "",
         "properties": [],
         "activities": {
-          "Ub8StepTelep0001": {
-            "_id": "Ub8StepTelep0001",
+          "UmbStepTelep0001": {
+            "_id": "UmbStepTelep0001",
             "type": "teleport",
             "name": "Shadow Step",
             "sort": 0,
@@ -1544,7 +1491,7 @@
             "teleport": {
               "override": false,
               "units": "ft",
-              "value": "50"
+              "value": "60"
             }
           }
         },
@@ -1560,17 +1507,16 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!UmbrathorCR1300001.Ub8ShadowStep001"
+      "flags": {}
     },
     {
-      "_id": "Ub8DarkPact00001",
+      "_id": "UmbDarkPact0001",
       "name": "Dark Pact",
       "type": "feat",
       "img": "icons/magic/death/hand-undead-skeleton-fire-pink.webp",
       "system": {
         "description": {
-          "value": "<p><strong>Cantrip.</strong> Umbrathor regains hit points equal to [[/r 1d6 + 5]] (1d6 + his Charisma modifier). If he is in dim light or darkness, he regains an additional [[/r 1d4]] hit points.</p>",
+          "value": "<p><strong>Cantrip.</strong> Umbrathor regains hit points equal to [[/r 1d8 + 6]] (1d8 + his Charisma modifier). If he is in dim light or darkness, he regains an additional [[/r 1d4]] hit points.</p>",
           "chat": "<p>Shadows seep into Umbrathor, knitting his wounds shut.</p>"
         },
         "source": {
@@ -1593,8 +1539,8 @@
         "requirements": "",
         "properties": [],
         "activities": {
-          "Ub8PactHeal0001": {
-            "_id": "Ub8PactHeal0001",
+          "UmbPactHeal0001": {
+            "_id": "UmbPactHeal0001",
             "type": "heal",
             "name": "Dark Pact Healing",
             "sort": 0,
@@ -1658,8 +1604,8 @@
             },
             "healing": {
               "number": 1,
-              "denomination": 6,
-              "bonus": "5",
+              "denomination": 8,
+              "bonus": "6",
               "types": [
                 "healing"
               ],
@@ -1687,11 +1633,10 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!UmbrathorCR1300001.Ub8DarkPact00001"
+      "flags": {}
     },
     {
-      "_id": "Ub8LegendaryAct01",
+      "_id": "UmbLegendaryAct01",
       "name": "Legendary Actions",
       "type": "feat",
       "img": "icons/skills/melee/weapons-crossed-swords-teal.webp",
@@ -1734,17 +1679,16 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!UmbrathorCR1300001.Ub8LegendaryAct01"
+      "flags": {}
     },
     {
-      "_id": "Ub8ShadowGrasp01",
+      "_id": "UmbShadowGrasp01",
       "name": "Shadow Grasp",
       "type": "feat",
       "img": "icons/magic/control/debuff-chains-ropes-red.webp",
       "system": {
         "description": {
-          "value": "<p><strong>Legendary Action (1).</strong> Umbrathor targets one creature within 30 feet. The target must succeed on a DC 18 Strength saving throw or be &amp;reference[restrained apply=false] by shadowy tendrils until the end of its next turn.</p>",
+          "value": "<p><strong>Legendary Action (1).</strong> Umbrathor targets one creature within 30 feet. The target must succeed on a DC 20 Strength saving throw or be &amp;reference[restrained apply=false] by shadowy tendrils until the end of its next turn.</p>",
           "chat": "<p>Shadowy tendrils erupt from the floor!</p>"
         },
         "source": {
@@ -1767,8 +1711,8 @@
         "requirements": "",
         "properties": [],
         "activities": {
-          "Ub8GraspSave0001": {
-            "_id": "Ub8GraspSave0001",
+          "UmbGraspSave0001": {
+            "_id": "UmbGraspSave0001",
             "type": "save",
             "sort": 0,
             "name": "Grasp Save",
@@ -1807,7 +1751,7 @@
             },
             "effects": [
               {
-                "_id": "Ub8GraspEff0001",
+                "_id": "UmbGraspEff0001",
                 "onSave": false,
                 "level": {
                   "min": null,
@@ -1857,7 +1801,7 @@
               "bonus": "",
               "dc": {
                 "calculation": "",
-                "formula": "18"
+                "formula": "20"
               },
               "visible": true
             },
@@ -1883,9 +1827,9 @@
         {
           "name": "Shadow Grasp: Restrained",
           "img": "icons/magic/control/debuff-chains-ropes-red.webp",
-          "origin": "Actor.UmbrathorCR1300001.Item.Ub8ShadowGrasp01",
+          "origin": "Actor.UmbrathorCR1800001.Item.UmbShadowGrasp01",
           "transfer": false,
-          "_id": "Ub8GraspEff0001",
+          "_id": "UmbGraspEff0001",
           "type": "base",
           "system": {
             "changes": []
@@ -1909,16 +1853,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!UmbrathorCR1300001.Ub8ShadowGrasp01.Ub8GraspEff0001",
-          "ownership": {
-            "default": 0
           }
         }
       ],
@@ -1927,17 +1864,16 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!UmbrathorCR1300001.Ub8ShadowGrasp01"
+      "flags": {}
     },
     {
-      "_id": "Ub8DarkRejuv001",
+      "_id": "UmbDarkRejuv001",
       "name": "Dark Rejuvenation",
       "type": "feat",
       "img": "icons/magic/death/skull-flames-white-blue.webp",
       "system": {
         "description": {
-          "value": "<p><strong>Legendary Action (1).</strong> Umbrathor regains hit points equal to [[/r 1d6]] if he is in dim light or darkness.</p>",
+          "value": "<p><strong>Legendary Action (1).</strong> Umbrathor regains hit points equal to [[/r 1d8]] if he is in dim light or darkness.</p>",
           "chat": "<p>Umbrathor draws strength from the surrounding gloom.</p>"
         },
         "source": {
@@ -1960,8 +1896,8 @@
         "requirements": "",
         "properties": [],
         "activities": {
-          "Ub8RejuvHeal0001": {
-            "_id": "Ub8RejuvHeal0001",
+          "UmbRejuvHeal0001": {
+            "_id": "UmbRejuvHeal0001",
             "type": "heal",
             "name": "Rejuvenate",
             "sort": 0,
@@ -2033,7 +1969,7 @@
             },
             "healing": {
               "number": 1,
-              "denomination": 6,
+              "denomination": 8,
               "bonus": "",
               "types": [
                 "healing"
@@ -2062,11 +1998,213 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!UmbrathorCR1300001.Ub8DarkRejuv001"
+      "flags": {}
     },
     {
-      "_id": "Ub8CloakShad001",
+      "_id": "UmbNightmareVis1",
+      "name": "Nightmare Visions (2 Actions)",
+      "type": "feat",
+      "img": "icons/magic/perception/eye-ringed-glow-angry-large-teal.webp",
+      "system": {
+        "description": {
+          "value": "<p><strong>Legendary Action (2).</strong> Umbrathor projects horrifying visions into the minds of his enemies. One creature within 60 feet must succeed on a DC 20 Wisdom saving throw or take 36 (8d8) psychic damage and be stunned until the end of its next turn.</p>",
+          "chat": "<p>Your mind is flooded with visions of endless dark!</p>"
+        },
+        "source": {
+          "custom": "",
+          "book": "",
+          "page": "",
+          "license": "",
+          "rules": "2014",
+          "revision": 1
+        },
+        "uses": {
+          "max": "",
+          "spent": 0,
+          "recovery": []
+        },
+        "type": {
+          "value": "monster",
+          "subtype": ""
+        },
+        "requirements": "",
+        "properties": [],
+        "activities": {
+          "UmbNightSave0001": {
+            "_id": "UmbNightSave0001",
+            "type": "save",
+            "sort": 0,
+            "name": "Nightmare Save",
+            "img": "",
+            "activation": {
+              "type": "legendary",
+              "value": 2,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [
+                {
+                  "type": "attribute",
+                  "value": "2",
+                  "target": "resources.legact.value",
+                  "scaling": {}
+                }
+              ],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": "",
+              "value": ""
+            },
+            "duration": {
+              "concentration": false,
+              "value": "1",
+              "units": "round",
+              "special": "",
+              "override": false
+            },
+            "effects": [
+              {
+                "_id": "UmbNightEff0001",
+                "onSave": false,
+                "level": {
+                  "min": null,
+                  "max": null
+                }
+              }
+            ],
+            "range": {
+              "value": "60",
+              "units": "ft",
+              "special": "",
+              "override": false
+            },
+            "target": {
+              "template": {
+                "count": "",
+                "contiguous": false,
+                "type": "",
+                "size": "",
+                "width": "",
+                "height": "",
+                "units": "any",
+                "stationary": false
+              },
+              "affects": {
+                "count": "1",
+                "type": "creature",
+                "choice": false,
+                "special": ""
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": [
+                {
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "number": 8,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "psychic"
+                  ],
+                  "scaling": {
+                    "mode": "",
+                    "number": null,
+                    "formula": ""
+                  }
+                }
+              ]
+            },
+            "save": {
+              "ability": [
+                "wis"
+              ],
+              "bonus": "",
+              "dc": {
+                "calculation": "",
+                "formula": "20"
+              },
+              "visible": true
+            },
+            "visibility": {
+              "identifier": "",
+              "level": {
+                "min": null,
+                "max": null
+              },
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "enchant": {},
+        "prerequisites": {
+          "level": null
+        },
+        "identifier": "nightmare-visions"
+      },
+      "effects": [
+        {
+          "name": "Nightmare Visions: Stunned",
+          "img": "icons/magic/perception/eye-ringed-glow-angry-large-teal.webp",
+          "origin": "Actor.UmbrathorCR1800001.Item.UmbNightmareVis1",
+          "transfer": false,
+          "_id": "UmbNightEff0001",
+          "type": "base",
+          "system": {
+            "changes": []
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": 1,
+            "units": "rounds",
+            "expiry": "turnStart",
+            "expired": false
+          },
+          "description": "<p>You are &amp;reference[stunned apply=false] until the end of your next turn.</p>",
+          "tint": "#66ffff",
+          "statuses": [
+            "stunned"
+          ],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {
+            "dnd5e": {
+              "riders": {
+                "statuses": []
+              }
+            }
+          }
+        }
+      ],
+      "folder": null,
+      "sort": 830000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "_id": "UmbCloakShad001",
       "name": "Cloak of Shadows",
       "type": "equipment",
       "img": "icons/magic/air/fog-gas-smoke-dense-gray.webp",
@@ -2139,9 +2277,9 @@
         {
           "name": "Cloak of Shadows",
           "img": "icons/magic/air/fog-gas-smoke-dense-gray.webp",
-          "origin": "Actor.UmbrathorCR1300001.Item.Ub8CloakShad001",
+          "origin": "Actor.UmbrathorCR1800001.Item.UmbCloakShad001",
           "transfer": true,
-          "_id": "Ub8CloakEff0001",
+          "_id": "UmbCloakEff0001",
           "type": "base",
           "system": {
             "conditions": [
@@ -2174,16 +2312,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!UmbrathorCR1300001.Ub8CloakShad001.Ub8CloakEff0001",
-          "ownership": {
-            "default": 0
           }
         }
       ],
@@ -2192,17 +2323,16 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!UmbrathorCR1300001.Ub8CloakShad001"
+      "flags": {}
     },
     {
-      "_id": "Ub8AmuletNight1",
+      "_id": "UmbAmuletNight1",
       "name": "Amulet of the Night",
       "type": "equipment",
       "img": "icons/commodities/treasure/brooch-skull-dagger-grey.webp",
       "system": {
         "description": {
-          "value": "<p><em>Wondrous item (requires attunement)</em></p><p>While wearing this amulet of black crystal, when you deal necrotic damage to a creature, you deal an extra [[/r 1d4]] necrotic damage to that target.</p>",
+          "value": "<p><em>Wondrous item (requires attunement)</em></p><p>While wearing this amulet of black crystal, when you deal necrotic damage to a creature, you deal an extra [[/r 1d6]] necrotic damage to that target.</p>",
           "chat": ""
         },
         "source": {
@@ -2269,23 +2399,23 @@
         {
           "name": "Amulet of the Night",
           "img": "icons/commodities/treasure/brooch-skull-dagger-grey.webp",
-          "origin": "Actor.UmbrathorCR1300001.Item.Ub8AmuletNight1",
+          "origin": "Actor.UmbrathorCR1800001.Item.UmbAmuletNight1",
           "transfer": true,
-          "_id": "Ub8AmuletEff001",
+          "_id": "UmbAmuletEff001",
           "type": "base",
           "system": {
             "changes": [
               {
                 "key": "system.bonuses.rsak.damage",
                 "mode": 2,
-                "value": "1d4[necrotic]",
+                "value": "1d6[necrotic]",
                 "phase": "later",
                 "priority": null
               },
               {
                 "key": "system.bonuses.msak.damage",
                 "mode": 2,
-                "value": "1d4[necrotic]",
+                "value": "1d6[necrotic]",
                 "phase": "later",
                 "priority": null
               }
@@ -2299,7 +2429,7 @@
             "expiry": null,
             "expired": false
           },
-          "description": "<p>While worn, your attacks that deal necrotic damage deal an extra 1d4 necrotic damage. (Activate when equipped.)</p>",
+          "description": "<p>While worn, your attacks that deal necrotic damage deal an extra 1d6 necrotic damage. (Activate when equipped.)</p>",
           "tint": "#331044",
           "statuses": [],
           "showIcon": 1,
@@ -2308,16 +2438,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!UmbrathorCR1300001.Ub8AmuletNight1.Ub8AmuletEff001",
-          "ownership": {
-            "default": 0
           }
         }
       ],
@@ -2326,11 +2449,10 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!UmbrathorCR1300001.Ub8AmuletNight1"
+      "flags": {}
     },
     {
-      "_id": "Ub8LairActns01",
+      "_id": "UmbLairActns01",
       "name": "Lair Actions (Shadow Cavern)",
       "type": "feat",
       "img": "icons/magic/death/skull-flames-white-blue.webp",
@@ -2360,8 +2482,8 @@
         },
         "identifier": "shadow-cavern-lair-actions",
         "activities": {
-          "Ub8LairFlood0001": {
-            "_id": "Ub8LairFlood0001",
+          "UmbLairFlood0001": {
+            "_id": "UmbLairFlood0001",
             "type": "save",
             "sort": 0,
             "name": "Shadow Flood",
@@ -2382,7 +2504,7 @@
             },
             "description": {
               "chatFlavor": "",
-              "value": "<p>Shadow floods a 50-foot-radius sphere centered on a point Umbrathor can see within 100 feet, lightly obscuring the area until initiative count 20 on the next round. While the area is obscured, Umbrathor's shadow attacks can originate from any point within it.</p>"
+              "value": "<p>Shadow floods a 60-foot-radius sphere centered on a point Umbrathor can see within 120 feet, lightly obscuring the area until initiative count 20 on the next round. While the area is obscured, Umbrathor's shadow attacks can originate from any point within it.</p>"
             },
             "duration": {
               "concentration": false,
@@ -2403,7 +2525,7 @@
                 "count": "",
                 "contiguous": false,
                 "type": "radius",
-                "size": "50",
+                "size": "60",
                 "width": "",
                 "height": "",
                 "units": "ft",
@@ -2434,7 +2556,7 @@
               "bonus": "",
               "dc": {
                 "calculation": "",
-                "formula": "18"
+                "formula": "20"
               },
               "visible": true
             },
@@ -2449,8 +2571,8 @@
               "identifier": ""
             }
           },
-          "Ub8LairTendr0001": {
-            "_id": "Ub8LairTendr0001",
+          "UmbLairTendr0001": {
+            "_id": "UmbLairTendr0001",
             "type": "save",
             "sort": 1,
             "name": "Shadow Tendrils",
@@ -2471,7 +2593,7 @@
             },
             "description": {
               "chatFlavor": "",
-              "value": "<p>Shadowy tendrils lash at one creature Umbrathor can see within 100 feet. The target must succeed on a DC 18 Dexterity saving throw or take 3d8 necrotic damage.</p>"
+              "value": "<p>Shadowy tendrils lash at one creature Umbrathor can see within 120 feet. The target must succeed on a DC 20 Dexterity saving throw or take 4d8 necrotic damage. A creature reduced to 0 hit points by this damage dies and rises as a Shadow under Umbrathor's control at the start of his next turn.</p>"
             },
             "duration": {
               "concentration": false,
@@ -2520,7 +2642,7 @@
                     "enabled": false,
                     "formula": ""
                   },
-                  "number": 3,
+                  "number": 4,
                   "denomination": 8,
                   "bonus": "",
                   "types": [
@@ -2541,7 +2663,7 @@
               "bonus": "",
               "dc": {
                 "calculation": "",
-                "formula": "18"
+                "formula": "20"
               },
               "visible": true
             },
@@ -2556,8 +2678,8 @@
               "identifier": ""
             }
           },
-          "Ub8LairChill0001": {
-            "_id": "Ub8LairChill0001",
+          "UmbLairChill0001": {
+            "_id": "UmbLairChill0001",
             "type": "save",
             "sort": 2,
             "name": "Creeping Chill",
@@ -2578,7 +2700,7 @@
             },
             "description": {
               "chatFlavor": "",
-              "value": "<p>A wave of grave-chill rolls out from Umbrathor. Each creature within 25 feet of him must make a DC 18 Constitution saving throw, taking 2d8 cold damage on a failure, or half damage on success. A creature that fails is also slowed by the cold (its speed is halved) until initiative count 20 on the next round.</p>"
+              "value": "<p>A wave of grave-chill rolls out from Umbrathor. Each creature within 30 feet of him must make a DC 20 Constitution saving throw, taking 2d10 cold damage on a failure, or half damage on success. A creature that fails is also slowed by the cold (its speed is halved) until initiative count 20 on the next round.</p>"
             },
             "duration": {
               "concentration": false,
@@ -2599,7 +2721,7 @@
                 "count": "",
                 "contiguous": false,
                 "type": "radius",
-                "size": "25",
+                "size": "30",
                 "width": "",
                 "height": "",
                 "units": "ft",
@@ -2628,7 +2750,7 @@
                     "formula": ""
                   },
                   "number": 2,
-                  "denomination": 8,
+                  "denomination": 10,
                   "bonus": "",
                   "types": [
                     "cold"
@@ -2648,7 +2770,7 @@
               "bonus": "",
               "dc": {
                 "calculation": "",
-                "formula": "18"
+                "formula": "20"
               },
               "visible": true
             },
@@ -2663,8 +2785,8 @@
               "identifier": ""
             }
           },
-          "Ub8LairGrasp0001": {
-            "_id": "Ub8LairGrasp0001",
+          "UmbLairGrasp0001": {
+            "_id": "UmbLairGrasp0001",
             "type": "save",
             "sort": 3,
             "name": "Lair Shadow Grasp",
@@ -2685,7 +2807,7 @@
             },
             "description": {
               "chatFlavor": "",
-              "value": "<p>Living shadow erupts beneath one creature Umbrathor can see within 80 feet. The target must succeed on a DC 18 Strength saving throw or take 3d8 necrotic damage and be &reference[restrained apply=false] by shadowy tendrils until initiative count 20 on the next round. While restrained this way, the target takes 1d6 necrotic damage at the start of each of its turns.</p>"
+              "value": "<p>Living shadow erupts beneath one creature Umbrathor can see within 90 feet. The target must succeed on a DC 20 Strength saving throw or take 3d8 necrotic damage and be &reference[restrained apply=false] by shadowy tendrils until initiative count 20 on the next round. While restrained this way, the target takes 1d6 necrotic damage at the start of each of its turns.</p>"
             },
             "duration": {
               "concentration": false,
@@ -2696,7 +2818,7 @@
             },
             "effects": [
               {
-                "_id": "Ub8LairGraspEff1",
+                "_id": "UmbLairGraspEff1",
                 "level": {
                   "min": null,
                   "max": null
@@ -2763,7 +2885,7 @@
               "bonus": "",
               "dc": {
                 "calculation": "",
-                "formula": "18"
+                "formula": "20"
               },
               "visible": true
             },
@@ -2778,8 +2900,8 @@
               "identifier": ""
             }
           },
-          "Ub8LairStep0001": {
-            "_id": "Ub8LairStep0001",
+          "UmbLairStep0001": {
+            "_id": "UmbLairStep0001",
             "type": "utility",
             "sort": 4,
             "name": "Lair Shadow Step",
@@ -2800,7 +2922,7 @@
             },
             "description": {
               "chatFlavor": "",
-              "value": "<p>Umbrathor melds into the shadows and teleports up to 50 feet to an unoccupied space he can see, reemerging from the darkness.</p>"
+              "value": "<p>Umbrathor melds into the shadows and teleports up to 60 feet to an unoccupied space he can see, reemerging from the darkness.</p>"
             },
             "duration": {
               "concentration": false,
@@ -2860,7 +2982,7 @@
           }
         },
         "description": {
-          "value": "<p>While Umbrathor is in his lair, he can invoke the ambient power of the Shadow Cavern to take lair actions. On initiative count 20 (losing all initiative ties), he takes one lair action:</p><ul><li>He casts @UUID[Compendium.dnd5e.spells.Item.S7VbUetIfVT7B6Eq]{Darkness} without expending a spell slot, targeting a point he can see within 50 feet.</li><li>Shadowy tendrils lash at one creature he can see within 100 feet. The target must succeed on a DC 18 Dexterity saving throw or take 3d8 necrotic damage.</li><li>Umbrathor melds into the shadows and teleports up to 50 feet to an unoccupied space he can see.</li></ul>",
+          "value": "<p>While Umbrathor is in his lair, he can invoke the ambient power of the Shadow Cavern to take lair actions. On initiative count 20 (losing all initiative ties), he takes one lair action:</p><ul><li>He casts @UUID[Compendium.dnd5e.spells.Item.S7VbUetIfVT7B6Eq]{Darkness} without expending a spell slot, targeting a point he can see within 60 feet.</li><li>Shadowy tendrils lash at one creature he can see within 120 feet. The target must succeed on a DC 20 Dexterity saving throw or take 4d8 necrotic damage.</li><li>Umbrathor melds into the shadows and teleports up to 60 feet to an unoccupied space he can see.</li></ul>",
           "chat": ""
         }
       },
@@ -2868,9 +2990,9 @@
         {
           "name": "Lair Shadow Grasp: Restrained",
           "img": "icons/magic/control/debuff-chains-ropes-red.webp",
-          "origin": "Actor.UmbrathorCR1300001.Item.Ub8LairActns01",
+          "origin": "Actor.UmbrathorCR1800001.Item.UmbLairActns01",
           "transfer": false,
-          "_id": "Ub8LairGraspEff1",
+          "_id": "UmbLairGraspEff1",
           "type": "base",
           "system": {
             "changes": []
@@ -2894,16 +3016,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!UmbrathorCR1300001.Ub8LairActns01.Ub8LairGraspEff1",
-          "ownership": {
-            "default": 0
           }
         }
       ],
@@ -2912,11 +3027,10 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!UmbrathorCR1300001.Ub8LairActns01"
+      "flags": {}
     },
     {
-      "_id": "Ub8RegionalEff01",
+      "_id": "UmbRegionalEff01",
       "name": "Regional Effects (Shadow Cavern)",
       "type": "feat",
       "img": "icons/magic/air/fog-gas-smoke-dense-gray.webp",
@@ -2947,7 +3061,7 @@
         "identifier": "shadow-cavern-regional-effects",
         "activities": {},
         "description": {
-          "value": "<p>The region containing Umbrathor's lair is warped by his abyssal magic, creating the following effects:</p><p><strong>Claustrophobic Dark.</strong> Magical darkness fills 90 feet of the lair. Nonmagical light is dimmed to dim light, and creatures with darkvision cannot see through it.</p><p><strong>Whispers in the Void.</strong> Any creature that starts its turn in the lair while having half its hit points or fewer hears murmuring shadows and must succeed on a DC 18 Wisdom saving throw or be &reference[frightened apply=false] until the start of its next turn.</p><p><strong>Umbral Murk.</strong> Pools of shadow shift unnaturally; areas of dim light within the lair are lightly obscured, and Umbrathor can emerge from any such area when using Shadow Step.</p><p>If Umbrathor dies, these effects fade over 1d10 days.</p>",
+          "value": "<p>The region containing Umbrathor's lair is warped by his abyssal magic, creating the following effects:</p><p><strong>Claustrophobic Dark.</strong> Magical darkness fills 120 feet of the lair. Nonmagical light is dimmed to dim light, and creatures with darkvision cannot see through it.</p><p><strong>Whispers in the Void.</strong> Any creature that starts its turn in the lair while having half its hit points or fewer hears murmuring shadows and must succeed on a DC 18 Wisdom saving throw or be &reference[frightened apply=false] until the start of its next turn.</p><p><strong>Umbral Murk.</strong> Pools of shadow shift unnaturally; areas of dim light within the lair are lightly obscured, and Umbrathor can emerge from any such area when using Shadow Step.</p><p>If Umbrathor dies, these effects fade over 1d10 days.</p>",
           "chat": ""
         }
       },
@@ -2957,8 +3071,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!UmbrathorCR1300001.Ub8RegionalEff01"
+      "flags": {}
     }
   ],
   "effects": [],
@@ -2974,10 +3087,9 @@
     "coreVersion": "14.361",
     "systemId": "dnd5e",
     "systemVersion": "6.0.1",
-    "createdTime": 1789000000002,
-    "modifiedTime": 1789000000002,
+    "createdTime": 1789000000001,
+    "modifiedTime": 1789000000001,
     "lastModifiedBy": "nrrBuilder0000000",
     "exportSource": null
-  },
-  "_key": "!actors!UmbrathorCR1300001"
+  }
 }

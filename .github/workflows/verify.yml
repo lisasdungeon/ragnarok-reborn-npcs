@@ -1,11 +1,13 @@
 # Pull-request gate: broken pack sources can't reach master.
 #
 # Runs the full pipeline a release would run, plus a freshness check:
-#   1. npm ci + npm run build — every pack must compile from packs/_source
-#   2. node verify-packs.mjs  — every source document must survive the
+#   1. python3 tools/sync-npc-sources.py --check — pack sources must match the
+#      loose drag-and-drop JSONs (the authoring format)
+#   2. npm ci + npm run build — every pack must compile from packs/_source
+#   3. node verify-packs.mjs  — every source document must survive the
 #                               LevelDB round-trip (matched by _id)
-#   3. node check-scene-maps.mjs — every scene's background.src must exist
-#   4. node check-fresh.mjs   — the COMMITTED compiled packs must match what
+#   4. node check-scene-maps.mjs — every scene's background.src must exist
+#   5. node check-fresh.mjs   — the COMMITTED compiled packs must match what
 #                               the committed sources build to. Catches "edited
 #                               a source JSON but forgot to recommit packs/".
 #
@@ -37,6 +39,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Check NPC sources match loose JSONs
+        run: python3 tools/sync-npc-sources.py --check
 
       - name: Snapshot committed packs
         run: node check-fresh.mjs snapshot

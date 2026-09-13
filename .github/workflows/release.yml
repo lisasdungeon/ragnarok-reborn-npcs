@@ -135,7 +135,14 @@ jobs:
 
       - name: Build release zip
         run: |
-          zip -qr "ragnarok-reborn-npcs.zip" module.json README.md packs maps -x "packs/_source/*"
+          # Loose drag-and-drop JSONs ride along at the zip root: the five NPC
+          # actors and both scenes can be imported without touching compendiums.
+          zip -qr "ragnarok-reborn-npcs.zip" module.json README.md packs maps \
+            Ewoklin.json Ewokling.json Umbrathor.json \
+            "Umbrathor lvl 8.json" "Vorath lvl 10 New.json" \
+            "Umbrathor's Shadow Cavern (Scene).json" \
+            "Vorath's Hellheim Throne Room (Scene).json" \
+            -x "packs/_source/*"
           unzip -l "ragnarok-reborn-npcs.zip"
 
       - name: Extract release notes from README changelog

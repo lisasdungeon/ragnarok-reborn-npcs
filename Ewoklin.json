@@ -664,8 +664,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!EwoklinNPC0000001.EwkMagicResist001"
+      "flags": {}
     },
     {
       "_id": "EwkMultiplicity01",
@@ -795,7 +794,7 @@
                 "count": "1",
                 "name": "1 Ewokling",
                 "_id": "EwkMultiProf01",
-                "uuid": "Compendium.ragnarok-reborn-npcs.ragnarok-reborn-npcs.Actor.EwoklingNPC00001",
+                "uuid": "Actor.EwoklingNPC00001",
                 "level": {
                   "min": null,
                   "max": null
@@ -806,7 +805,7 @@
                 "count": "2",
                 "name": "2 Ewoklings",
                 "_id": "EwkMultiProf02",
-                "uuid": "Compendium.ragnarok-reborn-npcs.ragnarok-reborn-npcs.Actor.EwoklingNPC00001",
+                "uuid": "Actor.EwoklingNPC00001",
                 "level": {
                   "min": null,
                   "max": null
@@ -817,7 +816,7 @@
                 "count": "3",
                 "name": "3 Ewoklings",
                 "_id": "EwkMultiProf03",
-                "uuid": "Compendium.ragnarok-reborn-npcs.ragnarok-reborn-npcs.Actor.EwoklingNPC00001",
+                "uuid": "Actor.EwoklingNPC00001",
                 "level": {
                   "min": null,
                   "max": null
@@ -828,7 +827,7 @@
                 "count": "4",
                 "name": "4 Ewoklings",
                 "_id": "EwkMultiProf04",
-                "uuid": "Compendium.ragnarok-reborn-npcs.ragnarok-reborn-npcs.Actor.EwoklingNPC00001",
+                "uuid": "Actor.EwoklingNPC00001",
                 "level": {
                   "min": null,
                   "max": null
@@ -855,8 +854,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!EwoklinNPC0000001.EwkMultiplicity01"
+      "flags": {}
     },
     {
       "_id": "EwkPrimWeapMstr",
@@ -902,8 +900,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!EwoklinNPC0000001.EwkPrimWeapMstr"
+      "flags": {}
     },
     {
       "_id": "EwkClaws00000001",
@@ -1127,8 +1124,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!EwoklinNPC0000001.EwkClaws00000001"
+      "flags": {}
     },
     {
       "_id": "EwkPrimWeapon01",
@@ -1465,8 +1461,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!EwoklinNPC0000001.EwkPrimWeapon01"
+      "flags": {}
     },
     {
       "_id": "EwkMischievousS1",
@@ -1680,16 +1675,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!EwoklinNPC0000001.EwkMischievousS1.EwkSurgeLaugh001",
-          "ownership": {
-            "default": 0
           }
         },
         {
@@ -1719,16 +1707,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!EwoklinNPC0000001.EwkMischievousS1.EwkSurgeFear001",
-          "ownership": {
-            "default": 0
           }
         },
         {
@@ -1780,16 +1761,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!EwoklinNPC0000001.EwkMischievousS1.EwkSurgeFury001",
-          "ownership": {
-            "default": 0
           }
         }
       ],
@@ -1798,8 +1772,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!EwoklinNPC0000001.EwkMischievousS1"
+      "flags": {}
     },
     {
       "_id": "EwkEvasiveScmp01",
@@ -1918,8 +1891,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!EwoklinNPC0000001.EwkEvasiveScmp01"
+      "flags": {}
     },
     {
       "_id": "EwkMultiattack001",
@@ -1965,8 +1937,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!EwoklinNPC0000001.EwkMultiattack001"
+      "flags": {}
     }
   ],
   "effects": [],
@@ -1986,6 +1957,5 @@
     "modifiedTime": 1789000000000,
     "lastModifiedBy": "nrrBuilder0000000",
     "exportSource": null
-  },
-  "_key": "!actors!EwoklinNPC0000001"
+  }
 }

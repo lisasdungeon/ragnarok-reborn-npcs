@@ -10,7 +10,9 @@
     "verify": "node verify-packs.mjs",
     "check:maps": "node check-scene-maps.mjs",
     "check:fresh": "node check-fresh.mjs",
-    "check:fresh:snapshot": "node check-fresh.mjs snapshot"
+    "check:fresh:snapshot": "node check-fresh.mjs snapshot",
+    "sync:npcs": "python3 tools/sync-npc-sources.py",
+    "sync:npcs:check": "python3 tools/sync-npc-sources.py --check"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "^3.0.4"

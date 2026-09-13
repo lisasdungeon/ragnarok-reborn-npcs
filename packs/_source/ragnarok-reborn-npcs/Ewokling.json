@@ -923,12 +923,12 @@
               "recovery": []
             },
             "attack": {
-              "ability": "dex",
-              "bonus": "",
+              "ability": "",
+              "bonus": "+5",
               "critical": {
                 "threshold": null
               },
-              "flat": false,
+              "flat": true,
               "type": {
                 "value": "melee",
                 "classification": "weapon"
@@ -939,7 +939,25 @@
                 "bonus": ""
               },
               "includeBase": true,
-              "parts": []
+              "parts": [
+                {
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "number": 1,
+                  "denomination": 6,
+                  "bonus": "2",
+                  "types": [
+                    "slashing"
+                  ],
+                  "scaling": {
+                    "mode": "",
+                    "number": null,
+                    "formula": ""
+                  }
+                }
+              ]
             },
             "visibility": {
               "identifier": "",
@@ -1132,12 +1150,12 @@
               "recovery": []
             },
             "attack": {
-              "ability": "dex",
-              "bonus": "",
+              "ability": "",
+              "bonus": "+5",
               "critical": {
                 "threshold": null
               },
-              "flat": false,
+              "flat": true,
               "type": {
                 "value": "melee",
                 "classification": "weapon"
@@ -1148,7 +1166,25 @@
                 "bonus": ""
               },
               "includeBase": true,
-              "parts": []
+              "parts": [
+                {
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "number": 1,
+                  "denomination": 6,
+                  "bonus": "2",
+                  "types": [
+                    "piercing"
+                  ],
+                  "scaling": {
+                    "mode": "",
+                    "number": null,
+                    "formula": ""
+                  }
+                }
+              ]
             },
             "visibility": {
               "identifier": "",
@@ -1225,12 +1261,12 @@
               "recovery": []
             },
             "attack": {
-              "ability": "dex",
-              "bonus": "",
+              "ability": "",
+              "bonus": "+5",
               "critical": {
                 "threshold": null
               },
-              "flat": false,
+              "flat": true,
               "type": {
                 "value": "ranged",
                 "classification": "weapon"
@@ -1241,7 +1277,25 @@
                 "bonus": ""
               },
               "includeBase": true,
-              "parts": []
+              "parts": [
+                {
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "number": 1,
+                  "denomination": 6,
+                  "bonus": "2",
+                  "types": [
+                    "piercing"
+                  ],
+                  "scaling": {
+                    "mode": "",
+                    "number": null,
+                    "formula": ""
+                  }
+                }
+              ]
             },
             "visibility": {
               "identifier": "",
@@ -1466,7 +1520,10 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": []
+                "statuses": [],
+                "ownership": {
+                  "default": 0
+                }
               }
             }
           },
