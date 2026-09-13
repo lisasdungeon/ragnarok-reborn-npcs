@@ -48,6 +48,9 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 ## Changelog
 
 ### 1.3.1
+- **Verify your imported bosses carry these fixes**: release page ships
+  `tools/check-actor-fixes.py` + `docs/actor-verification.json` — export the actor from
+  your world and run the script against the export (see *Notes* below for the one-liner).
 - **Fixed a data regression in the compendium NPC pack**: the pack sources had drifted
   from the loose JSONs, so actors imported from the compendium since v1.1.0 shipped with
   the pre-1.0.1 bug again — empty attack bonuses, no damage dice on weapon/spell attacks,
@@ -186,6 +189,20 @@ two `*(Scene).json` files onto the Scenes sidebar.
   the Ewokling should exist in the world first (or re-link the summon after import).
 - Save DCs and attack bonuses are flat values exactly as printed in the source statblocks;
   HP formulas, proficiencies, and senses are system-native.
+- **Verify the 1.3.1 attack fixes on your imported actors**: if you imported the bosses
+  before v1.3.1, your world copies may still have the pre-fix data (empty attack bonuses,
+  no damage dice). Download `tools/check-actor-fixes.py` and
+  `docs/actor-verification.json` from any release page (or find them in the release zip),
+  export the actor from your world (*right-click actor → Export Data*), and run:
+
+  ```
+  python3 tools/check-actor-fixes.py --verify "Umbrathor.json"
+  ```
+
+  Every printed attack, save DC, and heal formula on all five actors is checked against
+  the exact shipped data, world-only noise (HP, temp HP, positions) is ignored, and the
+  exit code tells CI — or your shell — whether anything is off. Add `--standalone` to
+  check exported Cloak of Shadows / Amulet of the Night items instead.
 - **Lair actions**: both Umbrathors ship with `Lair Actions (Shadow Cavern)` — five rollable
   lair actions grouped under the sheet's Lair Actions section (Shadow Flood, Shadow Tendrils,
   Creeping Chill, Lair Shadow Grasp with a real restrained effect, Lair Shadow Step). The

@@ -3,6 +3,8 @@
 # Runs the full pipeline a release would run, plus a freshness check:
 #   1. python3 tools/sync-npc-sources.py --check — pack sources must match the
 #      loose drag-and-drop JSONs (the authoring format)
+#   1b. python3 tools/check-actor-fixes.py --check — the published verification
+#       snapshot must match what the loose JSONs build to
 #   2. npm ci + npm run build — every pack must compile from packs/_source
 #   3. node verify-packs.mjs  — every source document must survive the
 #                               LevelDB round-trip (matched by _id)
@@ -10,6 +12,7 @@
 #   5. node check-fresh.mjs   — the COMMITTED compiled packs must match what
 #                               the committed sources build to. Catches "edited
 #                               a source JSON but forgot to recommit packs/".
+#   6. (step 1b above runs early: verification-snapshot parity)
 #
 # No release happens here and nothing is pushed — this job only blocks merge.
 name: Verify PR
@@ -42,6 +45,9 @@ jobs:
 
       - name: Check NPC sources match loose JSONs
         run: python3 tools/sync-npc-sources.py --check
+
+      - name: Check verification snapshot matches loose JSONs
+        run: python3 tools/check-actor-fixes.py --check
 
       - name: Snapshot committed packs
         run: node check-fresh.mjs snapshot

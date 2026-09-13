@@ -12,7 +12,9 @@
     "check:fresh": "node check-fresh.mjs",
     "check:fresh:snapshot": "node check-fresh.mjs snapshot",
     "sync:npcs": "python3 tools/sync-npc-sources.py",
-    "sync:npcs:check": "python3 tools/sync-npc-sources.py --check"
+    "sync:npcs:check": "python3 tools/sync-npc-sources.py --check",
+    "verify:snapshot": "python3 tools/check-actor-fixes.py --snapshot",
+    "verify:snapshot:check": "python3 tools/check-actor-fixes.py --check"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "^3.0.4"

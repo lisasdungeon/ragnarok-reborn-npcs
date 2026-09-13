@@ -1,0 +1,527 @@
+{
+  "_meta": {
+    "purpose": "Reference data for verifying imported actors/items carry the v1.3.1 attack fixes",
+    "module": "ragnarok-reborn-npcs"
+  },
+  "actors": {
+    "EwoklinNPC0000001": {
+      "actorId": "EwoklinNPC0000001",
+      "actorName": "Ewoklin",
+      "activities": {
+        "EwkClaws00000001": {
+          "itemName": "Claws",
+          "checks": [
+            {
+              "kind": "attack",
+              "name": "Attack",
+              "bonus": "+7",
+              "flat": true,
+              "damage": [
+                "2d6+4"
+              ]
+            }
+          ]
+        },
+        "EwkPrimWeapon01": {
+          "itemName": "Primitive Weapon",
+          "checks": [
+            {
+              "kind": "attack",
+              "name": "Melee Attack",
+              "bonus": "+7",
+              "flat": true,
+              "damage": [
+                "2d8+4"
+              ]
+            },
+            {
+              "kind": "attack",
+              "name": "Thrown (20/60)",
+              "bonus": "+7",
+              "flat": true,
+              "damage": [
+                "2d8+4"
+              ]
+            }
+          ]
+        },
+        "EwkMischievousS1": {
+          "itemName": "Mischievous Surge (Recharge 5-6)",
+          "checks": [
+            {
+              "kind": "save",
+              "name": "Fey Chaos",
+              "ability": [
+                "wis"
+              ],
+              "dc": "15"
+            }
+          ]
+        }
+      }
+    },
+    "EwoklingNPC00001": {
+      "actorId": "EwoklingNPC00001",
+      "actorName": "Ewokling",
+      "activities": {
+        "EwklClaws00000001": {
+          "itemName": "Claws",
+          "checks": [
+            {
+              "kind": "attack",
+              "name": "Attack",
+              "bonus": "+5",
+              "flat": true,
+              "damage": [
+                "1d6+2"
+              ]
+            }
+          ]
+        },
+        "EwklPrimSpear0001": {
+          "itemName": "Primitive Spear",
+          "checks": [
+            {
+              "kind": "attack",
+              "name": "Melee Attack",
+              "bonus": "+5",
+              "flat": true,
+              "damage": [
+                "1d6+2"
+              ]
+            },
+            {
+              "kind": "attack",
+              "name": "Thrown (20/60)",
+              "bonus": "+5",
+              "flat": true,
+              "damage": [
+                "1d6+2"
+              ]
+            }
+          ]
+        },
+        "EwklSparkSave001": {
+          "itemName": "Mischievous Spark (Recharge 6)",
+          "checks": [
+            {
+              "kind": "save",
+              "name": "Fey Spark",
+              "ability": [
+                "wis"
+              ],
+              "dc": "13"
+            }
+          ]
+        }
+      }
+    },
+    "UmbrathorCR1800001": {
+      "actorId": "UmbrathorCR1800001",
+      "actorName": "Umbrathor, the Shadow Tyrant",
+      "activities": {
+        "UmbDarkBolt0001": {
+          "itemName": "Dark Bolt",
+          "checks": [
+            {
+              "kind": "attack",
+              "name": "Attack",
+              "bonus": "+12",
+              "flat": true,
+              "damage": [
+                "8d8"
+              ]
+            }
+          ]
+        },
+        "UmbTerrifyingP01": {
+          "itemName": "Terrifying Presence",
+          "checks": [
+            {
+              "kind": "save",
+              "name": "Fear Save",
+              "ability": [
+                "wis"
+              ],
+              "dc": "20"
+            }
+          ]
+        },
+        "UmbDarkPact0001": {
+          "itemName": "Dark Pact",
+          "checks": [
+            {
+              "kind": "heal",
+              "name": "Dark Pact Healing",
+              "formula": "1d8+6"
+            }
+          ]
+        },
+        "UmbShadowGrasp01": {
+          "itemName": "Shadow Grasp",
+          "checks": [
+            {
+              "kind": "save",
+              "name": "Grasp Save",
+              "ability": [
+                "str"
+              ],
+              "dc": "20"
+            }
+          ]
+        },
+        "UmbDarkRejuv001": {
+          "itemName": "Dark Rejuvenation",
+          "checks": [
+            {
+              "kind": "heal",
+              "name": "Rejuvenate",
+              "formula": "1d8+"
+            }
+          ]
+        },
+        "UmbNightmareVis1": {
+          "itemName": "Nightmare Visions (2 Actions)",
+          "checks": [
+            {
+              "kind": "save",
+              "name": "Nightmare Save",
+              "ability": [
+                "wis"
+              ],
+              "dc": "20"
+            }
+          ]
+        },
+        "UmbLairActns01": {
+          "itemName": "Lair Actions (Shadow Cavern)",
+          "checks": [
+            {
+              "kind": "save",
+              "name": "Shadow Flood",
+              "ability": [
+                "con"
+              ],
+              "dc": "20"
+            },
+            {
+              "kind": "save",
+              "name": "Shadow Tendrils",
+              "ability": [
+                "dex"
+              ],
+              "dc": "20"
+            },
+            {
+              "kind": "save",
+              "name": "Creeping Chill",
+              "ability": [
+                "con"
+              ],
+              "dc": "20"
+            },
+            {
+              "kind": "save",
+              "name": "Lair Shadow Grasp",
+              "ability": [
+                "str"
+              ],
+              "dc": "20"
+            }
+          ]
+        }
+      }
+    },
+    "UmbrathorCR1300001": {
+      "actorId": "UmbrathorCR1300001",
+      "actorName": "Umbrathor, the Shadow Tyrant (Level 8)",
+      "activities": {
+        "Ub8DarkBolt00001": {
+          "itemName": "Dark Bolt",
+          "checks": [
+            {
+              "kind": "attack",
+              "name": "Attack",
+              "bonus": "+9",
+              "flat": true,
+              "damage": [
+                "6d8"
+              ]
+            }
+          ]
+        },
+        "Ub8TerrifyingP01": {
+          "itemName": "Terrifying Presence",
+          "checks": [
+            {
+              "kind": "save",
+              "name": "Fear Save",
+              "ability": [
+                "wis"
+              ],
+              "dc": "18"
+            }
+          ]
+        },
+        "Ub8DarkPact00001": {
+          "itemName": "Dark Pact",
+          "checks": [
+            {
+              "kind": "heal",
+              "name": "Dark Pact Healing",
+              "formula": "1d6+5"
+            }
+          ]
+        },
+        "Ub8ShadowGrasp01": {
+          "itemName": "Shadow Grasp",
+          "checks": [
+            {
+              "kind": "save",
+              "name": "Grasp Save",
+              "ability": [
+                "str"
+              ],
+              "dc": "18"
+            }
+          ]
+        },
+        "Ub8DarkRejuv001": {
+          "itemName": "Dark Rejuvenation",
+          "checks": [
+            {
+              "kind": "heal",
+              "name": "Rejuvenate",
+              "formula": "1d6+"
+            }
+          ]
+        },
+        "Ub8LairActns01": {
+          "itemName": "Lair Actions (Shadow Cavern)",
+          "checks": [
+            {
+              "kind": "save",
+              "name": "Shadow Flood",
+              "ability": [
+                "con"
+              ],
+              "dc": "18"
+            },
+            {
+              "kind": "save",
+              "name": "Shadow Tendrils",
+              "ability": [
+                "dex"
+              ],
+              "dc": "18"
+            },
+            {
+              "kind": "save",
+              "name": "Creeping Chill",
+              "ability": [
+                "con"
+              ],
+              "dc": "18"
+            },
+            {
+              "kind": "save",
+              "name": "Lair Shadow Grasp",
+              "ability": [
+                "str"
+              ],
+              "dc": "18"
+            }
+          ]
+        }
+      }
+    },
+    "VorathDemonLd0001": {
+      "actorId": "VorathDemonLd0001",
+      "actorName": "Vorath, Demon Lord of Helheim",
+      "activities": {
+        "VorAuraDespair1": {
+          "itemName": "Aura of Despair",
+          "checks": [
+            {
+              "kind": "save",
+              "name": "Despair Save",
+              "ability": [
+                "wis"
+              ],
+              "dc": "20"
+            }
+          ]
+        },
+        "VorDreadGaze001": {
+          "itemName": "Dreadful Gaze",
+          "checks": [
+            {
+              "kind": "save",
+              "name": "Gaze Save",
+              "ability": [
+                "wis"
+              ],
+              "dc": "20"
+            }
+          ]
+        },
+        "VorShadowFork01": {
+          "itemName": "Shadow Fork",
+          "checks": [
+            {
+              "kind": "attack",
+              "name": "Attack",
+              "bonus": "+10",
+              "flat": true,
+              "damage": [
+                "4d8+4"
+              ]
+            }
+          ]
+        },
+        "VorNecroGrasp01": {
+          "itemName": "Necrotic Grasp",
+          "checks": [
+            {
+              "kind": "attack",
+              "name": "Attack",
+              "bonus": "+12",
+              "flat": true,
+              "damage": [
+                "8d6"
+              ]
+            },
+            {
+              "kind": "save",
+              "name": "Max HP Drain",
+              "ability": [
+                "con"
+              ],
+              "dc": "20"
+            }
+          ]
+        },
+        "VorDarkBurst001": {
+          "itemName": "Dark Burst (Recharge 5-6)",
+          "checks": [
+            {
+              "kind": "save",
+              "name": "Dark Burst",
+              "ability": [
+                "dex"
+              ],
+              "dc": "20"
+            }
+          ]
+        },
+        "VorEldritchBlast1": {
+          "itemName": "Eldritch Blast",
+          "checks": [
+            {
+              "kind": "attack",
+              "name": "Cast",
+              "bonus": "",
+              "flat": false,
+              "damage": [
+                "1d10"
+              ]
+            }
+          ]
+        },
+        "VorDarkPactHeal1": {
+          "itemName": "Dark Pact Healing",
+          "checks": [
+            {
+              "kind": "heal",
+              "name": "Dark Pact Healing",
+              "formula": "1d8+6"
+            }
+          ]
+        },
+        "VorHorrVisage01": {
+          "itemName": "Horrifying Visage (Costs 2 Actions)",
+          "checks": [
+            {
+              "kind": "save",
+              "name": "Visage Save",
+              "ability": [
+                "wis"
+              ],
+              "dc": "20"
+            }
+          ]
+        },
+        "VorLairActns0001": {
+          "itemName": "Lair Actions (Hellheim Throne Room)",
+          "checks": [
+            {
+              "kind": "attack",
+              "name": "Hellfire Bolt",
+              "bonus": "+12",
+              "flat": false,
+              "damage": [
+                "3d10"
+              ]
+            },
+            {
+              "kind": "save",
+              "name": "Gates of Dread",
+              "ability": [
+                "wis"
+              ],
+              "dc": "20"
+            },
+            {
+              "kind": "save",
+              "name": "Ember Storm",
+              "ability": [
+                "dex"
+              ],
+              "dc": "20"
+            },
+            {
+              "kind": "save",
+              "name": "Throne of Chains",
+              "ability": [
+                "str"
+              ],
+              "dc": "20"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "items": {
+    "LootCloakShad001": {
+      "itemId": "LootCloakShad001",
+      "itemName": "Cloak of Shadows",
+      "effects": [
+        {
+          "effect": "Cloak of Shadows",
+          "key": "flags.dnd5e.advantage.skill.ste",
+          "mode": 0,
+          "value": "1"
+        }
+      ]
+    },
+    "LootAmuletNite01": {
+      "itemId": "LootAmuletNite01",
+      "itemName": "Amulet of the Night",
+      "effects": [
+        {
+          "effect": "Amulet of the Night",
+          "key": "system.bonuses.rsak.damage",
+          "mode": 2,
+          "value": "1d6[necrotic]"
+        },
+        {
+          "effect": "Amulet of the Night",
+          "key": "system.bonuses.msak.damage",
+          "mode": 2,
+          "value": "1d6[necrotic]"
+        }
+      ]
+    }
+  }
+}
