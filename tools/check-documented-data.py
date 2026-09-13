@@ -24,7 +24,11 @@ Three checks:
              a third corpus: every activity's numbers must appear there too
              (players verify by rolling, not by reading), and every number
              the checklist quotes must exist in the data — so the checklist
-             cannot silently rot when an actor changes.
+             cannot silently rot when an actor changes. The Ledger's loot
+             rows (Cloak/Amulet, derived from the loot pack sources) are
+             part of this corpus: every loot effect die must appear on the
+             checklist, and every dice value the checklist quotes must exist
+             either in an activity or in a loot effect change.
 
     python3 tools/check-documented-data.py        # exit 1 on any drift
     (also exposed as `npm run check:docs`; runs as step 2 of `npm run check`)
@@ -50,7 +54,7 @@ TEXT_ONLY = {
     "6d10": "Hellfire Bolt rider: 6d10 only vs frightened targets (description text)",
     "+1": "Lair-action CR adjustment (+1 CR / +1 legendary action), not an attack bonus",
     "+21": "1.3.2 changelog: the OLD stacked Hellfire Bolt bonus, kept as history",
-    "1d4": "Amulet of the Night CR 13 embedded copy's necrotic rider / Dark Pact bonus-in-darkness — description-level, not an activity",
+    "1d4": "Amulet of the Night necrotic rider on the CR 13 embedded copy (actor JSON, not a loot-source die) / Dark Pact bonus-in-darkness — description-level",
 }
 
 # The generated playtest checklist (gen-playtest.py) — a third corpus whose
@@ -65,6 +69,11 @@ CHECKLIST_OK = {}
 # Claims allowed to be absent from the README: (kind, item, activity) -> reason.
 # Intended to stay EMPTY — prefer documenting the value in README.md.
 UNDOCUMENTED_OK = {}
+
+# Loot pack sources — the Ledger's magic-item rows are derived from these
+# (tools/gen-playtest.py), so their effect dice are asserted against the
+# checklist in the same two-way way as activity data.
+LOOT_DIR = os.path.join("packs", "_source", "ragnarok-reborn-loot")
 
 
 def dice_str(part):
@@ -105,9 +114,30 @@ def load_claims():
     return claims
 
 
+def load_loot():
+    """Loot pack sources → [{item, dice, changes}] from their effect changes."""
+    loot = []
+    d = os.path.join(REPO, LOOT_DIR)
+    for fn in sorted(os.listdir(d)):
+        if not fn.endswith(".json"):
+            continue
+        doc = json.load(open(os.path.join(d, fn), encoding="utf-8"))
+        dice, changes = set(), []
+        for e in doc.get("effects", []):
+            for c in e.get("system", {}).get("changes", []):
+                changes.append((doc["name"], c.get("key", ""), str(c.get("value", ""))))
+                m = re.match(r"(\d+d\d+)(?:\[[^\]]+\])?", str(c.get("value", "")))
+                if m:
+                    dice.add(m.group(1))
+        loot.append({"item": doc["name"], "dice": dice, "changes": changes})
+    return loot
+
+
 def main():
     readme = open(os.path.join(REPO, "README.md"), encoding="utf-8").read()
     claims = load_claims()
+    loot = load_loot()
+    loot_dice = {d for l in loot for d in l["dice"]}
     fails, warns = [], []
 
     def who(c):
@@ -164,6 +194,22 @@ def main():
         if c["kind"] == "heal" and c["formula"]:
             data_dice.add(c["formula"])
 
+    # loot effects are data too — checked SCOPED, not corpus-wide, so a die
+    # that coincides with some other item's dice can't mask real drift:
+    #   README: the die must appear on a line naming the item
+    #   checklist: the die must appear in the item's own derived Ledger row
+    for l in loot:
+        name = l["item"]
+        lines = [ln for ln in readme.splitlines() if name in ln]
+        if not lines:
+            fails.append(f"DATA→DOC  loot {name}: item is not documented in README.md")
+        else:
+            scoped = "\n".join(lines)
+            for d in sorted(l["dice"]):
+                if not re.search(rf"(?<!\d){re.escape(d)}(?!\d)", scoped):
+                    fails.append(f"DATA→DOC  loot {name}: effect die {d} is not documented "
+                                 f"in README.md on any line naming the item")
+
     # ------------------------------------------------- CHECKLIST (journal)
     journal_path = os.path.join(REPO, JOURNAL)
     if not os.path.exists(journal_path):
@@ -202,7 +248,8 @@ def main():
             else:
                 covered += 1
 
-        # every number the checklist quotes must exist in the data
+        # every number the checklist quotes must exist in the data — activity
+        # data first, then loot effect dice (Ledger rows quote those)
         chk_dcs = {int(tok) for tok in re.findall(r"DC (\d+)", corpus)}
         for tok in sorted(chk_dcs, key=int):
             if tok not in data_dcs:
@@ -217,9 +264,22 @@ def main():
                 fails.append(f"CHK→DATA  checklist quotes attack bonus +{tok} — no attack "
                              f"in the loose JSONs has it (data bonuses: {sorted(data_bonuses)})")
         for tok in set(re.findall(r"(?<![\d.])(\d+d\d+(?:\+\d+)?)(?!\d)", corpus)):
-            if tok not in data_dice and tok not in TEXT_ONLY:
+            if tok not in data_dice and tok not in loot_dice and tok not in TEXT_ONLY:
                 fails.append(f"CHK→DATA  checklist quotes dice '{tok}' — not present in "
-                             f"any activity in the loose JSONs")
+                             f"any activity or loot effect in the source JSONs")
+        for l in loot:
+            m = re.search(rf"<td>[A-Z]</td><td>{re.escape(l['item'])}</td><td>(.*?)</td>",
+                          corpus, re.S)
+            if not m:
+                fails.append(f"DATA→CHK  loot {l['item']}: no derived Ledger row on the "
+                             f"playtest checklist — rerun tools/gen-playtest.py")
+                continue
+            row = m.group(1)
+            for d in sorted(l["dice"]):
+                if not re.search(rf"(?<!\d){re.escape(d)}(?!\d)", row):
+                    fails.append(f"DATA→CHK  loot {l['item']}: effect die {d} is not on "
+                                 f"the checklist's Ledger row — the row is derived; "
+                                 f"rerun tools/gen-playtest.py")
 
     # ---------------------------------------------------------- DOC → DATA
     for tok in sorted(set(re.findall(r"DC (\d+)", readme)), key=int):
@@ -258,9 +318,11 @@ def main():
     n_save = sum(1 for c in claims if c["kind"] == "save")
     n_heal = sum(1 for c in claims if c["kind"] == "heal")
     n_chk = covered if corpus else 0
+    n_loot = len(loot)
     print(f"OK  documented data matches the loose JSONs "
           f"({n_att} attacks, {n_save} saves, {n_heal} heals; "
           f"bonuses {sorted(data_bonuses)}, DCs {sorted(data_dcs)}; "
+          f"loot: {n_loot} items, dice {sorted(loot_dice)}; "
           f"checklist covers {n_chk}/{len(claims)} claims)")
     return 0
 

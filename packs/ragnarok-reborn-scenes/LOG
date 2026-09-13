@@ -1,3 +1,15 @@
-2026/09/12-19:51:44.809978 79dc51fbf6c0 Recovering log #4
-2026/09/12-19:51:44.813203 79dc51fbf6c0 Delete type=0 #4
-2026/09/12-19:51:44.813232 79dc51fbf6c0 Delete type=3 #2
+2026/09/13-09:06:03.508494 77e5627bd6c0 Recovering log #172
+2026/09/13-09:06:03.512300 77e5627bd6c0 Delete type=3 #171
+2026/09/13-09:06:03.512336 77e5627bd6c0 Delete type=0 #172
+2026/09/13-09:06:03.518554 77e5617bb6c0 Level-0 table #176: started
+2026/09/13-09:06:03.520335 77e5617bb6c0 Level-0 table #176: 15229 bytes OK
+2026/09/13-09:06:03.522597 77e5617bb6c0 Delete type=0 #174
+2026/09/13-09:06:03.522814 77e5617bb6c0 Manual compaction at level-0 from '!scenes!UmbSceneCav001' @ 72057594037927935 : 1 .. '!scenes.walls!VorSceneHell01.VorW018' @ 0 : 0; will stop at (end)
+2026/09/13-09:06:03.522839 77e5617bb6c0 Manual compaction at level-1 from '!scenes!UmbSceneCav001' @ 72057594037927935 : 1 .. '!scenes.walls!VorSceneHell01.VorW018' @ 0 : 0; will stop at '!scenes.walls!VorSceneHell01.VorW018' @ 5565 : 1
+2026/09/13-09:06:03.522842 77e5617bb6c0 Compacting 1@1 + 1@2 files
+2026/09/13-09:06:03.524315 77e5617bb6c0 Generated table #177@1: 245 keys, 15229 bytes
+2026/09/13-09:06:03.524324 77e5617bb6c0 Compacted 1@1 + 1@2 files => 15229 bytes
+2026/09/13-09:06:03.526566 77e5617bb6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/09/13-09:06:03.526624 77e5617bb6c0 Delete type=2 #176
+2026/09/13-09:06:03.526687 77e5617bb6c0 Delete type=2 #170
+2026/09/13-09:06:03.526751 77e5617bb6c0 Manual compaction at level-1 from '!scenes.walls!VorSceneHell01.VorW018' @ 5565 : 1 .. '!scenes.walls!VorSceneHell01.VorW018' @ 0 : 0; will stop at (end)

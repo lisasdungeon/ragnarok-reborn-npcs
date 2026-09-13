@@ -55,6 +55,18 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 
 ## Changelog
 
+### Unreleased
+- **The Ledger's loot rows are derived too**: `tools/gen-playtest.py` now parses
+  the Cloak/Amulet effect `changes` from the loot pack sources (attack kinds,
+  dice, damage type, light condition) instead of hardcoding them, and
+  actor-embedded copies with differing values are noted automatically (`1d6` on
+  the CR 18 copy, `1d4` on the CR 13 copy). The documented-data gate covers loot
+  in both directions: each effect die must appear on the README lines naming the
+  item *and* in the item's own Ledger row, so editing a loot effect without
+  regenerating the checklist fails the PR. One accuracy fix rode in: the
+  Amulet's rider applies to melee and ranged *spell* attacks (per the bonus
+  keys in the data), where the old hand-written row said "weapon attacks".
+
 ### 1.3.4
 - **The playtest checklist is now derived, not hand-listed**: `tools/gen-playtest.py`
   builds every row from the loose actor JSONs — bonus, dice, DC, rider statuses and
