@@ -24,9 +24,10 @@ don't patch the downstream copy.
                        │      one coordinate module)                  │
                        │                                              │
    Playtest checklist  │  tools/gen-playtest.py                       │
+                       │    (actor JSONs + loot pack sources)         │
                        │                                              │
    GM guides,          │  packs/_source/ragnarok-reborn-gm-guides/    │
-   handouts, loot      │  …-handouts/ …-loot/   (hand-edited JSONs)   │
+   handouts, loot      │  …-handouts/   (hand-edited JSONs)           │
                        └──────────────┬───────────────────────────────┘
                                       │
               tools/sync-npc-sources.py (the only bridge, both directions)
@@ -68,7 +69,7 @@ construction because both come from `geometry.py`.
 |---|---|---|---|
 | `Ewoklin.json`, `Ewokling.json`, `Umbrathor.json`, `Umbrathor lvl 8.json`, `Vorath lvl 10 New.json` | **YES** (actors) | humans | The authoring format. World-style summon UUIDs (`Actor.…`), no effect-ownership overrides. |
 | `tools/scene-tools/*.py` | **YES** (scenes) | humans | `geometry.py` is the single source of coordinates; `build_scenes.py` writes pack sources + `maps/*.webp` and self-checks pack freshness; `render_art.py` only feeds build_scenes. |
-| `tools/gen-playtest.py` | **YES** (checklist) | humans | Derives every checklist row from the loose actor JSONs (bonus/dice/DC/statuses from the data); its OVERRIDES layer carries flavor wording only. |
+| `tools/gen-playtest.py` | **YES** (checklist) | humans | Derives every checklist row from the loose actor JSONs (bonus/dice/DC/statuses from the data) and the Ledger's loot rows from the loot pack sources (effect changes → pass conditions, embedded-copy dice noted). Its OVERRIDES layer carries flavor wording only. |
 | `packs/_source/ragnarok-reborn-gm-guides/*.json`, `…-handouts/*.json`, `…-loot/*.json` (except the checklist) | **YES** | humans | Hand-edited journal/item sources. |
 | `packs/_source/ragnarok-reborn-npcs/*.json` | derived | `sync-npc-sources.py` | Loose JSONs + `_key` hierarchy + compendium summon UUIDs + GM-locked `ownership`. **Never edit directly.** |
 | `packs/_source/ragnarok-reborn-scenes/*.json` | derived | `build_scenes.py` | Art and walls from one geometry module. **Never edit directly.** |
@@ -107,14 +108,21 @@ construction because both come from `geometry.py`.
    the freshness hook has already told you whether `packs/ragnarok-reborn-scenes`
    needs a recompile-and-commit.
 
-**…a GM guide / handout / loot item:**
+**…a GM guide / handout:**
 Edit the JSON in `packs/_source/<pack>/` directly, then recompile. If it quotes
 actor numbers, `npm run check:docs` holds it honest too.
 
+**…a loot item (Cloak/Amulet):**
+Edit `packs/_source/ragnarok-reborn-loot/*.json` — the effect `changes` there
+are the single source of truth. The checklist's Ledger rows derive from them
+(rerun `gen-playtest.py`), and `npm run check:docs` asserts each effect die
+against the README line naming the item and the item's own Ledger row.
+
 **…the playtest checklist:** rows derive themselves — just rerun
-`python3 tools/gen-playtest.py` after any actor change and new activities appear
-automatically. Only edit the script for flavor wording (OVERRIDES/PROSE) or page
-structure; the documented-data gate still refuses values that don't exist in the actors.
+`python3 tools/gen-playtest.py` after any actor or loot-item change and new
+activities (and loot-effect values) appear automatically. Only edit the script
+for flavor wording (OVERRIDES/PROSE) or page structure; the documented-data
+gate still refuses values that don't exist in the sources.
 
 ## The gate — `npm run check` (CI runs the same script)
 

@@ -7,6 +7,11 @@ row automatically — no hand-editing. A small OVERRIDES layer only supplies
 flavor wording; values always come from the data, and the documented-data
 checker reads this journal too, so the checklist can't drift from the actors.
 
+The Ledger's loot rows (Cloak of Shadows, Amulet of the Night) are likewise
+derived from the loot pack sources — their effect changes are parsed into pass
+conditions, and copies embedded in the actor JSONs with different values are
+noted automatically. Edit a loot item's effect and the row follows.
+
 Actors with two variants (Umbrathor CR 18 / Level 8) are reconciled: rows come
 from the primary file, and whenever the secondary's same-named activity has
 different values, a "(Level 8: …)" parenthetical is appended automatically.
@@ -16,10 +21,19 @@ Activities only the secondary has would be added as extra rows.
 """
 import json
 import os
+import re
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(REPO, "packs", "_source", "ragnarok-reborn-gm-guides",
                    "playtest-checklist.json")
+LOOT_DIR = os.path.join("packs", "_source", "ragnarok-reborn-loot")
+
+# Effect-change keys this generator knows how to phrase into pass conditions.
+ATTACK_KEYS = {
+    "rsak": "ranged spell attacks", "msak": "melee spell attacks",
+    "rwak": "ranged weapon attacks", "mwak": "melee weapon attacks",
+}
+SKILL_LABELS = {"ste": "Stealth"}   # extend as loot effects gain skill keys
 
 GROUPS = [
     {"page_id": "PlayTestEwoks001", "page_name": "Ewoklin & Ewokling (3 min)",
@@ -124,8 +138,8 @@ OVERVIEW = (
     "required.</p>"
     "<p><strong>Setup (1 minute):</strong> import the five actors from the "
     "<em>New Ragnarok Reborn — NPCs</em> compendium into a blank scene, drag the "
-    "<em>Cloak of Shadows</em> and <em>Amulet of the Night</em> from the loot pack onto "
-    "any player token, and enable <em>GM eye</em> so you can see every chat card.</p>"
+    "loot items from the Treasures pack onto any player token, and enable "
+    "<em>GM eye</em> so you can see every chat card.</p>"
     "<p><strong>How to read the table:</strong> each row is one click on an actor sheet. "
     "The <em>Should show</em> column is what the chat card must display. Any mismatch — "
     "wrong bonus, wrong dice, missing effect, empty recharge — is a data bug: note it and "
@@ -137,15 +151,18 @@ OVERVIEW = (
     "here automatically after <code>python3 tools/gen-playtest.py</code>.</p>"
 )
 
-LEDGER_ROWS = [
-    ["A", "Recharge counters", "after Surge/Spark/Dark Burst, the item shows its recharge die (5–6 / 6 / 5–6) and comes back after a rest or manual recharge"],
-    ["B", "Duration chips", "failed riders (frightened, charmed, paralyzed, restrained, stunned, incapacitated) show status icons and expire after their 1-minute duration"],
-    ["C", "Concentration", "Cloudkill's Cast marks Vorath concentrating; a second concentration spell prompts to drop it"],
-    ["D", "Legendary actions", "Vorath's legendary action counter is visible and spends on the two legendary items"],
-    ["E", "Cloak of Shadows", "dragged item applies its effect to the wearer: advantage on Stealth checks"],
-    ["F", "Amulet of the Night", "weapon attacks gain a necrotic rider — <code>1d6</code> on the standalone item (<code>1d4</code> on the CR 13 embedded copy, matching its own text)"],
-    ["G", "Summons", "every spawned token (Ewoklings, Shadows, Zombie) has a working sheet with its own attacks — click one attack to confirm"],
-    ["H", "Death housekeeping", "0 HP shows defeated; Dark Pact healing at 0 HP revives him conscious"],
+# Ledger rows that are structural Foundry checks, not item data — before and
+# after the derived loot rows. Letters are assigned positionally, so the loot
+# section can grow without renumbering.
+LEDGER_BEFORE = [
+    ["Recharge counters", "after Surge/Spark/Dark Burst, the item shows its recharge die (5–6 / 6 / 5–6) and comes back after a rest or manual recharge"],
+    ["Duration chips", "failed riders (frightened, charmed, paralyzed, restrained, stunned, incapacitated) show status icons and expire after their 1-minute duration"],
+    ["Concentration", "Cloudkill's Cast marks Vorath concentrating; a second concentration spell prompts to drop it"],
+    ["Legendary actions", "Vorath's legendary action counter is visible and spends on the two legendary items"],
+]
+LEDGER_AFTER = [
+    ["Summons", "every spawned token (Ewoklings, Shadows, Zombie) has a working sheet with its own attacks — click one attack to confirm"],
+    ["Death housekeeping", "0 HP shows defeated; Dark Pact healing at 0 HP revives him conscious"],
 ]
 VERDICT_TMPL = (
     "<p><strong>Verdict:</strong> {n}/{n} activity rows and A–H all checked with zero "
@@ -172,6 +189,96 @@ def dmg_str(act):
         t = "/".join(p.get("types", []))
         out.append(f"<code>{dice(p)}</code>" + (f" {t}" if t else ""))
     return out
+
+
+def change_dice(val):
+    """'1d6[necrotic]' → ('1d6', 'necrotic'); non-dice values → ('', '')."""
+    m = re.match(r"(\d+d\d+)(?:\[([^\]]+)\])?", str(val or ""))
+    return (m.group(1), m.group(2) or "") if m else ("", "")
+
+
+def effect_phrases(effects):
+    """Loot effect changes → (pass-condition phrases, conditions). Values only."""
+    dmg, skills, conds = {}, [], []
+    for e in effects:
+        sysd = e.get("system", {})
+        conds += sysd.get("conditions", [])
+        for c in sysd.get("changes", []):
+            key = c.get("key", "")
+            d, typ = change_dice(c.get("value"))
+            if d:
+                segs = key.split(".")
+                # bonus keys look like system.bonuses.rsak.damage — kind is
+                # the segment before the trailing 'damage'/'attack' segment
+                token = segs[-2] if len(segs) > 1 and segs[-1] in ("damage", "attack") else segs[-1]
+                kind = ATTACK_KEYS.get(token, "attacks")
+                dmg.setdefault((d, typ), set()).add(kind)
+            else:
+                m = re.search(r"\.skill\.([a-z]{3})$", key)
+                if m and c.get("mode") == 0:
+                    skills.append(SKILL_LABELS.get(m.group(1), m.group(1).upper()))
+    phrases = []
+    for (d, typ), kinds in sorted(dmg.items()):
+        kt = " and ".join(sorted(kinds))
+        phrases.append(f"<strong>{kt}</strong> deal an extra <code>{d}</code>"
+                       + (f" <em>{typ}</em>" if typ else ""))
+    for s in sorted(set(skills)):
+        phrases.append(f"<strong>advantage on {s} checks</strong>")
+    return phrases, conds
+
+
+def primary_dice(item):
+    """The standalone item's effect-dice set (for spotting differing copies)."""
+    return {d for e in item.get("effects", [])
+            for c in e.get("system", {}).get("changes", [])
+            for d, _ in [change_dice(c.get("value"))] if d}
+
+
+def differing_copies(item):
+    """Actor-embedded copies of this loot item whose effect dice differ from
+    the standalone source → [(dice, label)] with the actor's variant/CR label.
+    Matched by name (identifier is system-level and may not survive embedding)."""
+    base = primary_dice(item)
+    out = []
+    for fname, doc in _actors.items():
+        for it in doc.get("items", []):
+            if it.get("name") != item.get("name"):
+                continue
+            ds = primary_dice(it)
+            if ds and ds != base:
+                cr = doc["system"]["details"]["cr"]
+                cr = cr if isinstance(cr, int) else cr.get("value")
+                if fname == "Umbrathor.json":
+                    label = f"{doc['name']} (CR {cr}) copy"
+                else:
+                    label = f"{VARIANT_LABEL.get(fname, fname)} (CR {cr}) copy"
+                out.append(("/".join(sorted(ds)), label))
+    return out
+
+
+def build_ledger_rows():
+    """Ledger rows: structural checks, then loot rows derived from the loot
+    pack sources, then the rest. Letters assigned by position."""
+    rows = [[c for c in r] for r in LEDGER_BEFORE]
+    loot_dir = os.path.join(REPO, LOOT_DIR)
+    names = []
+    for fn in sorted(os.listdir(loot_dir)):
+        if not fn.endswith(".json"):
+            continue
+        item = json.load(open(os.path.join(loot_dir, fn), encoding="utf-8"))
+        names.append(item["name"])
+        phrases, conds = effect_phrases(item.get("effects", []))
+        text = "dragged item applies its effect to the wearer: " + "; ".join(phrases)
+        if conds:
+            text += " (condition: " + "; ".join(conds) + " — toggle the effect on when it applies)"
+        copies = differing_copies(item)
+        if copies:
+            text += " — " + ", ".join(
+                f"<code>{d}</code> on the {label} copy, matching its own text"
+                for d, label in copies)
+        rows.append([item["name"], text])
+    rows += [list(r) for r in LEDGER_AFTER]
+    return [[chr(65 + i)] + r for i, r in enumerate(rows)], names
 
 
 def effects_index(d, item):
@@ -409,7 +516,8 @@ def main():
         pages.append(page(g["page_id"], g["page_name"], content,
                           100000 * (len(pages) + 2)))
 
-    ledger = table(LEDGER_ROWS, ["", "Check", "Pass condition"]) + VERDICT_TMPL.format(n=total_rows)
+    ledger_rows, loot_names = build_ledger_rows()
+    ledger = table(ledger_rows, ["", "Check", "Pass condition"]) + VERDICT_TMPL.format(n=total_rows)
     pages.append(page("PlayTestLedger01", "Ledger & Verdict", ledger, 500000))
 
     journal = {
@@ -434,7 +542,7 @@ def main():
         f.write("\n")
     print(f"wrote {os.path.relpath(OUT, REPO)}  "
           f"({len(journal['pages'])} pages, {total_rows} activity rows — derived from "
-          f"{len(_actors)} actor JSONs)")
+          f"{len(_actors)} actor JSONs and {len(loot_names)} loot items")
 
 
 if __name__ == "__main__":

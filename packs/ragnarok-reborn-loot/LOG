@@ -1,3 +1,15 @@
-2026/09/12-18:38:00.302306 7db972ffd6c0 Recovering log #4
-2026/09/12-18:38:00.305665 7db972ffd6c0 Delete type=0 #4
-2026/09/12-18:38:00.305685 7db972ffd6c0 Delete type=3 #2
+2026/09/13-09:06:03.493369 77e562fbe6c0 Recovering log #172
+2026/09/13-09:06:03.497337 77e562fbe6c0 Delete type=3 #171
+2026/09/13-09:06:03.497373 77e562fbe6c0 Delete type=0 #172
+2026/09/13-09:06:03.498966 77e5617bb6c0 Level-0 table #176: started
+2026/09/13-09:06:03.500439 77e5617bb6c0 Level-0 table #176: 2338 bytes OK
+2026/09/13-09:06:03.502710 77e5617bb6c0 Delete type=0 #174
+2026/09/13-09:06:03.502773 77e5617bb6c0 Manual compaction at level-0 from '!items!LootAmuletNite01' @ 72057594037927935 : 1 .. '!items.effects!LootCloakShad001.LootCloakEff0001' @ 0 : 0; will stop at (end)
+2026/09/13-09:06:03.502797 77e5617bb6c0 Manual compaction at level-1 from '!items!LootAmuletNite01' @ 72057594037927935 : 1 .. '!items.effects!LootCloakShad001.LootCloakEff0001' @ 0 : 0; will stop at '!items.effects!LootCloakShad001.LootCloakEff0001' @ 92 : 1
+2026/09/13-09:06:03.502800 77e5617bb6c0 Compacting 1@1 + 1@2 files
+2026/09/13-09:06:03.504102 77e5617bb6c0 Generated table #177@1: 4 keys, 2338 bytes
+2026/09/13-09:06:03.504112 77e5617bb6c0 Compacted 1@1 + 1@2 files => 2338 bytes
+2026/09/13-09:06:03.506514 77e5617bb6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/09/13-09:06:03.506596 77e5617bb6c0 Delete type=2 #176
+2026/09/13-09:06:03.506726 77e5617bb6c0 Delete type=2 #170
+2026/09/13-09:06:03.506815 77e5617bb6c0 Manual compaction at level-1 from '!items.effects!LootCloakShad001.LootCloakEff0001' @ 92 : 1 .. '!items.effects!LootCloakShad001.LootCloakEff0001' @ 0 : 0; will stop at (end)
