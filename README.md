@@ -1,7 +1,8 @@
 # The New Ragnarok Reborn — NPCs (Foundry VTT Module)
 
-An installable Foundry VTT module containing five ready-to-play **dnd5e 6.0.x** NPC actors
-in a compendium pack, built for Foundry **v14** (minimum 14.367).
+An installable Foundry VTT module containing five ready-to-play **dnd5e 6.0.x** NPC actors,
+two **pre-built battlemap Scenes** (walls, lights, tokens — zero manual setup), GM guides,
+party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 
 | Actor | CR | Contents |
 |---|---|---|
@@ -35,8 +36,30 @@ in a compendium pack, built for Foundry **v14** (minimum 14.367).
   ranged spell attacks). Effects enable automatically while equipped & attuned; new-ID
   versions so importing them doesn't collide with the copies embedded on the Umbrathor
   actors.
+- **The New Ragnarok Reborn — Battlemaps** (Scene pack) — import-and-play maps for both
+  boss arenas with every wall, door, light and token pre-placed:
+  *Umbrathor's Shadow Cavern* (soul lights, braziers, stalagmite blockers, dais with
+  stair entrance, locked entry door, darkness 0.98) and *Vorath's Hellheim Throne Room*
+  (braziers, throne glow, hellfire fissure lights, hidden Ember Storm prop, colonnade
+  cover, movement-blocked chasm with two bridges). Boss tokens link to the NPC-pack
+  actors by ID and carry their signature lighting; map art ships in `maps/` as
+  optimized WebP (70×40 grid).
 
 ## Changelog
+
+### 1.3.0
+- **Pre-built battlemap Scenes**: the Shadow Cavern and Hellheim Throne Room now exist
+  as importable Scene documents in a new *Battlemaps* pack — 134 + 79 walls including
+  sight-passing dais/chasm/colonnade movement blockers, a locked entry door and two
+  bridge gaps, animated soul lights / braziers / fissure flames, and boss tokens with
+  signature lighting. Map art generated from the same geometry as the walls, shipped as
+  optimized WebP in `maps/`.
+- **Pull-request gate**: a second workflow (`Verify PR`) compiles every pack, round-trip
+  verifies all documents, checks that scene map art exists, and fails any PR whose
+  committed compiled packs don't match what the sources build to — broken or stale pack
+  sources can no longer reach `master`.
+- Dev tooling: `tools/scene-tools/` (map renderer + scene builder), `check-scene-maps.mjs`,
+  `check-fresh.mjs` freshness gate, `npm run check:maps` / `npm run check:fresh`.
 
 ### 1.2.1
 - **Automated releases**: a GitHub Actions workflow now recompiles all four packs from
@@ -163,11 +186,15 @@ cd ragnarok-reborn-npcs
 npm install            # not possible on exFAT drives — use a native-FS folder or /tmp
 npm run build          # compiles all packs/_source/<pack-name> → packs/<pack-name>
 npm run verify         # round-trips each compiled pack back to JSON and checks every document
+npm run check:maps     # scenes must reference map art that exists in the repo
+npm run check:fresh    # committed packs must match what the sources build to (run `npm run check:fresh:snapshot` first)
 ```
 
 The build uses the official `@foundryvtt/foundryvtt-cli` (`compilePack`, LevelDB format),
-the same tool the dnd5e system itself uses. `build-pack.mjs` compiles all four packs from
-`packs/_source/<pack-name>/`. Source documents carry explicit `_key` fields
+the same tool the dnd5e system itself uses. `build-pack.mjs` compiles all five packs from
+`packs/_source/<pack-name>/`. The battlemap art is generated from
+`tools/scene-tools/` (`python3 render_art.py && python3 build_scenes.py`), which also
+emits the scene JSONs — walls and art share one geometry module so they always align. Source documents carry explicit `_key` fields
 (`!actors!ID`, `!actors.items!actorId.itemId`, `!actors.items.effects!actorId.itemId.effectId`)
 as required by the compiler; the root-level loose JSONs are intentionally kept key-free so
 they remain simple drag-and-drop imports.
@@ -188,3 +215,11 @@ branch on demand (as a draft release).
 
 If your drive is exFAT, don't install dependencies locally — just push the bump and let CI
 drive (or work in a `/tmp` checkout like the manual instructions above).
+
+## Pull-request gate
+
+Every PR targeting `master` runs the same pipeline a release would (`.github/workflows/verify.yml`):
+compile all packs, round-trip verify every document, check scene map references, and
+confirm the **committed** compiled packs match a fresh rebuild of the sources. A PR that
+edits `packs/_source/` without recommitting regenerated `packs/` output fails with the
+exact pack and document that went stale — merge is blocked until it's rebuilt.

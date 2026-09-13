@@ -5,6 +5,7 @@
 //   packs/_source/ragnarok-reborn-gm-guides → packs/ragnarok-reborn-gm-guides  (JournalEntry)
 //   packs/_source/ragnarok-reborn-handouts  → packs/ragnarok-reborn-handouts   (JournalEntry)
 //   packs/_source/ragnarok-reborn-loot      → packs/ragnarok-reborn-loot       (Item)
+//   packs/_source/ragnarok-reborn-scenes    → packs/ragnarok-reborn-scenes     (Scene)
 import { compilePack } from "@foundryvtt/foundryvtt-cli";
 
 const packs = [
@@ -12,6 +13,7 @@ const packs = [
   "ragnarok-reborn-gm-guides",
   "ragnarok-reborn-handouts",
   "ragnarok-reborn-loot",
+  "ragnarok-reborn-scenes",
 ];
 
 for (const name of packs) {

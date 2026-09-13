@@ -15,6 +15,7 @@ const packs = process.argv.slice(2).length
       "ragnarok-reborn-gm-guides",
       "ragnarok-reborn-handouts",
       "ragnarok-reborn-loot",
+      "ragnarok-reborn-scenes",
     ];
 
 let failures = 0;

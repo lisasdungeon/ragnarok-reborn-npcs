@@ -1,0 +1,5 @@
+2026/09/12-19:51:44.697927 7e99009fd6c0 Delete type=3 #1
+2026/09/12-19:51:44.703448 7e98cb7fe6c0 Level-0 table #5: started
+2026/09/12-19:51:44.704490 7e98cb7fe6c0 Level-0 table #5: 15225 bytes OK
+2026/09/12-19:51:44.706344 7e98cb7fe6c0 Delete type=0 #3
+2026/09/12-19:51:44.706403 7e98cb7fe6c0 Manual compaction at level-0 from '!scenes!UmbSceneCav001' @ 72057594037927935 : 1 .. '!scenes.walls!VorSceneHell01.VorW018' @ 0 : 0; will stop at (end)

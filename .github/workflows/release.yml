@@ -135,7 +135,7 @@ jobs:
 
       - name: Build release zip
         run: |
-          zip -qr "ragnarok-reborn-npcs.zip" module.json README.md packs -x "packs/_source/*"
+          zip -qr "ragnarok-reborn-npcs.zip" module.json README.md packs maps -x "packs/_source/*"
           unzip -l "ragnarok-reborn-npcs.zip"
 
       - name: Extract release notes from README changelog
