@@ -6,15 +6,18 @@
 #
 #   1. sync-npc-sources.py --check — all seven drag-and-drop JSONs match the
 #      pack sources (actors: loose→pack, scenes: pack→loose)
-#   2. check-actor-fixes.py --check — the published verification snapshot
+#   2. check-documented-data.py — README-documented DCs / attack bonuses /
+#      heal formulas match the loose JSONs (both directions), and no
+#      regression signatures (non-flat attacks, computed save DCs)
+#   3. check-actor-fixes.py --check — the published verification snapshot
 #      matches what the loose JSONs build to
-#   3. check-fresh.mjs snapshot — packs snapshotted from GIT HEAD (what a
+#   4. check-fresh.mjs snapshot — packs snapshotted from GIT HEAD (what a
 #      clean checkout would contain)
-#   4. npm run build — every pack compiles from packs/_source
-#   5. verify-packs.mjs — every source document survives the LevelDB
+#   5. npm run build — every pack compiles from packs/_source
+#   6. verify-packs.mjs — every source document survives the LevelDB
 #      round-trip (matched by _id)
-#   6. check-scene-maps.mjs — every scene's background.src exists
-#   7. check-fresh.mjs — the COMMITTED compiled packs match what the committed
+#   7. check-scene-maps.mjs — every scene's background.src exists
+#   8. check-fresh.mjs — the COMMITTED compiled packs match what the committed
 #      sources build to. Catches "edited a source JSON but forgot to recommit
 #      packs/".
 #
