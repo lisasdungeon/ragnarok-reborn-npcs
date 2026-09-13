@@ -48,6 +48,11 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 ## Changelog
 
 ### 1.3.2
+- `tools/sync-npc-sources.py` now syncs **all seven** drag-and-drop JSONs from one
+  place: the five NPC actors still flow loose → pack (authoring format), and the two
+  loose Scene JSONs are now **generated** from the scene pack sources by stripping the
+  compiler `_key` hierarchy — scenes are authored in `tools/scene-tools/` and only
+  there. The sync check covers all seven files on every PR.
 - **Fixed the remaining attack/DC encoding bugs found by the data audit** (all on Vorath):
   - *Hellfire Bolt* (lair action) used a non-flat `+12` bonus, which the system **stacks on
     top of** the computed roll modifier — roughly +21 to hit instead of the printed +12.
@@ -62,13 +67,6 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
   too (30 activity groups). If you imported Vorath before this release, re-import from
   the compendium (or drag `Vorath lvl 10 New.json` from the zip root) and confirm with
   `python3 tools/check-actor-fixes.py --verify <export>`.
-
-### Unreleased
-- `tools/sync-npc-sources.py` now syncs **all seven** drag-and-drop JSONs from one
-  place: the five NPC actors still flow loose → pack (authoring format), and the two
-  loose Scene JSONs are now **generated** from the scene pack sources by stripping the
-  compiler `_key` hierarchy — scenes are authored in `tools/scene-tools/` and only
-  there. The sync check covers all seven files on every PR.
 
 ### 1.3.1
 - **Verify your imported bosses carry these fixes**: release page ships

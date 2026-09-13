@@ -1,11 +1,11 @@
 {
   "id": "ragnarok-reborn-npcs",
-  "title": "The New Ragnarok Reborn \u2014 NPCs",
+  "title": "The New Ragnarok Reborn — NPCs",
   "url": "https://github.com/lisasdungeon/ragnarok-reborn-npcs",
   "manifest": "https://github.com/lisasdungeon/ragnarok-reborn-npcs/releases/latest/download/module.json",
   "download": "https://github.com/lisasdungeon/ragnarok-reborn-npcs/releases/latest/download/ragnarok-reborn-npcs.zip",
-  "description": "Five ready-to-play dnd5e 6.0 NPC actors for The New Ragnarok Reborn: Ewoklin (CR 8), the Ewokling (CR 2), Umbrathor at CR 18 and CR 13, and Vorath (CR 15) \u2014 with embedded weapons, spells, activities, effects, loot, and working summons.",
-  "version": "1.3.1",
+  "description": "Five ready-to-play dnd5e 6.0 NPC actors for The New Ragnarok Reborn: Ewoklin (CR 8), the Ewokling (CR 2), Umbrathor at CR 18 and CR 13, and Vorath (CR 15) — with embedded weapons, spells, activities, effects, loot, and working summons.",
+  "version": "1.3.2",
   "authors": [
     {
       "name": "The New Ragnarok Reborn",
@@ -28,7 +28,7 @@
   "packs": [
     {
       "name": "ragnarok-reborn-npcs",
-      "label": "The New Ragnarok Reborn \u2014 NPCs",
+      "label": "The New Ragnarok Reborn — NPCs",
       "path": "packs/ragnarok-reborn-npcs",
       "type": "Actor",
       "system": "dnd5e",
@@ -39,7 +39,7 @@
     },
     {
       "name": "ragnarok-reborn-gm-guides",
-      "label": "The New Ragnarok Reborn \u2014 GM Guides",
+      "label": "The New Ragnarok Reborn — GM Guides",
       "path": "packs/ragnarok-reborn-gm-guides",
       "type": "JournalEntry",
       "system": "dnd5e",
@@ -50,7 +50,7 @@
     },
     {
       "name": "ragnarok-reborn-handouts",
-      "label": "The New Ragnarok Reborn \u2014 Party Handouts",
+      "label": "The New Ragnarok Reborn — Party Handouts",
       "path": "packs/ragnarok-reborn-handouts",
       "type": "JournalEntry",
       "system": "dnd5e",
@@ -61,7 +61,7 @@
     },
     {
       "name": "ragnarok-reborn-loot",
-      "label": "The New Ragnarok Reborn \u2014 Treasures",
+      "label": "The New Ragnarok Reborn — Treasures",
       "path": "packs/ragnarok-reborn-loot",
       "type": "Item",
       "system": "dnd5e",
@@ -72,7 +72,7 @@
     },
     {
       "name": "ragnarok-reborn-scenes",
-      "label": "The New Ragnarok Reborn \u2014 Battlemaps",
+      "label": "The New Ragnarok Reborn — Battlemaps",
       "path": "packs/ragnarok-reborn-scenes",
       "type": "Scene",
       "ownership": {
