@@ -47,6 +47,22 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 
 ## Changelog
 
+### 1.3.2
+- **Fixed the remaining attack/DC encoding bugs found by the data audit** (all on Vorath):
+  - *Hellfire Bolt* (lair action) used a non-flat `+12` bonus, which the system **stacks on
+    top of** the computed roll modifier — roughly +21 to hit instead of the printed +12.
+    Now flat +12, like every other attack in the module.
+  - *Eldritch Blast* computed its attack roll from DEX (+9); the statblock says +12 with
+    spell attacks. Now flat +12 (damage stays the RAW-correct 1d10, 2 beams at caster
+    level 10).
+  - *Cloudkill*'s ongoing save and *Dominate Person*'s save used the system's computed
+    spell DC (19 on this actor) instead of the printed DC 20. Now flat DC 20, matching
+    every other DC in the module and the README's flat-DC convention.
+- **Verification data extended**: `docs/actor-verification.json` now covers these saves
+  too (30 activity groups). If you imported Vorath before this release, re-import from
+  the compendium (or drag `Vorath lvl 10 New.json` from the zip root) and confirm with
+  `python3 tools/check-actor-fixes.py --verify <export>`.
+
 ### Unreleased
 - `tools/sync-npc-sources.py` now syncs **all seven** drag-and-drop JSONs from one
   place: the five NPC actors still flow loose → pack (authoring format), and the two

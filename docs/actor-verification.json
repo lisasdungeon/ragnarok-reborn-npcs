@@ -420,8 +420,8 @@
             {
               "kind": "attack",
               "name": "Cast",
-              "bonus": "",
-              "flat": false,
+              "bonus": "+12",
+              "flat": true,
               "damage": [
                 "1d10"
               ]
@@ -451,6 +451,32 @@
             }
           ]
         },
+        "VorCloudkill0001": {
+          "itemName": "Cloudkill",
+          "checks": [
+            {
+              "kind": "save",
+              "name": "Enter / Start of Turn Save",
+              "ability": [
+                "con"
+              ],
+              "dc": "20"
+            }
+          ]
+        },
+        "VorDominateP001": {
+          "itemName": "Dominate Person",
+          "checks": [
+            {
+              "kind": "save",
+              "name": "Cast",
+              "ability": [
+                "wis"
+              ],
+              "dc": "20"
+            }
+          ]
+        },
         "VorLairActns0001": {
           "itemName": "Lair Actions (Hellheim Throne Room)",
           "checks": [
@@ -458,7 +484,7 @@
               "kind": "attack",
               "name": "Hellfire Bolt",
               "bonus": "+12",
-              "flat": false,
+              "flat": true,
               "damage": [
                 "3d10"
               ]

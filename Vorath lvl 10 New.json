@@ -2254,11 +2254,11 @@
             },
             "attack": {
               "ability": "",
-              "bonus": "",
+              "bonus": "+12",
               "critical": {
                 "threshold": null
               },
-              "flat": false,
+              "flat": true,
               "type": {
                 "value": "ranged",
                 "classification": "spell"
@@ -3241,8 +3241,8 @@
                 "con"
               ],
               "dc": {
-                "calculation": "spellcasting",
-                "formula": ""
+                "calculation": "",
+                "formula": "20"
               },
               "bonus": ""
             },
@@ -3460,8 +3460,8 @@
                 "wis"
               ],
               "dc": {
-                "calculation": "spellcasting",
-                "formula": ""
+                "calculation": "",
+                "formula": "20"
               },
               "bonus": ""
             },
@@ -3627,7 +3627,7 @@
               "critical": {
                 "threshold": null
               },
-              "flat": false,
+              "flat": true,
               "type": {
                 "value": "ranged",
                 "classification": ""
