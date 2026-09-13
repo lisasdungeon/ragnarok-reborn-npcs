@@ -7,7 +7,7 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 | Actor | CR | Contents |
 |---|---|---|
 | Ewoklin, Prankster of the Grove | 8 | Claws, Primitive Weapon (melee + thrown), Mischievous Surge (DC 15 WIS, status effects), Evasive Scamper reaction, **Multiplicity — summons real Ewoklings** |
-| Ewokling | 2 | Pack Tactics, Claws, Primitive Spear (melee + thrown), Mischievous Spark (Recharge 6), Evasive Tumble |
+| Ewokling | 2 | Pack Tactics, Claws, Primitive Spear (melee + thrown), Mischievous Spark (Recharge 6, DC 13 WIS), Evasive Tumble |
 | Umbrathor, the Shadow Tyrant | 18 | Dark Bolt, Terrifying Presence, Shadow Step, Dark Pact, 3 legendary actions, Cloak of Shadows + Amulet of the Night loot with working equip effects, **Shadow Cavern lair actions (initiative 20) + regional effects** |
 | Umbrathor, the Shadow Tyrant (Level 8) | 13 | Scaled-down variant of the above with its own DC 18 lair-action set |
 | Vorath, Demon Lord of Helheim | 15 | Legendary Resistance, Aura of Despair, Dreadful Gaze, Misty Escape, Shadow Fork, Necrotic Grasp, Dark Burst (Recharge 5–6), real spell list (Eldritch Blast, Animate Dead, Cloudkill, Dominate Person), 2 legendary actions, **Hellheim Throne Room lair actions (initiative 20) + regional effects** |
@@ -258,7 +258,12 @@ npm run sync:npcs:check  # fail if any of the seven have drifted
 the *Verify PR* workflow executes on GitHub, so local and CI results can't diverge.
 It refuses to run on a tree with uncommitted `packs/` changes (CI checks committed
 state; `--allow-dirty` overrides) and takes the freshness snapshot from **git HEAD**,
-so a stale local rebuild can't produce a false pass. On exFAT drives (no
+so a stale local rebuild can't produce a false pass. Among its steps,
+`check-documented-data.py` (also `npm run check:docs`) asserts that every DC, attack
+bonus, and heal formula printed in this README exists in the actor data — and that
+every number in the data is documented — so the docs and the shipped statblocks can
+never silently diverge again; it also fails the pre-1.3.1/1.3.2 regression signatures
+(non-flat attacks, computed save DCs) on sight. On exFAT drives (no
 `node_modules` in the repo), point it at a native-FS build dir that has had `npm ci`:
 
 ```

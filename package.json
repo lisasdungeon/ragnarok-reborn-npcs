@@ -15,7 +15,8 @@
     "sync:npcs:check": "python3 tools/sync-npc-sources.py --check",
     "verify:snapshot": "python3 tools/check-actor-fixes.py --snapshot",
     "verify:snapshot:check": "python3 tools/check-actor-fixes.py --check",
-    "check": "python3 tools/check_all.py"
+    "check": "python3 tools/check_all.py",
+    "check:docs": "python3 tools/check-documented-data.py"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "^3.0.4"
