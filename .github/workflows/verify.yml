@@ -1,18 +1,22 @@
 # Pull-request gate: broken pack sources can't reach master.
 #
-# Runs the full pipeline a release would run, plus a freshness check:
-#   1. python3 tools/sync-npc-sources.py --check — all seven drag-and-drop JSONs
-#      must match the pack sources (actors: loose→pack, scenes: pack→loose)
-#   1b. python3 tools/check-actor-fixes.py --check — the published verification
-#       snapshot must match what the loose JSONs build to
-#   2. npm ci + npm run build — every pack must compile from packs/_source
-#   3. node verify-packs.mjs  — every source document must survive the
-#                               LevelDB round-trip (matched by _id)
-#   4. node check-scene-maps.mjs — every scene's background.src must exist
-#   5. node check-fresh.mjs   — the COMMITTED compiled packs must match what
-#                               the committed sources build to. Catches "edited
-#                               a source JSON but forgot to recommit packs/".
-#   6. (step 1b above runs early: verification-snapshot parity)
+# Runs the full pipeline a release would run, plus freshness checks — via ONE
+# script (tools/check_all.py, exposed as `npm run check`) so CI and a local
+# `npm run check` execute exactly the same steps in the same order:
+#
+#   1. sync-npc-sources.py --check — all seven drag-and-drop JSONs match the
+#      pack sources (actors: loose→pack, scenes: pack→loose)
+#   2. check-actor-fixes.py --check — the published verification snapshot
+#      matches what the loose JSONs build to
+#   3. check-fresh.mjs snapshot — packs snapshotted from GIT HEAD (what a
+#      clean checkout would contain)
+#   4. npm run build — every pack compiles from packs/_source
+#   5. verify-packs.mjs — every source document survives the LevelDB
+#      round-trip (matched by _id)
+#   6. check-scene-maps.mjs — every scene's background.src exists
+#   7. check-fresh.mjs — the COMMITTED compiled packs match what the committed
+#      sources build to. Catches "edited a source JSON but forgot to recommit
+#      packs/".
 #
 # No release happens here and nothing is pushed — this job only blocks merge.
 name: Verify PR
@@ -43,23 +47,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Check drag-and-drop JSONs match pack sources (both directions)
-        run: python3 tools/sync-npc-sources.py --check
-
-      - name: Check verification snapshot matches loose JSONs
-        run: python3 tools/check-actor-fixes.py --check
-
-      - name: Snapshot committed packs
-        run: node check-fresh.mjs snapshot
-
-      - name: Compile all packs from source
-        run: npm run build
-
-      - name: Verify round-trip integrity
-        run: node verify-packs.mjs
-
-      - name: Check scene map references
-        run: node check-scene-maps.mjs
-
-      - name: Freshness — committed packs match sources
-        run: node check-fresh.mjs
+      - name: Check pipeline (tools/check_all.py)
+        run: npm run check
