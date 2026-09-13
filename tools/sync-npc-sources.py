@@ -1,25 +1,35 @@
 #!/usr/bin/env python3
-"""Sync the five root-level drag-and-drop NPC JSONs into the NPC pack sources.
+"""Sync the seven root-level drag-and-drop JSONs with the pack sources.
 
-The loose JSONs (repo root) are the authoring format: no _key fields, world-style
-summon UUIDs, no effect ownership overrides. The pack sources
-(packs/_source/ragnarok-reborn-npcs/) must carry pack-specific adjustments:
+Two authoring directions, one tool:
 
-  1. _key hierarchy required by @foundryvtt/foundryvtt-cli:
-       actor  → !actors!<actorId>
-       item   → !actors.items!<actorId>.<itemId>
-       effect → !actors.items.effects!<actorId>.<itemId>.<effectId>
-  2. Summon activity profiles that reference one of THIS module's actors are
-     rewritten from world UUIDs (Actor.<id>) to compendium UUIDs
-     (Compendium.ragnarok-reborn-npcs.ragnarok-reborn-npcs.Actor.<id>), because
-     a bare world UUID cannot resolve from inside a compendium document.
-     References to anything else (e.g. the official dnd5e zombie/shadow) pass
-     through untouched.
-  3. Effects get ownership {"default": 0} (GM-locked) when missing, matching
-     every release since 1.0.0.
+  • NPC ACTORS (5) — loose → pack. The loose JSONs at the repo root
+    (Ewoklin.json, Ewokling.json, Umbrathor.json, "Umbrathor lvl 8.json",
+    "Vorath lvl 10 New.json") are the authoring format: no _key fields, world-style
+    summon UUIDs, no effect ownership overrides. The pack sources
+    (packs/_source/ragnarok-reborn-npcs/) must carry pack-specific adjustments:
 
-    python3 tools/sync-npc-sources.py            # rewrite pack sources from loose files
-    python3 tools/sync-npc-sources.py --check    # exit 1 if pack sources are out of sync (CI)
+      1. _key hierarchy required by @foundryvtt/foundryvtt-cli:
+           actor  → !actors!<actorId>
+           item   → !actors.items!<actorId>.<itemId>
+           effect → !actors.items.effects!<actorId>.<itemId>.<effectId>
+      2. Summon activity profiles that reference one of THIS module's actors are
+         rewritten from world UUIDs (Actor.<id>) to compendium UUIDs
+         (Compendium.ragnarok-reborn-npcs.ragnarok-reborn-npcs.Actor.<id>), because
+         a bare world UUID cannot resolve from inside a compendium document.
+         References to anything else (e.g. the official dnd5e zombie/shadow) pass
+         through untouched.
+      3. Effects get ownership {"default": 0} (GM-locked) when missing, matching
+         every release since 1.0.0.
+
+  • SCENES (2) — pack → loose. The scene pack sources
+    (packs/_source/ragnarok-reborn-scenes/) are authored by tools/scene-tools/
+    (build_scenes.py), so they are authoritative. The loose drag-and-drop files
+    at the repo root are generated from them by recursively stripping the
+    compiler `_key` fields — nothing else differs (verified field-by-field).
+
+    python3 tools/sync-npc-sources.py            # sync all seven files
+    python3 tools/sync-npc-sources.py --check    # exit 1 if any are out of sync (CI)
 """
 import json
 import os
@@ -27,7 +37,8 @@ import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOOSE_DIR = REPO
-PACK_SRC = os.path.join(REPO, "packs", "_source", "ragnarok-reborn-npcs")
+PACK_SRC_NPCS = os.path.join(REPO, "packs", "_source", "ragnarok-reborn-npcs")
+PACK_SRC_SCENES = os.path.join(REPO, "packs", "_source", "ragnarok-reborn-scenes")
 
 MODULE_ID = "ragnarok-reborn-npcs"
 ACTOR_IDS = {
@@ -36,6 +47,11 @@ ACTOR_IDS = {
     "Umbrathor.json": "UmbrathorCR1800001",
     "Umbrathor lvl 8.json": "UmbrathorCR1300001",
     "Vorath lvl 10 New.json": "VorathDemonLd0001",
+}
+# loose filename → (pack-source filename, scene document id)
+SCENE_IDS = {
+    "Umbrathor's Shadow Cavern (Scene).json": ("umbrathors-shadow-cavern.json", "UmbSceneCav001"),
+    "Vorath's Hellheim Throne Room (Scene).json": ("voraths-hellheim-throne-room.json", "VorSceneHell01"),
 }
 
 
@@ -69,7 +85,7 @@ def ensure_effect_ownership(o):
             ensure_effect_ownership(v)
 
 
-def transform(loose_name, doc):
+def transform_actor(loose_name, doc):
     """Loose actor JSON → pack-source actor JSON (returns a new dict)."""
     actor_id = ACTOR_IDS[loose_name]
     out = json.loads(json.dumps(doc))  # deep copy
@@ -98,13 +114,25 @@ def transform(loose_name, doc):
     return out
 
 
+def transform_scene(pack_doc):
+    """Pack-source scene JSON → loose drag-and-drop scene JSON (returns a new dict).
+
+    The two differ only by the compiler `_key` hierarchy; strip it recursively.
+    """
+    return strip_keys(json.loads(json.dumps(pack_doc)))
+
+
 def main():
     check_only = "--check" in sys.argv
-    missing = []   # loose/pack file problems — fatal in every mode
+    missing = []   # authoritative-file problems — fatal in every mode
     drift = []     # content drift — fatal only in --check mode
+    synced = 0
+    in_sync = 0
+
+    # ---- NPCs: loose (authoring) → pack source -----------------------------
     for loose_name, actor_id in ACTOR_IDS.items():
         loose_path = os.path.join(LOOSE_DIR, loose_name)
-        pack_path = os.path.join(PACK_SRC, loose_name)
+        pack_path = os.path.join(PACK_SRC_NPCS, loose_name)
         if not os.path.exists(loose_path):
             missing.append(f"{loose_name}: loose file missing at repo root")
             continue
@@ -113,9 +141,9 @@ def main():
             continue
         loose = json.load(open(loose_path, encoding="utf-8"))
         pack = json.load(open(pack_path, encoding="utf-8"))
-        expected = transform(loose_name, loose)
-        in_sync = canon(strip_keys(expected)) == canon(strip_keys(pack))
-        if in_sync:
+        expected = transform_actor(loose_name, loose)
+        if canon(strip_keys(expected)) == canon(strip_keys(pack)):
+            in_sync += 1
             print(f"in sync    {loose_name}")
         elif check_only:
             drift.append(f"{loose_name}: pack source out of sync with loose file")
@@ -123,7 +151,34 @@ def main():
             with open(pack_path, "w", encoding="utf-8") as f:
                 json.dump(expected, f, indent=2, ensure_ascii=False)
                 f.write("\n")
+            synced += 1
             print(f"synced     {loose_name} → {os.path.relpath(pack_path, REPO)}")
+
+    # ---- Scenes: pack source (authoritative, from tools/scene-tools) → loose
+    for loose_name, (pack_name, _scene_id) in SCENE_IDS.items():
+        loose_path = os.path.join(LOOSE_DIR, loose_name)
+        pack_path = os.path.join(PACK_SRC_SCENES, pack_name)
+        if not os.path.exists(pack_path):
+            missing.append(f"{pack_name}: scene pack source missing ({os.path.relpath(pack_path, REPO)})")
+            continue
+        pack = json.load(open(pack_path, encoding="utf-8"))
+        expected = transform_scene(pack)
+        exists = os.path.exists(loose_path)
+        if exists:
+            loose = json.load(open(loose_path, encoding="utf-8"))
+            if canon(strip_keys(expected)) == canon(strip_keys(loose)):
+                in_sync += 1
+                print(f"in sync    {loose_name}")
+                continue
+        if check_only:
+            drift.append(f"{loose_name}: loose scene file "
+                         f"{'missing' if not exists else 'out of sync with pack source'}")
+        else:
+            with open(loose_path, "w", encoding="utf-8") as f:
+                json.dump(expected, f, indent=2, ensure_ascii=False)
+                f.write("\n")
+            synced += 1
+            print(f"synced     {os.path.relpath(pack_path, REPO)} → {loose_name}")
 
     if missing:
         for p in missing:
@@ -135,7 +190,9 @@ def main():
         print("\nRun `python3 tools/sync-npc-sources.py` and recommit.", file=sys.stderr)
         sys.exit(1)
     if check_only:
-        print("All 5 NPC pack sources in sync with loose JSONs")
+        print(f"All 5 NPC pack sources and 2 loose scene JSONs in sync ({in_sync} pairs)")
+    elif synced == 0:
+        print("Nothing to do — all seven files already in sync")
 
 
 if __name__ == "__main__":
