@@ -1,0 +1,142 @@
+{
+  "name": "Treasures of the Shadow Tyrant — Party Handout",
+  "pages": [
+    {
+      "name": "Whispers from the Deep Roads",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><em>Read these aloud — or have a drunk miner, a dead smuggler's journal, or a frightened hermit deliver them — before the party ever sees the cavern.</em></p><p><strong>The miner's tale:</strong> “The Shadow Tyrant doesn't wear armor. Doesn't need it. They say his cloak is woven from the last hour of nightfall, the part the sun never gets back. Old Hodric saw him vanish into plain rock wearing it. Hodric don't sleep much now.”</p><p><strong>The smuggler's ledger:</strong> “Bought a black crystal off a drow patrols-runner, three times the weight of glass. Held it and my teeth ached and every candle in the room leaned away. Sold it before the moon came up. Some things drink more than light.”</p><p><strong>The hermit's warning:</strong> “The Tyrant's treasures remember him. Wear the cloak too long and you'll forget what firelight felt like. Wear the amulet and the shadows will know your name. Worth it? Ask the dark, little coins. Ask the dark.”</p>",
+        "markdown": ""
+      },
+      "_id": "UmbLootRumors01",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 100000,
+      "ownership": {
+        "default": 1
+      },
+      "flags": {}
+    },
+    {
+      "name": "The Cloak of Shadows",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Read aloud:</strong></p><p><em>The cloak does not hang — it settles. Cut for someone taller than any man you've met, its hem frays into threads of gray that move wrong, drifting a half-second behind your shoulders like smoke remembering somewhere else to be. When you throw it on, the lantern in your hand gutters — not out, but lower, as if the light itself has learned caution. Step into shadow and the shadow steps with you. Somewhere far below the cavern, something that used to own this cloak notices it has stopped listening.</em></p><hr/><p><strong>The Cloak of Shadows</strong><br/><em>Wondrous item, rare (requires attunement)</em></p><p>This tattered cloak drinks the light around it. While wearing it in dim light or darkness, you have <strong>advantage on Dexterity (Stealth) checks</strong>.</p><p><em>Owner's mark:</em> the inner collar bears a name burned away by something colder than fire, and a single word in Abyssal: <strong>“returnable.”</strong></p>",
+        "markdown": ""
+      },
+      "_id": "UmbLootCloak001",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 200000,
+      "ownership": {
+        "default": 1
+      },
+      "flags": {}
+    },
+    {
+      "name": "The Amulet of the Night",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Read aloud:</strong></p><p><em>It is smaller than a coin — a sliver of black crystal on a chain of woven shadow-stuff that stays cold in a forge-room and colder in a graveyard. There is no light in it. There is less than no light in it: stare too long and the room behind you feels further away. When it touches your skin you taste copper and old winter, and the wounds you deal start to look like doors. It came from the Tyrant's throat. He didn't give it away.</em></p><hr/><p><strong>The Amulet of the Night</strong><br/><em>Wondrous item, rare (requires attunement)</em></p><p>While wearing this amulet of black crystal, when you deal necrotic damage to a creature with a melee or ranged spell attack, you deal an extra <strong>1d6</strong> necrotic damage to that target. (The version clutched by the Shadow Tyrant's weaker reflection carries only a fainter <strong>1d4</strong> — the crystal remembers what it once fed.)</p><p><em>Owner's mark:</em> along the chain, three knots. Nobody who has counted them can say whether they were always three.</p>",
+        "markdown": ""
+      },
+      "_id": "UmbLootAmulet01",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 300000,
+      "ownership": {
+        "default": 1
+      },
+      "flags": {}
+    },
+    {
+      "name": "For the GM's Eyes Only",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Page visibility tip:</strong> this pack is player-readable, but this page is marked GM Notes — re-check the page's ownership before showing the whole entry. The other three pages are safe to drag into chat.</p><p><strong>Mechanics recap (what Foundry actually applies):</strong></p><ul><li><strong>Cloak of Shadows</strong> — rare wondrous item, attunement; equipped effect grants <code>flags.dnd5e.advantage.skill.ste</code> (advantage on Stealth) while worn.</li><li><strong>Amulet of the Night</strong> — rare wondrous item, attunement; equipped effect adds <code>1d6[necrotic]</code> (CR 18 version) or <code>1d4[necrotic]</code> (CR 13 version) to <em>melee and ranged spell attack</em> damage via <code>system.bonuses.msak/rsak.damage</code>. It does not boost weapon attacks or saves — if a warlock or sorcerer in the party claims it, enjoy it, they've earned the flavor synergy.</li></ul><p><strong>Standalone Items:</strong> drag-ready versions of both treasures live in the module's <em>Treasures</em> Item pack — import them straight onto player sheets; their effects enable themselves while equipped. (The copies embedded on the Umbrathor actors remain for table continuity; the packs use different IDs, so they don't conflict.)</p><p><strong>Campaign hooks:</strong></p><ul><li>The word <em>“returnable”</em> is a promise, not a joke — Umbrathor rescinded his ownership once. Another thing in the dark holds the second cloak of the pair.</li><li>The three knots on the amulet's chain: each one is a favor the Night once did for someone. It has three left. It is counting.</li></ul>",
+        "markdown": ""
+      },
+      "_id": "UmbLootGMNotes01",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 400000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 1
+  },
+  "flags": {
+    "core": {
+      "viewMode": 2
+    }
+  },
+  "_stats": {
+    "duplicateSource": null,
+    "coreVersion": "13.344",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.1",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "exportSource": null
+  },
+  "_id": "LootHandoutsUmbr01"
+}

@@ -1,0 +1,171 @@
+{
+  "name": "Umbrathor's Shadow Cavern — Scene Guide",
+  "pages": [
+    {
+      "name": "Overview",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>A ready-to-run boss arena for <strong>Umbrathor, the Shadow Tyrant</strong> (CR 18; the Level 8 / CR 13 variant uses the same layout with smaller radii). Everything below uses core Foundry only.</p><p><em>Scene skeleton:</em> grid 100 px = 5 ft, about 56 × 38 squares (280 × 190 ft), background darkness level <strong>0</strong> (fully black), global illumination <strong>off</strong>, darkness color <span style='font-family:monospace'>#0a0510</span>.</p>",
+        "markdown": ""
+      },
+      "_id": "UmbGuideOverv01",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 100000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "name": "Walls & Vision",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Perimeter:</strong> standard walls, fully wrapped.</p><p><strong>Entrance tunnel</strong> (north or east): thin walls with a locked stone door to control the party's entrance beat.</p><p><strong>Collapsed passages</strong> (×2): thin walls sealing dead-end rubble tunnels.</p><p><strong>Central dais:</strong> a standard-wall ring with a two-square gap for stairs — Umbrathor's lair-action origin.</p><p><strong>Stalagmite clusters</strong> (4–6): <em>terrain walls</em> that block sight until a token has line-of-sight — natural shadow cover.</p><p><strong>Key interplay:</strong> Umbrathor can Hide as a bonus action in dim light or darkness (Shadow Manipulation) and teleport 60 ft with Shadow Step. The terrain walls plus pitch-black default darkness mean he can genuinely vanish between turns.</p>",
+        "markdown": ""
+      },
+      "_id": "UmbGuideWalls01",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 200000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "name": "Lighting & Atmosphere",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Scene darkness stays at <strong>0</strong>; every light below is a placed ambient light.</p><table><tr><th>Light</th><th>Position</th><th>Bright/Dim</th><th>Color</th><th>Intensity</th><th>Animation</th></tr><tr><td>Soul-lights ×4</td><td>cave corners</td><td>15 / 40</td><td>#7a5cff</td><td>0.4</td><td>Light Framing, speed 3, intensity 5</td></tr><tr><td>Braziers ×4</td><td>dais approach</td><td>25 / 70</td><td>#ff7a29</td><td>0.6</td><td>Torch, speed 2, intensity 6</td></tr><tr><td>Shadow Heart</td><td>on the dais</td><td>60 / 120</td><td>#3b2d6e</td><td>0.5</td><td>Pulse, speed 2, intensity 4</td></tr></table><p><strong>Claustrophobic Dark (regional effect):</strong> treat the darkness as magical — nonmagical light dims to dim light and darkvision cannot penetrate it. In Foundry terms: keep Darkness at 0, let the braziers and soul-lights be the only real light, and add no daylight.</p><p><strong>Umbral Murk:</strong> dim-light areas are lightly obscured, and Umbrathor can emerge from any of them when using Shadow Step.</p><p><strong>Token lights:</strong> Umbrathor 20/40 #2a1f4d intensity 0.35 slow Pulse; Shadows none; PCs none (their own darkvision/torches — the braziers become contested objectives).</p>",
+        "markdown": ""
+      },
+      "_id": "UmbGuideLights1",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 300000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "name": "Sound & Effects",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Playlist:</strong> one looping dark ambient drone (volume ≈ 0.4) plus a combat stinger; keep the drone in ambient mode so it never cuts mid-fight.</p><p><strong>Shadow Flood prop:</strong> pre-place a hidden 60-ft ambient light at the dais — color #3b2d6e, animation Chaos (speed 4, intensity 8) — and toggle it on when the lair action fires.</p><p><strong>Darkness spell:</strong> the lair action's Darkness link needs no wiring; core spell animations carry it.</p>",
+        "markdown": ""
+      },
+      "_id": "UmbGuideSndFx1",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 400000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "name": "Running the Fight",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<ol><li>Drop <strong>Umbrathor</strong> from the <em>The New Ragnarok Reborn — NPCs</em> compendium onto the dais; summon Shadows around him (or fire Summon Shadows (1/Encounter)).</li><li>Open his sheet and tick <strong>Inside Lair?</strong> — this applies the official +1 CR / +1 legendary action adjustment while he's in the cavern.</li><li>Add a <strong>\"Lair\" combatant</strong> at initiative 20 (dnd5e 6.0.x doesn't auto-insert one). When count 20 comes up, roll one of the five lair actions from the sheet's Lair Actions section; the Lair Actions (Shadow Cavern) banner is the read-aloud script.</li><li>Regional effects run passively: Claustrophobic Dark, fear whispers (DC 18 Wisdom for creatures below half HP at turn start), umbral murk.</li><li>If Shadow Tendrils drops someone to 0 HP, spawn a Shadow on Umbrathor's next turn (CR 18 only).</li></ol><p><strong>Difficulty dials:</strong> soul-lights only for a scarier run; extra braziers for safer sight-lanes if the party is squishy.</p>",
+        "markdown": ""
+      },
+      "_id": "UmbGuideRun01",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 500000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "core": {
+      "viewMode": 2
+    }
+  },
+  "_stats": {
+    "duplicateSource": null,
+    "coreVersion": "13.344",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.1",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "exportSource": null
+  },
+  "_id": "UmbSceneGuide01"
+}

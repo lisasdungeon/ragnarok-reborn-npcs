@@ -44,6 +44,7 @@ const packs = [
   "ragnarok-reborn-handouts",
   "ragnarok-reborn-loot",
   "ragnarok-reborn-scenes",
+  "ragnarok-reborn-demo",
 ];
 
 const SNAP = ".pack-snapshot";

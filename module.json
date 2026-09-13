@@ -79,6 +79,16 @@
         "PLAYER": "NONE",
         "ASSISTANT": "OWNER"
       }
+    },
+    {
+      "name": "ragnarok-reborn-demo",
+      "label": "The New Ragnarok Reborn — Demo Adventure",
+      "path": "packs/ragnarok-reborn-demo",
+      "type": "Adventure",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
     }
   ],
   "flags": {}

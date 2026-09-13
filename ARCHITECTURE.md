@@ -28,6 +28,9 @@ don't patch the downstream copy.
                        │                                              │
    GM guides,          │  packs/_source/ragnarok-reborn-gm-guides/    │
    handouts, loot      │  …-handouts/   (hand-edited JSONs)           │
+                       │                                              │
+   Demo adventure      │  tools/gen-adventure.py                      │
+                       │    (loose actors + scenes + items + journals)│
                        └──────────────┬───────────────────────────────┘
                                       │
               tools/sync-npc-sources.py (the only bridge, both directions)
@@ -74,6 +77,7 @@ construction because both come from `geometry.py`.
 | `packs/_source/ragnarok-reborn-npcs/*.json` | derived | `sync-npc-sources.py` | Loose JSONs + `_key` hierarchy + compendium summon UUIDs + GM-locked `ownership`. **Never edit directly.** |
 | `packs/_source/ragnarok-reborn-scenes/*.json` | derived | `build_scenes.py` | Art and walls from one geometry module. **Never edit directly.** |
 | `packs/_source/ragnarok-reborn-gm-guides/playtest-checklist.json` | derived | `gen-playtest.py` | **Never edit directly.** |
+| `packs/_source/ragnarok-reborn-demo/*` | derived | `gen-adventure.py` | One playable Adventure (all actors, scenes, items, journals, tokens pre-bound). Sidecar `_*.json` files are stripped of `_key`s and referenced by the adventure doc, which the CLI embeds at compile. **Never edit directly.** |
 | `Umbrathor's Shadow Cavern (Scene).json`, `Vorath's Hellheim Throne Room (Scene).json` | derived | `sync-npc-sources.py` (pack → loose) | Byte-stable 2-space indent; safe to delete — the sync regenerates them. |
 | `packs/<pack>/` (LevelDB) | derived | `build-pack.mjs` | Committed so Foundry can download it, but never edited by hand. |
 | `maps/*.webp` | derived | `build_scenes.py` | |
@@ -114,6 +118,12 @@ actor numbers, `npm run check:docs` holds it honest too. If you rename a
 runbook page or reword its activity mentions, rerun `tools/gen-playtest.py` —
 the checklist's Runbook links are name-matched against the runbook text.
 
+**…the demo adventure:**
+It derives itself from everything else — rerun `python3 tools/gen-adventure.py`
+after changing any actor, scene, loot item, or journal. The generator refuses
+to emit a bundle whose scene tokens reference an actor `_id` that isn't
+included, so the import can't half-bind.
+
 **…a loot item (Cloak/Amulet):**
 Edit `packs/_source/ragnarok-reborn-loot/*.json` — the effect `changes` there
 are the single source of truth. The checklist's Ledger rows derive from them
@@ -141,12 +151,14 @@ the workflow is just `npm run check`, so local and CI cannot drift):
 4. **verification snapshot** — `docs/actor-verification.json` matches the loose JSONs.
 5. **pack snapshot** — from git HEAD (not the working tree, so a local rebuild can't fake a pass).
 6. **build** — compile all five packs from sources.
-7. **verify-packs** — every source document survives the LevelDB round-trip, and
-   the shipped playtest checklist is pinned: exactly 5 pages / 48 activity rows
-   in the compiled journal, so a derivation regression dies at release instead
-   of publishing. (Deliberately duplicated between `verify-packs.mjs` and
-   `tools/gen-playtest.py` — the two tools must agree, and a silent change to
-   either is a FAIL in the other.)
+7. **verify-packs** — every source document survives the LevelDB round-trip; the
+   shipped playtest checklist is pinned (exactly 5 pages / 48 activity rows);
+   and the demo adventure must embed its full pinned inventory (5 actors,
+   2 scenes, 2 items, 7 journals) with each embedded doc matching its source
+   byte-semantically. Regressions die at release instead of publishing.
+   (Counts are deliberately duplicated between `verify-packs.mjs` and the
+   generators — the tools must agree, and a silent change to either is a FAIL
+   in the other.)
 8. **scene maps** — every scene's `background.src` exists in `maps/`.
 9. **freshness** — committed packs are exactly what the sources compile to.
 

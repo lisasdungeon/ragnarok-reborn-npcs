@@ -1,15 +1,15 @@
-2026/09/13-09:25:57.315054 76f6e7fff6c0 Recovering log #216
-2026/09/13-09:25:57.318293 76f6e7fff6c0 Delete type=3 #215
-2026/09/13-09:25:57.318328 76f6e7fff6c0 Delete type=0 #216
-2026/09/13-09:25:57.321873 76f6e5ffb6c0 Level-0 table #220: started
-2026/09/13-09:25:57.323301 76f6e5ffb6c0 Level-0 table #220: 28704 bytes OK
-2026/09/13-09:25:57.325284 76f6e5ffb6c0 Delete type=0 #218
-2026/09/13-09:25:57.325365 76f6e5ffb6c0 Manual compaction at level-0 from '!journal!PlayTestChecklist01' @ 72057594037927935 : 1 .. '!journal.pages!VorSceneGuide001.VorGuideWalls01' @ 0 : 0; will stop at (end)
-2026/09/13-09:25:57.325388 76f6e5ffb6c0 Manual compaction at level-1 from '!journal!PlayTestChecklist01' @ 72057594037927935 : 1 .. '!journal.pages!VorSceneGuide001.VorGuideWalls01' @ 0 : 0; will stop at '!journal.pages!VorSceneGuide001.VorGuideWalls01' @ 771 : 1
-2026/09/13-09:25:57.325391 76f6e5ffb6c0 Compacting 1@1 + 1@2 files
-2026/09/13-09:25:57.327007 76f6e5ffb6c0 Generated table #221@1: 30 keys, 28704 bytes
-2026/09/13-09:25:57.327014 76f6e5ffb6c0 Compacted 1@1 + 1@2 files => 28704 bytes
-2026/09/13-09:25:57.328969 76f6e5ffb6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
-2026/09/13-09:25:57.329013 76f6e5ffb6c0 Delete type=2 #212
-2026/09/13-09:25:57.329070 76f6e5ffb6c0 Delete type=2 #220
-2026/09/13-09:25:57.329130 76f6e5ffb6c0 Manual compaction at level-1 from '!journal.pages!VorSceneGuide001.VorGuideWalls01' @ 771 : 1 .. '!journal.pages!VorSceneGuide001.VorGuideWalls01' @ 0 : 0; will stop at (end)
+2026/09/13-10:35:04.143788 79c0caffd6c0 Recovering log #412
+2026/09/13-10:35:04.153732 79c0caffd6c0 Delete type=0 #412
+2026/09/13-10:35:04.153785 79c0caffd6c0 Delete type=3 #411
+2026/09/13-10:35:04.161118 79c0ca7fc6c0 Level-0 table #416: started
+2026/09/13-10:35:04.163152 79c0ca7fc6c0 Level-0 table #416: 28719 bytes OK
+2026/09/13-10:35:04.165812 79c0ca7fc6c0 Delete type=0 #414
+2026/09/13-10:35:04.166022 79c0ca7fc6c0 Manual compaction at level-0 from '!journal!PlayTestChecklist01' @ 72057594037927935 : 1 .. '!journal.pages!VorSceneGuide001.VorGuideWalls01' @ 0 : 0; will stop at (end)
+2026/09/13-10:35:04.166413 79c0ca7fc6c0 Manual compaction at level-1 from '!journal!PlayTestChecklist01' @ 72057594037927935 : 1 .. '!journal.pages!VorSceneGuide001.VorGuideWalls01' @ 0 : 0; will stop at '!journal.pages!VorSceneGuide001.VorGuideWalls01' @ 1491 : 1
+2026/09/13-10:35:04.166420 79c0ca7fc6c0 Compacting 1@1 + 1@2 files
+2026/09/13-10:35:04.172624 79c0ca7fc6c0 Generated table #417@1: 30 keys, 28719 bytes
+2026/09/13-10:35:04.172652 79c0ca7fc6c0 Compacted 1@1 + 1@2 files => 28719 bytes
+2026/09/13-10:35:04.175617 79c0ca7fc6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/09/13-10:35:04.175734 79c0ca7fc6c0 Delete type=2 #406
+2026/09/13-10:35:04.175850 79c0ca7fc6c0 Delete type=2 #416
+2026/09/13-10:35:04.175984 79c0ca7fc6c0 Manual compaction at level-1 from '!journal.pages!VorSceneGuide001.VorGuideWalls01' @ 1491 : 1 .. '!journal.pages!VorSceneGuide001.VorGuideWalls01' @ 0 : 0; will stop at (end)
