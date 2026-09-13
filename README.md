@@ -10,6 +10,11 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 | Ewokling | 2 | Pack Tactics, Claws, Primitive Spear (melee + thrown), Mischievous Spark (Recharge 6, DC 13 WIS), Evasive Tumble |
 | Umbrathor, the Shadow Tyrant | 18 | Dark Bolt, Terrifying Presence, Shadow Step, Dark Pact, 3 legendary actions, Cloak of Shadows + Amulet of the Night loot with working equip effects, **Shadow Cavern lair actions (initiative 20) + regional effects** |
 | Umbrathor, the Shadow Tyrant (Level 8) | 13 | Scaled-down variant of the above with its own DC 18 lair-action set |
+
+> **Contributing?** Start with [ARCHITECTURE.md](ARCHITECTURE.md) — it maps the full
+> data flow (authoring files → pack sources → compiled packs), says exactly which tool
+> writes which file, and gives per-task change recipes. Short version: never hand-edit a
+> generated file; run `npm run check` before opening a PR.
 | Vorath, Demon Lord of Helheim | 15 | Legendary Resistance, Aura of Despair, Dreadful Gaze, Misty Escape, Shadow Fork, Necrotic Grasp, Dark Burst (Recharge 5–6), real spell list (Eldritch Blast, Animate Dead, Cloudkill, Dominate Person), 2 legendary actions, **Hellheim Throne Room lair actions (initiative 20) + regional effects** |
 
 ## Packs
