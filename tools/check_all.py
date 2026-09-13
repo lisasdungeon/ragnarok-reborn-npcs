@@ -8,12 +8,14 @@ Steps (same order as .github/workflows/verify.yml, which now runs this script):
                                      formulas match the loose JSONs — both directions —
                                      and no regression signatures (non-flat attacks,
                                      computed save DCs, undice-encoded heals)
-  3. check-actor-fixes.py --check    verification snapshot matches the loose JSONs
-  4. check-fresh.mjs snapshot        snapshot the packs from GIT HEAD (see note)
-  5. build                           compile all packs from packs/_source
-  6. verify-packs.mjs                every source document survives the LevelDB round-trip
-  7. check-scene-maps.mjs            every scene's background.src exists
-  8. check-fresh.mjs                 committed packs match what the sources build to
+  3. check-architecture-doc.py       ARCHITECTURE.md's factual claims (files, zip list,
+                                     packs, gate steps, flags) match the actual repo
+  4. check-actor-fixes.py --check    verification snapshot matches the loose JSONs
+  5. check-fresh.mjs snapshot        snapshot the packs from GIT HEAD (see note)
+  6. build                           compile all packs from packs/_source
+  7. verify-packs.mjs                every source document survives the LevelDB round-trip
+  8. check-scene-maps.mjs            every scene's background.src exists
+  9. check-fresh.mjs                 committed packs match what the sources build to
 
 Normal mode (CI, or any machine where node_modules can live in the repo):
 runs everything in place. The freshness snapshot is taken from GIT HEAD, not
@@ -102,7 +104,7 @@ def main():
     def step(i, total, name, blurb):
         print(f"\n{GREEN}[{i}/{total}]{RESET} {name} {DIM}— {blurb}{RESET}")
 
-    steps_total = 8
+    steps_total = 9
 
     step(1, steps_total, "sync-npc-sources --check",
          "all seven drag-and-drop JSONs match the pack sources")
@@ -116,13 +118,19 @@ def main():
     print(f"  {GREEN if ok else RED}{'ok' if ok else 'FAILED'}{RESET} {DIM}({dt:.1f}s){RESET}")
     if not ok: failures.append("documented data")
 
-    step(3, steps_total, "verification-snapshot parity",
+    step(3, steps_total, "architecture-doc parity",
+         "ARCHITECTURE.md's claims (files, zip list, packs, gate, flags) match the repo")
+    ok, dt = sh("python3 tools/check-architecture-doc.py", REPO)
+    print(f"  {GREEN if ok else RED}{'ok' if ok else 'FAILED'}{RESET} {DIM}({dt:.1f}s){RESET}")
+    if not ok: failures.append("architecture doc")
+
+    step(4, steps_total, "verification-snapshot parity",
          "published snapshot matches the loose JSONs")
     ok, dt = sh("python3 tools/check-actor-fixes.py --check", REPO)
     print(f"  {GREEN if ok else RED}{'ok' if ok else 'FAILED'}{RESET} {DIM}({dt:.1f}s){RESET}")
     if not ok: failures.append("verification snapshot")
 
-    step(4, steps_total, "snapshot committed packs",
+    step(5, steps_total, "snapshot committed packs",
          "packs snapshot taken from git HEAD (what CI would check out)")
     dirty = packs_dirty()
     if dirty and not allow_dirty:
@@ -140,24 +148,24 @@ def main():
         elif build_dir and not prepare_build_dir(build_dir, allow_dirty):
             failures.append("snapshot")
 
-    step(5, steps_total, "build", "all five packs compile from packs/_source")
+    step(6, steps_total, "build", "all five packs compile from packs/_source")
     ok, dt = sh("node build-pack.mjs" if build_dir else "npm run build", node_cwd)
     print(f"  {GREEN if ok else RED}{'ok' if ok else 'FAILED'}{RESET} {DIM}({dt:.1f}s){RESET}")
     if not ok: failures.append("build")
 
-    step(6, steps_total, "verify-packs",
+    step(7, steps_total, "verify-packs",
          "every source document survives the LevelDB round-trip")
     ok, dt = sh("node verify-packs.mjs", node_cwd)
     print(f"  {GREEN if ok else RED}{'ok' if ok else 'FAILED'}{RESET} {DIM}({dt:.1f}s){RESET}")
     if not ok: failures.append("round-trip verify")
 
-    step(7, steps_total, "scene maps",
+    step(8, steps_total, "scene maps",
          "every scene's background.src exists in the repo")
     ok, dt = sh("node check-scene-maps.mjs", REPO)
     print(f"  {GREEN if ok else RED}{'ok' if ok else 'FAILED'}{RESET} {DIM}({dt:.1f}s){RESET}")
     if not ok: failures.append("scene maps")
 
-    step(8, steps_total, "freshness",
+    step(9, steps_total, "freshness",
          "committed packs match what the sources build to")
     ok, dt = sh("node check-fresh.mjs", node_cwd)
     print(f"  {GREEN if ok else RED}{'ok' if ok else 'FAILED'}{RESET} {DIM}({dt:.1f}s){RESET}")

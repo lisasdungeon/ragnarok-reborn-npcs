@@ -9,15 +9,17 @@
 #   2. check-documented-data.py — README-documented DCs / attack bonuses /
 #      heal formulas match the loose JSONs (both directions), and no
 #      regression signatures (non-flat attacks, computed save DCs)
-#   3. check-actor-fixes.py --check — the published verification snapshot
+#   3. check-architecture-doc.py — ARCHITECTURE.md's factual claims (files,
+#      zip list, pack declarations, gate steps, flags) match the actual repo
+#   4. check-actor-fixes.py --check — the published verification snapshot
 #      matches what the loose JSONs build to
-#   4. check-fresh.mjs snapshot — packs snapshotted from GIT HEAD (what a
+#   5. check-fresh.mjs snapshot — packs snapshotted from GIT HEAD (what a
 #      clean checkout would contain)
-#   5. npm run build — every pack compiles from packs/_source
-#   6. verify-packs.mjs — every source document survives the LevelDB
+#   6. npm run build — every pack compiles from packs/_source
+#   7. verify-packs.mjs — every source document survives the LevelDB
 #      round-trip (matched by _id)
-#   7. check-scene-maps.mjs — every scene's background.src exists
-#   8. check-fresh.mjs — the COMMITTED compiled packs match what the committed
+#   8. check-scene-maps.mjs — every scene's background.src exists
+#   9. check-fresh.mjs — the COMMITTED compiled packs match what the committed
 #      sources build to. Catches "edited a source JSON but forgot to recommit
 #      packs/".
 #
