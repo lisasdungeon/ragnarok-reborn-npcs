@@ -1,3 +1,6 @@
 node_modules/
 package-lock.json.bak
 .verify-tmp/
+__pycache__/
+.pack-snapshot/
+tools/scene-tools/maps/

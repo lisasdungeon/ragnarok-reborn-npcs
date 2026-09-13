@@ -7,7 +7,10 @@
   "scripts": {
     "pack": "node build-pack.mjs",
     "build": "node build-pack.mjs",
-    "verify": "node verify-packs.mjs"
+    "verify": "node verify-packs.mjs",
+    "check:maps": "node check-scene-maps.mjs",
+    "check:fresh": "node check-fresh.mjs",
+    "check:fresh:snapshot": "node check-fresh.mjs snapshot"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "^3.0.4"

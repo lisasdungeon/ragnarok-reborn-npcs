@@ -1,0 +1,2487 @@
+{
+ "_id": "VorSceneHell01",
+ "name": "Vorath's Hellheim Throne Room",
+ "active": false,
+ "navigation": true,
+ "navOrder": 0,
+ "navName": "",
+ "thumb": null,
+ "width": 5600,
+ "height": 3800,
+ "padding": 0.25,
+ "shiftX": 0,
+ "shiftY": 0,
+ "initial": {
+  "x": 2800,
+  "y": 1900,
+  "scale": 0.35
+ },
+ "background": {
+  "src": "modules/ragnarok-reborn-npcs/maps/hellheim-throne-room.webp",
+  "tint": null,
+  "alphaThreshold": null,
+  "anchorX": 0.5,
+  "anchorY": 0.5,
+  "offsetX": 0,
+  "offsetY": 0,
+  "scaleX": 1,
+  "scaleY": 1,
+  "rotation": 0,
+  "fit": "fill"
+ },
+ "foreground": null,
+ "foregroundElevation": null,
+ "grid": {
+  "type": 1,
+  "size": 100,
+  "style": "solidLines",
+  "thickness": 1,
+  "color": "#ffffff",
+  "alpha": 0.06,
+  "distance": 5,
+  "units": "ft"
+ },
+ "tokenVision": true,
+ "environment": {
+  "darknessLevel": 0.7,
+  "darknessLock": true
+ },
+ "weather": "",
+ "drawings": [],
+ "tokens": [
+  {
+   "_id": "VorTBoss01",
+   "name": "Vorath, Demon Lord of Helheim",
+   "actorId": "VorathDemonLd0001",
+   "actorLink": false,
+   "delta": null,
+   "width": 1,
+   "height": 1,
+   "elevation": 15,
+   "x": 2700,
+   "y": 900,
+   "sort": 0,
+   "disposition": -1,
+   "displayName": 20,
+   "lockRotation": false,
+   "rotation": 0,
+   "texture": {
+    "src": "icons/magic/unholy/strike-beam-blood-large-red-purple.webp",
+    "tint": "#ffffff",
+    "scaleX": 1,
+    "scaleY": 1,
+    "anchorX": 0.5,
+    "anchorY": 0.5,
+    "fit": "contain",
+    "alphaThreshold": 0.75
+   },
+   "hidden": false,
+   "level": "defaultLevel0000",
+   "shape": 1,
+   "flags": {},
+   "light": {
+    "negative": false,
+    "priority": 0,
+    "alpha": 0.6,
+    "angle": 360,
+    "bright": 300,
+    "color": "#ff4500",
+    "coloration": 1,
+    "dim": 600,
+    "attenuation": 0.5,
+    "luminosity": 0.5,
+    "saturation": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "animation": {
+     "type": "flame",
+     "speed": 3,
+     "intensity": 4,
+     "reverse": false
+    },
+    "darkness": {
+     "min": 0,
+     "max": 1
+    }
+   },
+   "sight": {
+    "angle": 360,
+    "enabled": true,
+    "range": 120,
+    "brightness": 0,
+    "visionMode": "basic",
+    "color": null,
+    "attenuation": 0.1,
+    "saturation": 0,
+    "contrast": 0
+   },
+   "_key": "!scenes.tokens!VorSceneHell01.VorTBoss01"
+  },
+  {
+   "_id": "VorTZomb1",
+   "name": "Zombie Guard",
+   "actorId": null,
+   "actorLink": false,
+   "delta": null,
+   "width": 1,
+   "height": 1,
+   "elevation": 0,
+   "x": 2400,
+   "y": 1200,
+   "sort": 0,
+   "disposition": -1,
+   "displayName": 20,
+   "lockRotation": false,
+   "rotation": 0,
+   "texture": {
+    "src": "icons/magic/death/undead-skeleton-deformed-red.webp",
+    "tint": "#ffffff",
+    "scaleX": 1,
+    "scaleY": 1,
+    "anchorX": 0.5,
+    "anchorY": 0.5,
+    "fit": "contain",
+    "alphaThreshold": 0.75
+   },
+   "hidden": false,
+   "level": "defaultLevel0000",
+   "shape": 1,
+   "flags": {},
+   "_key": "!scenes.tokens!VorSceneHell01.VorTZomb1"
+  },
+  {
+   "_id": "VorTZomb2",
+   "name": "Zombie Guard",
+   "actorId": null,
+   "actorLink": false,
+   "delta": null,
+   "width": 1,
+   "height": 1,
+   "elevation": 0,
+   "x": 3100,
+   "y": 1200,
+   "sort": 0,
+   "disposition": -1,
+   "displayName": 20,
+   "lockRotation": false,
+   "rotation": 0,
+   "texture": {
+    "src": "icons/magic/death/undead-skeleton-deformed-red.webp",
+    "tint": "#ffffff",
+    "scaleX": 1,
+    "scaleY": 1,
+    "anchorX": 0.5,
+    "anchorY": 0.5,
+    "fit": "contain",
+    "alphaThreshold": 0.75
+   },
+   "hidden": false,
+   "level": "defaultLevel0000",
+   "shape": 1,
+   "flags": {},
+   "_key": "!scenes.tokens!VorSceneHell01.VorTZomb2"
+  }
+ ],
+ "lights": [
+  {
+   "_id": "VorLB00",
+   "name": "Brazier",
+   "x": 1050,
+   "y": 1350,
+   "elevation": 0,
+   "rotation": 0,
+   "walls": true,
+   "vision": false,
+   "hidden": false,
+   "locked": false,
+   "config": {
+    "negative": false,
+    "priority": 0,
+    "alpha": 0.6,
+    "angle": 360,
+    "bright": 450,
+    "color": "#ff7a2f",
+    "coloration": 1,
+    "dim": 500,
+    "attenuation": 0.5,
+    "luminosity": 0.5,
+    "saturation": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "animation": {
+     "type": "flame",
+     "speed": 4,
+     "intensity": 4,
+     "reverse": false
+    },
+    "darkness": {
+     "min": 0,
+     "max": 1
+    }
+   },
+   "flags": {},
+   "_key": "!scenes.lights!VorSceneHell01.VorLB00"
+  },
+  {
+   "_id": "VorLB01",
+   "name": "Brazier",
+   "x": 1050,
+   "y": 2450,
+   "elevation": 0,
+   "rotation": 0,
+   "walls": true,
+   "vision": false,
+   "hidden": false,
+   "locked": false,
+   "config": {
+    "negative": false,
+    "priority": 0,
+    "alpha": 0.6,
+    "angle": 360,
+    "bright": 450,
+    "color": "#ff7a2f",
+    "coloration": 1,
+    "dim": 500,
+    "attenuation": 0.5,
+    "luminosity": 0.5,
+    "saturation": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "animation": {
+     "type": "flame",
+     "speed": 4,
+     "intensity": 4,
+     "reverse": false
+    },
+    "darkness": {
+     "min": 0,
+     "max": 1
+    }
+   },
+   "flags": {},
+   "_key": "!scenes.lights!VorSceneHell01.VorLB01"
+  },
+  {
+   "_id": "VorLB02",
+   "name": "Brazier",
+   "x": 4550,
+   "y": 1350,
+   "elevation": 0,
+   "rotation": 0,
+   "walls": true,
+   "vision": false,
+   "hidden": false,
+   "locked": false,
+   "config": {
+    "negative": false,
+    "priority": 0,
+    "alpha": 0.6,
+    "angle": 360,
+    "bright": 450,
+    "color": "#ff7a2f",
+    "coloration": 1,
+    "dim": 500,
+    "attenuation": 0.5,
+    "luminosity": 0.5,
+    "saturation": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "animation": {
+     "type": "flame",
+     "speed": 4,
+     "intensity": 4,
+     "reverse": false
+    },
+    "darkness": {
+     "min": 0,
+     "max": 1
+    }
+   },
+   "flags": {},
+   "_key": "!scenes.lights!VorSceneHell01.VorLB02"
+  },
+  {
+   "_id": "VorLB03",
+   "name": "Brazier",
+   "x": 4550,
+   "y": 2450,
+   "elevation": 0,
+   "rotation": 0,
+   "walls": true,
+   "vision": false,
+   "hidden": false,
+   "locked": false,
+   "config": {
+    "negative": false,
+    "priority": 0,
+    "alpha": 0.6,
+    "angle": 360,
+    "bright": 450,
+    "color": "#ff7a2f",
+    "coloration": 1,
+    "dim": 500,
+    "attenuation": 0.5,
+    "luminosity": 0.5,
+    "saturation": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "animation": {
+     "type": "flame",
+     "speed": 4,
+     "intensity": 4,
+     "reverse": false
+    },
+    "darkness": {
+     "min": 0,
+     "max": 1
+    }
+   },
+   "flags": {},
+   "_key": "!scenes.lights!VorSceneHell01.VorLB03"
+  },
+  {
+   "_id": "VorLThr1",
+   "name": "Throne Glow",
+   "x": 2800,
+   "y": 710,
+   "elevation": 0,
+   "rotation": 0,
+   "walls": true,
+   "vision": false,
+   "hidden": false,
+   "locked": false,
+   "config": {
+    "negative": false,
+    "priority": 0,
+    "alpha": 0.7,
+    "angle": 360,
+    "bright": 200,
+    "color": "#ff2a1a",
+    "coloration": 1,
+    "dim": 500,
+    "attenuation": 0.5,
+    "luminosity": 0.55,
+    "saturation": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "animation": {
+     "type": "pulse",
+     "speed": 2,
+     "intensity": 4,
+     "reverse": false
+    },
+    "darkness": {
+     "min": 0,
+     "max": 1
+    }
+   },
+   "flags": {},
+   "_key": "!scenes.lights!VorSceneHell01.VorLThr1"
+  },
+  {
+   "_id": "VorLF00",
+   "name": "Hellfire Fissure",
+   "x": 1375,
+   "y": 1600,
+   "elevation": 0,
+   "rotation": 0,
+   "walls": true,
+   "vision": false,
+   "hidden": false,
+   "locked": false,
+   "config": {
+    "negative": false,
+    "priority": 0,
+    "alpha": 0.5,
+    "angle": 360,
+    "bright": 120,
+    "color": "#ff6a20",
+    "coloration": 1,
+    "dim": 250,
+    "attenuation": 0.5,
+    "luminosity": 0.6,
+    "saturation": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "animation": {
+     "type": "flame",
+     "speed": 5,
+     "intensity": 5,
+     "reverse": false
+    },
+    "darkness": {
+     "min": 0,
+     "max": 1
+    }
+   },
+   "flags": {},
+   "_key": "!scenes.lights!VorSceneHell01.VorLF00"
+  },
+  {
+   "_id": "VorLF01",
+   "name": "Hellfire Fissure",
+   "x": 1625,
+   "y": 1600,
+   "elevation": 0,
+   "rotation": 0,
+   "walls": true,
+   "vision": false,
+   "hidden": false,
+   "locked": false,
+   "config": {
+    "negative": false,
+    "priority": 0,
+    "alpha": 0.5,
+    "angle": 360,
+    "bright": 120,
+    "color": "#ff6a20",
+    "coloration": 1,
+    "dim": 250,
+    "attenuation": 0.5,
+    "luminosity": 0.6,
+    "saturation": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "animation": {
+     "type": "flame",
+     "speed": 5,
+     "intensity": 5,
+     "reverse": false
+    },
+    "darkness": {
+     "min": 0,
+     "max": 1
+    }
+   },
+   "flags": {},
+   "_key": "!scenes.lights!VorSceneHell01.VorLF01"
+  },
+  {
+   "_id": "VorLF02",
+   "name": "Hellfire Fissure",
+   "x": 1875,
+   "y": 1600,
+   "elevation": 0,
+   "rotation": 0,
+   "walls": true,
+   "vision": false,
+   "hidden": false,
+   "locked": false,
+   "config": {
+    "negative": false,
+    "priority": 0,
+    "alpha": 0.5,
+    "angle": 360,
+    "bright": 120,
+    "color": "#ff6a20",
+    "coloration": 1,
+    "dim": 250,
+    "attenuation": 0.5,
+    "luminosity": 0.6,
+    "saturation": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "animation": {
+     "type": "flame",
+     "speed": 5,
+     "intensity": 5,
+     "reverse": false
+    },
+    "darkness": {
+     "min": 0,
+     "max": 1
+    }
+   },
+   "flags": {},
+   "_key": "!scenes.lights!VorSceneHell01.VorLF02"
+  },
+  {
+   "_id": "VorLF03",
+   "name": "Hellfire Fissure",
+   "x": 2125,
+   "y": 1600,
+   "elevation": 0,
+   "rotation": 0,
+   "walls": true,
+   "vision": false,
+   "hidden": false,
+   "locked": false,
+   "config": {
+    "negative": false,
+    "priority": 0,
+    "alpha": 0.5,
+    "angle": 360,
+    "bright": 120,
+    "color": "#ff6a20",
+    "coloration": 1,
+    "dim": 250,
+    "attenuation": 0.5,
+    "luminosity": 0.6,
+    "saturation": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "animation": {
+     "type": "flame",
+     "speed": 5,
+     "intensity": 5,
+     "reverse": false
+    },
+    "darkness": {
+     "min": 0,
+     "max": 1
+    }
+   },
+   "flags": {},
+   "_key": "!scenes.lights!VorSceneHell01.VorLF03"
+  },
+  {
+   "_id": "VorLF04",
+   "name": "Hellfire Fissure",
+   "x": 3575,
+   "y": 2350,
+   "elevation": 0,
+   "rotation": 0,
+   "walls": true,
+   "vision": false,
+   "hidden": false,
+   "locked": false,
+   "config": {
+    "negative": false,
+    "priority": 0,
+    "alpha": 0.5,
+    "angle": 360,
+    "bright": 120,
+    "color": "#ff6a20",
+    "coloration": 1,
+    "dim": 250,
+    "attenuation": 0.5,
+    "luminosity": 0.6,
+    "saturation": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "animation": {
+     "type": "flame",
+     "speed": 5,
+     "intensity": 5,
+     "reverse": false
+    },
+    "darkness": {
+     "min": 0,
+     "max": 1
+    }
+   },
+   "flags": {},
+   "_key": "!scenes.lights!VorSceneHell01.VorLF04"
+  },
+  {
+   "_id": "VorLF05",
+   "name": "Hellfire Fissure",
+   "x": 3825,
+   "y": 2350,
+   "elevation": 0,
+   "rotation": 0,
+   "walls": true,
+   "vision": false,
+   "hidden": false,
+   "locked": false,
+   "config": {
+    "negative": false,
+    "priority": 0,
+    "alpha": 0.5,
+    "angle": 360,
+    "bright": 120,
+    "color": "#ff6a20",
+    "coloration": 1,
+    "dim": 250,
+    "attenuation": 0.5,
+    "luminosity": 0.6,
+    "saturation": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "animation": {
+     "type": "flame",
+     "speed": 5,
+     "intensity": 5,
+     "reverse": false
+    },
+    "darkness": {
+     "min": 0,
+     "max": 1
+    }
+   },
+   "flags": {},
+   "_key": "!scenes.lights!VorSceneHell01.VorLF05"
+  },
+  {
+   "_id": "VorLF06",
+   "name": "Hellfire Fissure",
+   "x": 4075,
+   "y": 2350,
+   "elevation": 0,
+   "rotation": 0,
+   "walls": true,
+   "vision": false,
+   "hidden": false,
+   "locked": false,
+   "config": {
+    "negative": false,
+    "priority": 0,
+    "alpha": 0.5,
+    "angle": 360,
+    "bright": 120,
+    "color": "#ff6a20",
+    "coloration": 1,
+    "dim": 250,
+    "attenuation": 0.5,
+    "luminosity": 0.6,
+    "saturation": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "animation": {
+     "type": "flame",
+     "speed": 5,
+     "intensity": 5,
+     "reverse": false
+    },
+    "darkness": {
+     "min": 0,
+     "max": 1
+    }
+   },
+   "flags": {},
+   "_key": "!scenes.lights!VorSceneHell01.VorLF06"
+  },
+  {
+   "_id": "VorLF07",
+   "name": "Hellfire Fissure",
+   "x": 4325,
+   "y": 2350,
+   "elevation": 0,
+   "rotation": 0,
+   "walls": true,
+   "vision": false,
+   "hidden": false,
+   "locked": false,
+   "config": {
+    "negative": false,
+    "priority": 0,
+    "alpha": 0.5,
+    "angle": 360,
+    "bright": 120,
+    "color": "#ff6a20",
+    "coloration": 1,
+    "dim": 250,
+    "attenuation": 0.5,
+    "luminosity": 0.6,
+    "saturation": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "animation": {
+     "type": "flame",
+     "speed": 5,
+     "intensity": 5,
+     "reverse": false
+    },
+    "darkness": {
+     "min": 0,
+     "max": 1
+    }
+   },
+   "flags": {},
+   "_key": "!scenes.lights!VorSceneHell01.VorLF07"
+  },
+  {
+   "_id": "VorLEmb1",
+   "name": "Ember Storm (reveal for lair action)",
+   "x": 2750,
+   "y": 1850,
+   "elevation": 0,
+   "rotation": 0,
+   "walls": true,
+   "vision": false,
+   "hidden": true,
+   "locked": false,
+   "config": {
+    "negative": false,
+    "priority": 0,
+    "alpha": 0.8,
+    "angle": 360,
+    "bright": 600,
+    "color": "#ff5a1f",
+    "coloration": 1,
+    "dim": 600,
+    "attenuation": 0.5,
+    "luminosity": 0.9,
+    "saturation": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "animation": {
+     "type": "flame",
+     "speed": 8,
+     "intensity": 8,
+     "reverse": false
+    },
+    "darkness": {
+     "min": 0,
+     "max": 1
+    }
+   },
+   "flags": {},
+   "_key": "!scenes.lights!VorSceneHell01.VorLEmb1"
+  }
+ ],
+ "notes": [],
+ "sounds": [],
+ "regions": [],
+ "tiles": [],
+ "walls": [
+  {
+   "_id": "VorW010",
+   "c": [
+    500,
+    3300,
+    2600,
+    3300
+   ],
+   "light": 20,
+   "move": 20,
+   "sight": 20,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorW010"
+  },
+  {
+   "_id": "VorW011",
+   "c": [
+    2600,
+    3300,
+    2750,
+    3300
+   ],
+   "light": 20,
+   "move": 20,
+   "sight": 20,
+   "sound": 20,
+   "dir": 0,
+   "door": 1,
+   "ds": 2,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorW011"
+  },
+  {
+   "_id": "VorW012",
+   "c": [
+    2750,
+    3300,
+    2900,
+    3300
+   ],
+   "light": 20,
+   "move": 20,
+   "sight": 20,
+   "sound": 20,
+   "dir": 0,
+   "door": 1,
+   "ds": 2,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorW012"
+  },
+  {
+   "_id": "VorW013",
+   "c": [
+    2900,
+    3300,
+    5000,
+    3300
+   ],
+   "light": 20,
+   "move": 20,
+   "sight": 20,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorW013"
+  },
+  {
+   "_id": "VorW014",
+   "c": [
+    5000,
+    400,
+    5000,
+    1800
+   ],
+   "light": 20,
+   "move": 20,
+   "sight": 20,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorW014"
+  },
+  {
+   "_id": "VorW015",
+   "c": [
+    5000,
+    1800,
+    5000,
+    2000
+   ],
+   "light": 20,
+   "move": 20,
+   "sight": 20,
+   "sound": 20,
+   "dir": 0,
+   "door": 1,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorW015"
+  },
+  {
+   "_id": "VorW016",
+   "c": [
+    5000,
+    2000,
+    5000,
+    3300
+   ],
+   "light": 20,
+   "move": 20,
+   "sight": 20,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorW016"
+  },
+  {
+   "_id": "VorW017",
+   "c": [
+    500,
+    400,
+    5000,
+    400
+   ],
+   "light": 20,
+   "move": 20,
+   "sight": 20,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorW017"
+  },
+  {
+   "_id": "VorW018",
+   "c": [
+    500,
+    400,
+    500,
+    3300
+   ],
+   "light": 20,
+   "move": 20,
+   "sight": 20,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorW018"
+  },
+  {
+   "_id": "VorC000",
+   "c": [
+    1351,
+    1421,
+    1321,
+    1451
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC000"
+  },
+  {
+   "_id": "VorC001",
+   "c": [
+    1321,
+    1451,
+    1279,
+    1451
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC001"
+  },
+  {
+   "_id": "VorC002",
+   "c": [
+    1279,
+    1451,
+    1249,
+    1421
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC002"
+  },
+  {
+   "_id": "VorC003",
+   "c": [
+    1249,
+    1421,
+    1249,
+    1379
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC003"
+  },
+  {
+   "_id": "VorC004",
+   "c": [
+    1249,
+    1379,
+    1279,
+    1349
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC004"
+  },
+  {
+   "_id": "VorC005",
+   "c": [
+    1279,
+    1349,
+    1321,
+    1349
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC005"
+  },
+  {
+   "_id": "VorC006",
+   "c": [
+    1321,
+    1349,
+    1351,
+    1379
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC006"
+  },
+  {
+   "_id": "VorC007",
+   "c": [
+    1351,
+    1379,
+    1351,
+    1421
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC007"
+  },
+  {
+   "_id": "VorC100",
+   "c": [
+    1951,
+    1421,
+    1921,
+    1451
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC100"
+  },
+  {
+   "_id": "VorC101",
+   "c": [
+    1921,
+    1451,
+    1879,
+    1451
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC101"
+  },
+  {
+   "_id": "VorC102",
+   "c": [
+    1879,
+    1451,
+    1849,
+    1421
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC102"
+  },
+  {
+   "_id": "VorC103",
+   "c": [
+    1849,
+    1421,
+    1849,
+    1379
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC103"
+  },
+  {
+   "_id": "VorC104",
+   "c": [
+    1849,
+    1379,
+    1879,
+    1349
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC104"
+  },
+  {
+   "_id": "VorC105",
+   "c": [
+    1879,
+    1349,
+    1921,
+    1349
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC105"
+  },
+  {
+   "_id": "VorC106",
+   "c": [
+    1921,
+    1349,
+    1951,
+    1379
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC106"
+  },
+  {
+   "_id": "VorC107",
+   "c": [
+    1951,
+    1379,
+    1951,
+    1421
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC107"
+  },
+  {
+   "_id": "VorC200",
+   "c": [
+    3651,
+    1421,
+    3621,
+    1451
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC200"
+  },
+  {
+   "_id": "VorC201",
+   "c": [
+    3621,
+    1451,
+    3579,
+    1451
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC201"
+  },
+  {
+   "_id": "VorC202",
+   "c": [
+    3579,
+    1451,
+    3549,
+    1421
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC202"
+  },
+  {
+   "_id": "VorC203",
+   "c": [
+    3549,
+    1421,
+    3549,
+    1379
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC203"
+  },
+  {
+   "_id": "VorC204",
+   "c": [
+    3549,
+    1379,
+    3579,
+    1349
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC204"
+  },
+  {
+   "_id": "VorC205",
+   "c": [
+    3579,
+    1349,
+    3621,
+    1349
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC205"
+  },
+  {
+   "_id": "VorC206",
+   "c": [
+    3621,
+    1349,
+    3651,
+    1379
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC206"
+  },
+  {
+   "_id": "VorC207",
+   "c": [
+    3651,
+    1379,
+    3651,
+    1421
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC207"
+  },
+  {
+   "_id": "VorC300",
+   "c": [
+    4251,
+    1421,
+    4221,
+    1451
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC300"
+  },
+  {
+   "_id": "VorC301",
+   "c": [
+    4221,
+    1451,
+    4179,
+    1451
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC301"
+  },
+  {
+   "_id": "VorC302",
+   "c": [
+    4179,
+    1451,
+    4149,
+    1421
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC302"
+  },
+  {
+   "_id": "VorC303",
+   "c": [
+    4149,
+    1421,
+    4149,
+    1379
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC303"
+  },
+  {
+   "_id": "VorC304",
+   "c": [
+    4149,
+    1379,
+    4179,
+    1349
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC304"
+  },
+  {
+   "_id": "VorC305",
+   "c": [
+    4179,
+    1349,
+    4221,
+    1349
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC305"
+  },
+  {
+   "_id": "VorC306",
+   "c": [
+    4221,
+    1349,
+    4251,
+    1379
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC306"
+  },
+  {
+   "_id": "VorC307",
+   "c": [
+    4251,
+    1379,
+    4251,
+    1421
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC307"
+  },
+  {
+   "_id": "VorC400",
+   "c": [
+    1351,
+    2121,
+    1321,
+    2151
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC400"
+  },
+  {
+   "_id": "VorC401",
+   "c": [
+    1321,
+    2151,
+    1279,
+    2151
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC401"
+  },
+  {
+   "_id": "VorC402",
+   "c": [
+    1279,
+    2151,
+    1249,
+    2121
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC402"
+  },
+  {
+   "_id": "VorC403",
+   "c": [
+    1249,
+    2121,
+    1249,
+    2079
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC403"
+  },
+  {
+   "_id": "VorC404",
+   "c": [
+    1249,
+    2079,
+    1279,
+    2049
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC404"
+  },
+  {
+   "_id": "VorC405",
+   "c": [
+    1279,
+    2049,
+    1321,
+    2049
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC405"
+  },
+  {
+   "_id": "VorC406",
+   "c": [
+    1321,
+    2049,
+    1351,
+    2079
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC406"
+  },
+  {
+   "_id": "VorC407",
+   "c": [
+    1351,
+    2079,
+    1351,
+    2121
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC407"
+  },
+  {
+   "_id": "VorC500",
+   "c": [
+    1951,
+    2121,
+    1921,
+    2151
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC500"
+  },
+  {
+   "_id": "VorC501",
+   "c": [
+    1921,
+    2151,
+    1879,
+    2151
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC501"
+  },
+  {
+   "_id": "VorC502",
+   "c": [
+    1879,
+    2151,
+    1849,
+    2121
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC502"
+  },
+  {
+   "_id": "VorC503",
+   "c": [
+    1849,
+    2121,
+    1849,
+    2079
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC503"
+  },
+  {
+   "_id": "VorC504",
+   "c": [
+    1849,
+    2079,
+    1879,
+    2049
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC504"
+  },
+  {
+   "_id": "VorC505",
+   "c": [
+    1879,
+    2049,
+    1921,
+    2049
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC505"
+  },
+  {
+   "_id": "VorC506",
+   "c": [
+    1921,
+    2049,
+    1951,
+    2079
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC506"
+  },
+  {
+   "_id": "VorC507",
+   "c": [
+    1951,
+    2079,
+    1951,
+    2121
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC507"
+  },
+  {
+   "_id": "VorC600",
+   "c": [
+    3651,
+    2121,
+    3621,
+    2151
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC600"
+  },
+  {
+   "_id": "VorC601",
+   "c": [
+    3621,
+    2151,
+    3579,
+    2151
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC601"
+  },
+  {
+   "_id": "VorC602",
+   "c": [
+    3579,
+    2151,
+    3549,
+    2121
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC602"
+  },
+  {
+   "_id": "VorC603",
+   "c": [
+    3549,
+    2121,
+    3549,
+    2079
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC603"
+  },
+  {
+   "_id": "VorC604",
+   "c": [
+    3549,
+    2079,
+    3579,
+    2049
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC604"
+  },
+  {
+   "_id": "VorC605",
+   "c": [
+    3579,
+    2049,
+    3621,
+    2049
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC605"
+  },
+  {
+   "_id": "VorC606",
+   "c": [
+    3621,
+    2049,
+    3651,
+    2079
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC606"
+  },
+  {
+   "_id": "VorC607",
+   "c": [
+    3651,
+    2079,
+    3651,
+    2121
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC607"
+  },
+  {
+   "_id": "VorC700",
+   "c": [
+    4251,
+    2121,
+    4221,
+    2151
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC700"
+  },
+  {
+   "_id": "VorC701",
+   "c": [
+    4221,
+    2151,
+    4179,
+    2151
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC701"
+  },
+  {
+   "_id": "VorC702",
+   "c": [
+    4179,
+    2151,
+    4149,
+    2121
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC702"
+  },
+  {
+   "_id": "VorC703",
+   "c": [
+    4149,
+    2121,
+    4149,
+    2079
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC703"
+  },
+  {
+   "_id": "VorC704",
+   "c": [
+    4149,
+    2079,
+    4179,
+    2049
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC704"
+  },
+  {
+   "_id": "VorC705",
+   "c": [
+    4179,
+    2049,
+    4221,
+    2049
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC705"
+  },
+  {
+   "_id": "VorC706",
+   "c": [
+    4221,
+    2049,
+    4251,
+    2079
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC706"
+  },
+  {
+   "_id": "VorC707",
+   "c": [
+    4251,
+    2079,
+    4251,
+    2121
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 20,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorC707"
+  },
+  {
+   "_id": "VorP00",
+   "c": [
+    1000,
+    1750,
+    1500,
+    1750
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 0,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorP00"
+  },
+  {
+   "_id": "VorP01",
+   "c": [
+    1700,
+    1750,
+    3800,
+    1750
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 0,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorP01"
+  },
+  {
+   "_id": "VorP02",
+   "c": [
+    4000,
+    1750,
+    4500,
+    1750
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 0,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorP02"
+  },
+  {
+   "_id": "VorP10",
+   "c": [
+    1000,
+    2050,
+    1500,
+    2050
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 0,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorP10"
+  },
+  {
+   "_id": "VorP11",
+   "c": [
+    1700,
+    2050,
+    3800,
+    2050
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 0,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorP11"
+  },
+  {
+   "_id": "VorP12",
+   "c": [
+    4000,
+    2050,
+    4500,
+    2050
+   ],
+   "light": 0,
+   "move": 20,
+   "sight": 0,
+   "sound": 0,
+   "dir": 0,
+   "door": 0,
+   "ds": 0,
+   "threshold": {
+    "attenuation": false
+   },
+   "animation": null,
+   "flags": {},
+   "_key": "!scenes.walls!VorSceneHell01.VorP12"
+  }
+ ],
+ "journal": null,
+ "playlist": null,
+ "playlistSound": null,
+ "folder": null,
+ "sort": 0,
+ "ownership": {
+  "default": 2
+ },
+ "flags": {},
+ "_key": "!scenes!VorSceneHell01"
+}

@@ -69,6 +69,16 @@
         "PLAYER": "LIMITED",
         "ASSISTANT": "OWNER"
       }
+    },
+    {
+      "name": "ragnarok-reborn-scenes",
+      "label": "The New Ragnarok Reborn — Battlemaps",
+      "path": "packs/ragnarok-reborn-scenes",
+      "type": "Scene",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
     }
   ],
   "flags": {}
