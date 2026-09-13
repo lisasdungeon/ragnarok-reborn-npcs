@@ -186,6 +186,27 @@ Release notes are extracted from the README changelog section for that version.
 The stable installer URL is
 `https://github.com/lisasdungeon/ragnarok-reborn-npcs/releases/latest/download/module.json`.
 
+## Nightly upstream probe
+
+The PR/release gates check the repo against itself; `.github/workflows/nightly.yml`
+checks it against the world. Every night (and on demand via workflow_dispatch)
+it runs `tools/check-dnd5e-compat.py`, which compares live upstream state
+against what the repo files declare — nothing about either version is
+hardcoded, so the fix is always a repo edit:
+
+- **dnd5e** — GitHub `releases/latest`'s `system.json` must satisfy
+  `module.json`'s `systems` entry: latest ≥ `minimum`, latest's minor line
+  inside `verified`'s line ("6.0" covers the whole 6.0.* patch line), and ≤
+  `max` if declared.
+- **CLI** — `npm view @foundryvtt/foundryvtt-cli version` must stay inside the
+  `package.json` devDependency's major (a caret range self-tolerates
+  same-major updates).
+
+A probe failure — or a full `npm run check` that only fails with the
+`npm update`d latest CLI — opens or re-notes one issue labelled `nightly-rot`;
+a green night closes it, so silence means healthy. Nightly failures never
+block PRs or releases.
+
 ## Golden rules
 
 1. **One writer per file.** The table above is the contract.

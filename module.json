@@ -16,6 +16,15 @@
     "minimum": "14.367",
     "verified": "14"
   },
+  "systems": [
+    {
+      "id": "dnd5e",
+      "compatibility": {
+        "minimum": "6.0.0",
+        "verified": "6.0.1"
+      }
+    }
+  ],
   "relationships": {
     "requires": [
       {
