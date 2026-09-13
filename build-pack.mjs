@@ -6,6 +6,7 @@
 //   packs/_source/ragnarok-reborn-handouts  → packs/ragnarok-reborn-handouts   (JournalEntry)
 //   packs/_source/ragnarok-reborn-loot      → packs/ragnarok-reborn-loot       (Item)
 //   packs/_source/ragnarok-reborn-scenes    → packs/ragnarok-reborn-scenes     (Scene)
+//   packs/_source/ragnarok-reborn-demo      → packs/ragnarok-reborn-demo       (Adventure)
 //
 // Usage:
 //   node build-pack.mjs                    → compile all packs to packs/
@@ -23,6 +24,7 @@ const packs = [
   "ragnarok-reborn-handouts",
   "ragnarok-reborn-loot",
   "ragnarok-reborn-scenes",
+  "ragnarok-reborn-demo",
 ];
 
 const args = process.argv.slice(2);

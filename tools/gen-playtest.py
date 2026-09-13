@@ -303,9 +303,9 @@ def differing_copies(item):
                 cr = doc["system"]["details"]["cr"]
                 cr = cr if isinstance(cr, int) else cr.get("value")
                 if fname == "Umbrathor.json":
-                    label = f"{doc['name']} (CR {cr}) copy"
+                    label = f"{doc['name']} (CR {cr})"
                 else:
-                    label = f"{VARIANT_LABEL.get(fname, fname)} (CR {cr}) copy"
+                    label = f"{VARIANT_LABEL.get(fname, fname)} (CR {cr})"
                 out.append(("/".join(sorted(ds)), label))
     return out
 

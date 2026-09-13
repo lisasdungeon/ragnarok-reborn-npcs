@@ -1,0 +1,171 @@
+{
+  "name": "Vorath's Hellheim Throne Room — Scene Guide",
+  "pages": [
+    {
+      "name": "Overview",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>A ready-to-run boss arena for <strong>Vorath, Demon Lord of Helheim</strong> (CR 15) — an infernal audience chamber built around fear, fire, and a demon lord who <em>hovers</em>. Everything below uses core Foundry only. Pairs with the <em>Vorath — Phase-by-Phase Encounter Runbook</em> in this pack.</p><p><em>Scene skeleton:</em> grid 100 px = 5 ft, about 46 × 30 squares (230 × 150 ft), darkness level <strong>0.6–0.7</strong> (not fully black — this room glows), global illumination <strong>off</strong>, darkness color <span style='font-family:monospace'>#140604</span>.</p><p><strong>How it differs from Umbrathor's Shadow Cavern:</strong> the Cavern hides enemies in darkness; the Throne Room shows you exactly what's coming and frightens you anyway.</p>",
+        "markdown": ""
+      },
+      "_id": "VorGuideOverv01",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 100000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "name": "Walls & Vision",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Perimeter:</strong> standard walls, fully wrapped; the party enters at one end and Vorath awaits at the other.</p><p><strong>Grand entrance doors</strong> (×2 iron, locked): convert to standard walls once the fight starts — Vorath commands the room.</p><p><strong>Dais and throne:</strong> standard-wall ring with a wide stair gap; Vorath hovers over the throne and his lair actions originate there.</p><p><strong>Pillar colonnades</strong> (two rows): <em>terrain walls</em> that break sight lines — cover from Hellfire Bolt lanes and escape lanes from his 15-ft Aura of Despair.</p><p><strong>Side alcoves</strong> (×2–3): thin-walled trophy/bone-pile nooks — melee chokepoints (and where the Zombie shambles out of).</p><p><strong>Chasm before the dais</strong> (optional): standard walls with a bridging gap. Vorath flies; the party must cross — brutal with Ember Storm.</p><p><strong>Key interplay:</strong> Vorath <strong>hovers at fly 70 ft</strong> and has <strong>truesight 60 ft</strong> — his own smoke and gloom hinder only the party. Token elevation ≈ 15 ft sells the hover.</p>",
+        "markdown": ""
+      },
+      "_id": "VorGuideWalls01",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 200000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "name": "Lighting & Atmosphere",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<table><tr><th>Light</th><th>Position</th><th>Bright/Dim</th><th>Color</th><th>Intensity</th><th>Animation</th></tr><tr><td>Iron braziers ×6</td><td>colonnade ends + dais flanks</td><td>20 / 60</td><td>#ff5a1f</td><td>0.65</td><td>Torch, speed 3, intensity 6</td></tr><tr><td>Throne glow</td><td>under the throne</td><td>15 / 45</td><td>#b1121f</td><td>0.55</td><td>Pulse, speed 1, intensity 3</td></tr><tr><td>Hellfire fissures ×2–3</td><td>floor cracks</td><td>10 / 30</td><td>#ff7a29</td><td>0.5</td><td>Flickering, speed 5, intensity 4</td></tr><tr><td>Smoke haze</td><td>over the chasm (optional)</td><td>30 / 60</td><td>#3a1c10</td><td>0.25</td><td>Chaos, slow</td></tr></table><p><strong>Smoldering Air (regional effect):</strong> wounded creatures take 1d6 fire at turn start; don't add bright light beyond the braziers — the ambient red dimness <em>is</em> the effect.</p><p><strong>Watchful Dread:</strong> frightened creatures take 1d6 psychic; the fear engine is the fight — mind the 15-ft Aura of Despair radius when placing pillars.</p><p><strong>Burning Whispers:</strong> long rests in the room fail; no turtling.</p><p><strong>Token lights:</strong> Vorath 25/60 #b1121f intensity 0.4 slow Pulse — the second-brightest thing in the room, on purpose. Zombie none. PCs only their own light; brazier positions are where the fight actually happens.</p>",
+        "markdown": ""
+      },
+      "_id": "VorGuideLight1",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 300000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "name": "Sound & Effects",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Playlist:</strong> low organ drone + crackling-fire bed, looped (volume ≈ 0.35), plus one iron-door-slam stinger for the entrance doors locking.</p><p><strong>Ember Storm prop:</strong> pre-place a hidden 30-ft ambient light (color #ff7a29, animation Chaos, speed 5, intensity 8) centered on the dais; toggle it on when the lair action fires.</p><p><strong>Throne of Chains prop:</strong> a chain-art tile over the dais with a hidden 10-ft light; reveal when the chains erupt.</p><p><strong>Gates of Dread:</strong> skip full-screen flashes — instead toggle the hellfire fissure lights to maximum intensity for one round. Cheap and effective.</p>",
+        "markdown": ""
+      },
+      "_id": "VorGuideSndFx1",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 400000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    },
+    {
+      "name": "Running the Fight",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<ol><li>Drop <strong>Vorath</strong> hovering above the throne (token elevation ≈ 15 ft), and a <strong>Zombie</strong> in an alcove if you pre-cast Animate Dead.</li><li>Tick <strong>Inside Lair?</strong> on his sheet while the fight is in the throne room, and add a <strong>\"Lair\" combatant at initiative 20</strong> (dnd5e 6.0.x doesn't auto-insert one). Roll one of the five lair actions each round; the Lair Actions (Hellheim Throne Room) banner is the read-aloud script.</li><li>Regional effects run passively: Smoldering Air, Watchful Dread, Burning Whispers.</li><li>Follow the runbook phases: <strong>Dark Burst round 1</strong>, aura pressure, the one-slot Cloudkill-vs-Dominate decision at 180 HP, Legendary Resistances saved for save-or-lose, Ember Storm and Throne of Chains in the last third.</li><li><strong>Death beat:</strong> the braziers flare violet-white, the chains shatter, the throne glow gutters out (kill the throne light), and the regional effects fade over 1d10 days.</li></ol><p><strong>Difficulty dials:</strong> remove the chasm for melee-heavy parties; pre-animate a second Zombie for strong ones; if the fear engine overwhelms casters, drop Watchful Dread's psychic tick to 1d4.</p>",
+        "markdown": ""
+      },
+      "_id": "VorGuideRun001",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 500000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {}
+    }
+  ],
+  "folder": null,
+  "sort": 300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "core": {
+      "viewMode": 2
+    }
+  },
+  "_stats": {
+    "duplicateSource": null,
+    "coreVersion": "13.344",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.1",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "exportSource": null
+  },
+  "_id": "VorSceneGuide001"
+}

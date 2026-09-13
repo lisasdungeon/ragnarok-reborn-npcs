@@ -1,0 +1,51 @@
+{
+  "name": "The New Ragnarok Reborn — Demo Adventure",
+  "img": "modules/ragnarok-reborn-npcs/maps/shadow-cavern.webp",
+  "description": "<p>Everything in this module bundled as one playable import: the five NPCs (Ewoklin, the Ewokling, Umbrathor at CR 18 and CR 13, Vorath), both pre-built battlemaps with walls, lighting, and pre-placed tokens, the Cloak of Shadows and Amulet of the Night, and all journals — player guide, party handouts, scene guides, encounter runbooks, and the 10-minute playtest checklist.</p><p><strong>To play:</strong> import this adventure, click <em>Import All</em> (or pick pieces), activate a scene, and run the encounter from its runbook. The journal links below jump to the guides; the scene tokens are already bound to the bundled actors.</p><ul><li>@UUID[JournalEntry.PlayerGuide0001.JournalEntryPage.{What's in the Box}]{Player's Guide}</li><li>@UUID[JournalEntry.UmbEncRunbook01.JournalEntryPage.{Before the Fight}]{Umbrathor runbook}</li><li>@UUID[JournalEntry.VorEncRunbook01.JournalEntryPage.{Before the Fight}]{Vorath runbook}</li><li>@UUID[JournalEntry.PlayTestChecklist01.JournalEntryPage.{Overview & Setup}]{Playtest checklist}</li></ul>",
+  "actors": [
+    "actors/EwoklinNPC0000001.json",
+    "actors/EwoklingNPC00001.json",
+    "actors/UmbrathorCR1800001.json",
+    "actors/UmbrathorCR1300001.json",
+    "actors/VorathDemonLd0001.json"
+  ],
+  "combats": [],
+  "cards": [],
+  "folders": [],
+  "items": [
+    "items/LootCloakShad001.json",
+    "items/LootAmuletNite01.json"
+  ],
+  "journal": [
+    "journal/PlayerGuide0001.json",
+    "journal/LootHandoutsUmbr01.json",
+    "journal/UmbSceneGuide01.json",
+    "journal/VorSceneGuide001.json",
+    "journal/UmbEncRunbook01.json",
+    "journal/VorEncRunbook01.json",
+    "journal/PlayTestChecklist01.json"
+  ],
+  "macros": [],
+  "playlists": [],
+  "scenes": [
+    "scenes/UmbSceneCav001.json",
+    "scenes/VorSceneHell01.json"
+  ],
+  "tables": [],
+  "_id": "DemoAdvRagReb001",
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "duplicateSource": null,
+    "coreVersion": "13.344",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.1",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "exportSource": null
+  },
+  "_key": "!adventures!DemoAdvRagReb001"
+}

@@ -28,8 +28,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!journal.pages!PlayTestChecklist01.PlayTestPrep00001"
+      "flags": {}
     },
     {
       "name": "Ewoklin & Ewokling (3 min)",
@@ -58,8 +57,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!journal.pages!PlayTestChecklist01.PlayTestEwoks001"
+      "flags": {}
     },
     {
       "name": "Umbrathor (4 min)",
@@ -88,8 +86,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!journal.pages!PlayTestChecklist01.PlayTestUmbra001"
+      "flags": {}
     },
     {
       "name": "Vorath (3 min)",
@@ -118,8 +115,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!journal.pages!PlayTestChecklist01.PlayTestVorath01"
+      "flags": {}
     },
     {
       "name": "Ledger & Verdict",
@@ -148,12 +144,10 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!journal.pages!PlayTestChecklist01.PlayTestLedger01"
+      "flags": {}
     }
   ],
   "_id": "PlayTestChecklist01",
-  "_key": "!journal!PlayTestChecklist01",
   "flags": {
     "core": {
       "viewMode": 2
