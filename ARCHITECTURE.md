@@ -123,12 +123,15 @@ the workflow is just `npm run check`, so local and CI cannot drift):
 2. **documented data** — README + playtest checklist ↔ loose JSONs, both
    directions, plus regression signatures (non-flat attacks, computed DCs,
    undice-encoded heals — the exact shapes of the 1.3.1 and 1.3.2 bugs).
-3. **verification snapshot** — `docs/actor-verification.json` matches the loose JSONs.
-4. **pack snapshot** — from git HEAD (not the working tree, so a local rebuild can't fake a pass).
-5. **build** — compile all five packs from sources.
-6. **verify-packs** — every source document survives the LevelDB round-trip.
-7. **scene maps** — every scene's `background.src` exists in `maps/`.
-8. **freshness** — committed packs are exactly what the sources compile to.
+3. **architecture doc** — this file's factual claims (file existence, zip list,
+   pack declarations, gate steps, script flags) match the actual repo. The doc
+   gates itself.
+4. **verification snapshot** — `docs/actor-verification.json` matches the loose JSONs.
+5. **pack snapshot** — from git HEAD (not the working tree, so a local rebuild can't fake a pass).
+6. **build** — compile all five packs from sources.
+7. **verify-packs** — every source document survives the LevelDB round-trip.
+8. **scene maps** — every scene's `background.src` exists in `maps/`.
+9. **freshness** — committed packs are exactly what the sources compile to.
 
 `check-fresh.mjs` also has a self-contained single-shot mode
 (`--packs <name> --from-head`, plus `--cli-dir`/`FVTT_CLI_DIR` for checkouts
@@ -146,9 +149,10 @@ docstring.
 ## Release flow
 
 `.github/workflows/release.yml` fires when `module.json`'s version changes on
-master: compile → verify → zip (module.json, README, packs, maps, tools, docs,
-**plus the seven loose JSONs at the zip root**) → GitHub Release with four
-assets (zip, manifest, `check-actor-fixes.py`, `docs/actor-verification.json`).
+master: compile → verify → zip (module.json, README, **ARCHITECTURE.md**, packs,
+maps, tools, docs, **plus the seven loose JSONs at the zip root**) → GitHub
+Release with four assets (zip, manifest, `check-actor-fixes.py`,
+`docs/actor-verification.json`).
 Release notes are extracted from the README changelog section for that version.
 The stable installer URL is
 `https://github.com/lisasdungeon/ragnarok-reborn-npcs/releases/latest/download/module.json`.

@@ -55,6 +55,15 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 
 ## Changelog
 
+### Unreleased
+- **ARCHITECTURE.md now gates itself**: `tools/check-architecture-doc.py`
+  (step 3 of `npm run check`, also `npm run check:arch`) asserts the doc's
+  factual claims against the actual repo — required files exist, the release
+  zip's contents and assets match `release.yml`, pack declarations match
+  `module.json`, the doc's gate-step list matches `check_all.py`, and every
+  flag the doc documents is implemented by a script (with a phantom-flag sweep
+  for anything else it mentions).
+
 ### 1.3.3
 - **Scene freshness moves to the generator**: `tools/scene-tools/build_scenes.py`
   now self-checks after every run — it freshly recompiles the scenes pack and
