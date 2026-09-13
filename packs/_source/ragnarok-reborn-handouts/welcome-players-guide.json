@@ -1,0 +1,75 @@
+{
+  "name": "Welcome to the New Ragnarok Reborn — Player's Guide",
+  "pages": [
+    {
+      "name": "What's in the Box",
+      "type": "text",
+      "title": { "show": true, "level": 2 },
+      "text": {
+        "format": 1,
+        "content": "<p><em>You found this page tucked into the compendium cabinet like a map someone folded in a hurry. It is not lore. It is better: it is a list of things you can use.</em></p><h3>The cast</h3><ul><li><strong>Ewoklin, Prankster of the Grove</strong> — a trickster who fights with claws, spears, and a mischievous streak a mile wide. If the GM splits him, suddenly there are more of him. This is not a drill.</li><li><strong>Ewoklings</strong> — his minions. Small, quick, surprisingly rude.</li><li><strong>Umbrathor, the Shadow Tyrant</strong> — the reason the lanterns lean. He comes in two sizes: full nightmare, and the smaller one the deep roads remember. Bring fire.</li><li><strong>Vorath, Demon Lord of Helheim</strong> — spells, legendary actions, and a throne room that hates you. Bring a plan, then bring a better one.</li></ul><h3>The places</h3><ul><li><strong>Umbrathor's Shadow Cavern</strong> — the dark here is a rules lawyer. Walls, lights, and atmosphere are already built into the map; when the GM drops it in, it just works.</li><li><strong>Vorath's Hellheim Throne Room</strong> — braziers, chains, and dread included at no extra charge.</li></ul><h3>The treasures</h3><ul><li><strong>The Cloak of Shadows</strong> and <strong>the Amulet of the Night</strong> — real, draggable magic items with working effects. See <em>The Treasures</em> page, or skip straight to the good part in the party handout: @UUID[JournalEntry.LootHandoutsUmbr01.JournalEntryPage.{The Cloak of Shadows}]{The Cloak of Shadows} and @UUID[JournalEntry.LootHandoutsUmbr01.JournalEntryPage.{The Amulet of the Night}]{the Amulet of the Night}.</li></ul>"
+      },
+      "_id": "PlayerGuidePg0001",
+      "image": {},
+      "video": { "controls": true, "volume": 0.5 },
+      "src": null,
+      "system": { "tooltip": "", "type": "rule" },
+      "sort": 100000,
+      "ownership": { "default": 1 },
+      "flags": {},
+      "_key": "!journal.pages!PlayerGuide0001.PlayerGuidePg0001"
+    },
+    {
+      "name": "Dragging Things Into the Game",
+      "type": "text",
+      "title": { "show": true, "level": 2 },
+      "text": {
+        "format": 1,
+        "content": "<p><em>Everything in the packs is drag-and-drop. No importing, no re-linking, no apology.</em></p><h3>Monsters (mostly your GM's problem)</h3><ol><li>Open the <strong>New Ragnarok Reborn — NPCs</strong> compendium.</li><li>Drag a creature onto the map — a token appears, and its whole sheet (attacks, spells, legendary actions, lair actions, effects) comes with it.</li><li>Roll things by clicking them on the sheet. If a chat card shows a different bonus or DC than this module's guides promise, tell your GM: the module has tools for catching exactly that.</li></ol><h3>Scenes</h3><ol><li>The two battlemaps live in the <strong>scenes</strong> compendium with their walls, lighting, and sounds pre-built.</li><li>Drag one into the <strong>Scene Directory</strong> (or let your GM do it), then activate it. No wall-drawing, no light-fiddling — the cavern is already dark where it's supposed to be dark.</li></ol><h3>Magic items (this one's for you)</h3><ol><li>Open the <strong>Treasures</strong> compendium.</li><li>Drag the <strong>Cloak of Shadows</strong> or <strong>Amulet of the Night</strong> onto your character sheet's inventory. Yes, really — the item keeps its full power when it lands on a hero.</li><li>Both require <strong>attunement</strong> (ask your GM, and maybe ask what else is already occupying your soul-slot).</li><li>Once attuned, <strong>equip</strong> the item and toggle its effect on. The cloak turns on Stealth advantage in dim light or darkness; the amulet adds its rider to your attacks automatically while it's on.</li></ol><h3>Handouts like this one</h3><p>Journals open straight from their compendium. The party handouts are marked player-readable; if a page is labelled GM's Eyes Only, do the honorable thing.</p>"
+      },
+      "_id": "PlayerGuidePg0002",
+      "image": {},
+      "video": { "controls": true, "volume": 0.5 },
+      "src": null,
+      "system": { "tooltip": "", "type": "rule" },
+      "sort": 200000,
+      "ownership": { "default": 1 },
+      "flags": {},
+      "_key": "!journal.pages!PlayerGuide0001.PlayerGuidePg0002"
+    },
+    {
+      "name": "The Treasures",
+      "type": "text",
+      "title": { "show": true, "level": 2 },
+      "text": {
+        "format": 1,
+        "content": "<p><em>The mechanics, minus the poetry. The poetry lives with the handouts.</em></p><h3>Cloak of Shadows</h3><p><em>Wondrous item, rare (requires attunement)</em></p><p>While wearing it in dim light or darkness, you have <strong>advantage on Dexterity (Stealth) checks</strong>. The effect is a toggle: equip the cloak, switch it on when the lights drop, and watch your sneaking improve.</p><h3>Amulet of the Night</h3><p><em>Wondrous item, rare (requires attunement)</em></p><p>While wearing it, when you deal necrotic damage to a creature with a <strong>melee or ranged spell attack</strong>, the target takes an extra <strong>1d6</strong> necrotic damage. Warlocks and gish: this is a kiss from the deep roads. (The fainter copy carried by the Shadow Tyrant's weaker reflection deals only <strong>1d4</strong> — the crystal remembers what it used to feed.)</p><p><em>Both items keep working exactly as described forever — if a roll ever contradicts this page, the roll is wrong and your GM has tools to prove it.</em></p>"
+      },
+      "_id": "PlayerGuidePg0003",
+      "image": {},
+      "video": { "controls": true, "volume": 0.5 },
+      "src": null,
+      "system": { "tooltip": "", "type": "rule" },
+      "sort": 300000,
+      "ownership": { "default": 1 },
+      "flags": {},
+      "_key": "!journal.pages!PlayerGuide0001.PlayerGuidePg0003"
+    }
+  ],
+  "folder": null,
+  "sort": 100000,
+  "ownership": { "default": 1 },
+  "flags": { "core": { "viewMode": 2 } },
+  "_stats": {
+    "duplicateSource": null,
+    "coreVersion": "13.344",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.1",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "exportSource": null
+  },
+  "_id": "PlayerGuide0001",
+  "_key": "!journal!PlayerGuide0001"
+}

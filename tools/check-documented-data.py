@@ -79,6 +79,16 @@ UNDOCUMENTED_OK = {}
 # checklist in the same two-way way as activity data.
 LOOT_DIR = os.path.join("packs", "_source", "ragnarok-reborn-loot")
 
+# Player-readable guides that quote item mechanics: their dice are swept
+# against activity + loot data in the same way as the README (any die they
+# quote must exist in the sources).
+PLAYER_GUIDES = [
+    os.path.join("packs", "_source", "ragnarok-reborn-handouts",
+                 "welcome-players-guide.json"),
+    os.path.join("packs", "_source", "ragnarok-reborn-handouts",
+                 "treasures-of-the-shadow-tyrant.json"),
+]
+
 # Checklist rows allowed to have no Runbook link, keyed by the row's Activity
 # label (item name substring) → reason. Intended to stay near-empty.
 RUNBOOK_OK = {
@@ -346,6 +356,22 @@ def main():
             fails.append(f"DOC→DATA  README documents dice '{tok}' — not present in any "
                          f"activity in the loose JSONs")
 
+    # player-facing guides quote mechanics too — sweep each one the same way
+    for guide_rel in PLAYER_GUIDES:
+        gpath = os.path.join(REPO, guide_rel)
+        if not os.path.exists(gpath):
+            fails.append(f"PLAYER GUIDE  missing source: {guide_rel}")
+            continue
+        gname = os.path.basename(guide_rel)
+        gtext = "\n".join(
+            p.get("text", {}).get("content", "")
+            for p in json.load(open(gpath, encoding="utf-8")).get("pages", []))
+        for tok in set(re.findall(r"(?<![\d.])(\d+d\d+(?:\+\d+)?)(?!\d)", gtext)):
+            if tok not in data_dice and tok not in loot_dice and tok not in TEXT_ONLY:
+                fails.append(f"PLAYER GUIDE  {gname} quotes dice "
+                             f"'{tok}' — not present in any activity or loot effect; "
+                             f"fix the guide or add it to the sources first")
+
     used = {t for t in TEXT_ONLY if t in readme or t in corpus}
     for t in sorted(set(TEXT_ONLY) - used):
         warns.append(f"TEXT_ONLY entry '{t}' no longer appears in README.md — prune it")
@@ -369,7 +395,8 @@ def main():
           f"({n_att} attacks, {n_save} saves, {n_heal} heals; "
           f"bonuses {sorted(data_bonuses)}, DCs {sorted(data_dcs)}; "
           f"loot: {n_loot} items, dice {sorted(loot_dice)}; "
-          f"checklist covers {n_chk}/{len(claims)} claims, {n_links} runbook links)")
+          f"checklist covers {n_chk}/{len(claims)} claims, {n_links} runbook links; "
+          f"{len(PLAYER_GUIDES)} player guide(s) swept)")
     return 0
 
 

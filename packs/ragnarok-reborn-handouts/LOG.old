@@ -1,3 +1,15 @@
-2026/09/13-09:06:56.589738 7d449cdfd6c0 Recovering log #207
-2026/09/13-09:06:56.592818 7d449cdfd6c0 Delete type=0 #207
-2026/09/13-09:06:56.592838 7d449cdfd6c0 Delete type=3 #206
+2026/09/13-09:36:02.734314 788d033ff6c0 Recovering log #228
+2026/09/13-09:36:02.738697 788d033ff6c0 Delete type=3 #227
+2026/09/13-09:36:02.738732 788d033ff6c0 Delete type=0 #228
+2026/09/13-09:36:02.740372 788d013fb6c0 Level-0 table #232: started
+2026/09/13-09:36:02.741874 788d013fb6c0 Level-0 table #232: 7991 bytes OK
+2026/09/13-09:36:02.744217 788d013fb6c0 Delete type=0 #230
+2026/09/13-09:36:02.744284 788d013fb6c0 Manual compaction at level-0 from '!journal!LootHandoutsUmbr01' @ 72057594037927935 : 1 .. '!journal.pages!PlayerGuide0001.PlayerGuidePg0003' @ 0 : 0; will stop at (end)
+2026/09/13-09:36:02.744308 788d013fb6c0 Manual compaction at level-1 from '!journal!LootHandoutsUmbr01' @ 72057594037927935 : 1 .. '!journal.pages!PlayerGuide0001.PlayerGuidePg0003' @ 0 : 0; will stop at '!journal.pages!PlayerGuide0001.PlayerGuidePg0003' @ 159 : 1
+2026/09/13-09:36:02.744311 788d013fb6c0 Compacting 1@1 + 1@2 files
+2026/09/13-09:36:02.745648 788d013fb6c0 Generated table #233@1: 9 keys, 7991 bytes
+2026/09/13-09:36:02.745657 788d013fb6c0 Compacted 1@1 + 1@2 files => 7991 bytes
+2026/09/13-09:36:02.747851 788d013fb6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/09/13-09:36:02.747903 788d013fb6c0 Delete type=2 #226
+2026/09/13-09:36:02.747969 788d013fb6c0 Delete type=2 #232
+2026/09/13-09:36:02.748033 788d013fb6c0 Manual compaction at level-1 from '!journal.pages!PlayerGuide0001.PlayerGuidePg0003' @ 159 : 1 .. '!journal.pages!PlayerGuide0001.PlayerGuidePg0003' @ 0 : 0; will stop at (end)
