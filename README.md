@@ -56,6 +56,15 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 ## Changelog
 
 ### Unreleased
+- **The playtest checklist is now derived, not hand-listed**: `tools/gen-playtest.py`
+  builds every row from the loose actor JSONs — bonus, dice, DC, rider statuses and
+  durations all come from the data; a small override layer carries flavor wording only.
+  Add an activity to an actor, rerun the script, and the row appears automatically
+  (48 rows now, up from 46 — two previously hand-omitted activities were picked up).
+  CR 18 / Level 8 Umbrathor is reconciled automatically, with differing values shown as
+  `(Level 8: …)` parentheticals and variant-only activities added as rows.
+
+### 1.3.3
 - **ARCHITECTURE.md now gates itself**: `tools/check-architecture-doc.py`
   (step 3 of `npm run check`, also `npm run check:arch`) asserts the doc's
   factual claims against the actual repo — required files exist, the release
