@@ -58,6 +58,13 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 ## Changelog
 
 ### Unreleased
+- **Release gate pins the checklist shape**: `verify-packs.mjs` (run by the
+  release workflow before anything publishes) now asserts the compiled
+  playtest checklist has exactly **5 pages / 48 activity rows**. A
+  `gen-playtest.py` regression — dropped rows, lost pages, a bad merge —
+  fails the release instead of shipping a wrong checklist. Deliberately
+  duplicated with the generator: if the count changes on purpose, update
+  both together.
 - **Player-facing guide handout**: *Welcome to the New Ragnarok Reborn — Player's
   Guide* joins the Party Handouts pack — what's in the module (the cast, the two
   pre-built battlemaps, the treasures), step-by-step drag-and-drop instructions for
