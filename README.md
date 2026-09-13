@@ -56,6 +56,16 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 ## Changelog
 
 ### Unreleased
+- **Scene freshness moves to the generator**: `tools/scene-tools/build_scenes.py`
+  now self-checks after every run — it freshly recompiles the scenes pack and
+  compares against the committed one (`check-fresh.mjs --packs ragnarok-reborn-scenes
+  --from-head`), exiting 1 with a `npm run build` reminder if a geometry change would
+  ship with stale compiled scenes. `SKIP_SCENE_FRESHNESS=1` skips; `FVTT_CLI_DIR`
+  points at a CLI install on checkouts that can't host `node_modules`. `check-fresh.mjs`
+  gained `--packs` filtering, `--from-head`, and `--cli-dir`; `build-pack.mjs` gained
+  pack filtering and `--out` (defaults unchanged). Also fixed: `build_scenes.py` still
+  wrote the loose Scene JSONs directly, contradicting the single-writer rule — the sync
+  is now their only writer in practice as well as in docs.
 - **New GM Guides entry: *10-Minute Playtest Checklist — Every Activity*** — a timed
   in-Foundry smoke test (46 rows + a side-effects ledger) exercising every attack, save,
   heal, summon, teleport and utility across all five actors and both magic items, with
