@@ -1,15 +1,15 @@
-2026/09/13-09:06:03.479014 77e5637bf6c0 Recovering log #181
-2026/09/13-09:06:03.482807 77e5637bf6c0 Delete type=3 #180
-2026/09/13-09:06:03.482840 77e5637bf6c0 Delete type=0 #181
-2026/09/13-09:06:03.484448 77e5617bb6c0 Level-0 table #185: started
-2026/09/13-09:06:03.485908 77e5617bb6c0 Level-0 table #185: 4487 bytes OK
-2026/09/13-09:06:03.488184 77e5617bb6c0 Delete type=0 #183
-2026/09/13-09:06:03.488251 77e5617bb6c0 Manual compaction at level-0 from '!journal!LootHandoutsUmbr01' @ 72057594037927935 : 1 .. '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 0 : 0; will stop at (end)
-2026/09/13-09:06:03.488278 77e5617bb6c0 Manual compaction at level-1 from '!journal!LootHandoutsUmbr01' @ 72057594037927935 : 1 .. '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 0 : 0; will stop at '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 117 : 1
-2026/09/13-09:06:03.488281 77e5617bb6c0 Compacting 1@1 + 1@2 files
-2026/09/13-09:06:03.489428 77e5617bb6c0 Generated table #186@1: 5 keys, 4487 bytes
-2026/09/13-09:06:03.489439 77e5617bb6c0 Compacted 1@1 + 1@2 files => 4487 bytes
-2026/09/13-09:06:03.491818 77e5617bb6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
-2026/09/13-09:06:03.491869 77e5617bb6c0 Delete type=2 #185
-2026/09/13-09:06:03.491929 77e5617bb6c0 Delete type=2 #179
-2026/09/13-09:06:03.491992 77e5617bb6c0 Manual compaction at level-1 from '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 117 : 1 .. '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 0 : 0; will stop at (end)
+2026/09/13-09:25:57.330004 76f6e67fc6c0 Recovering log #209
+2026/09/13-09:25:57.333500 76f6e67fc6c0 Delete type=3 #208
+2026/09/13-09:25:57.333533 76f6e67fc6c0 Delete type=0 #209
+2026/09/13-09:25:57.334719 76f6e5ffb6c0 Level-0 table #213: started
+2026/09/13-09:25:57.336111 76f6e5ffb6c0 Level-0 table #213: 4487 bytes OK
+2026/09/13-09:25:57.338134 76f6e5ffb6c0 Delete type=0 #211
+2026/09/13-09:25:57.338218 76f6e5ffb6c0 Manual compaction at level-0 from '!journal!LootHandoutsUmbr01' @ 72057594037927935 : 1 .. '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 0 : 0; will stop at (end)
+2026/09/13-09:25:57.338241 76f6e5ffb6c0 Manual compaction at level-1 from '!journal!LootHandoutsUmbr01' @ 72057594037927935 : 1 .. '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 0 : 0; will stop at '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 137 : 1
+2026/09/13-09:25:57.338244 76f6e5ffb6c0 Compacting 1@1 + 1@2 files
+2026/09/13-09:25:57.339395 76f6e5ffb6c0 Generated table #214@1: 5 keys, 4487 bytes
+2026/09/13-09:25:57.339405 76f6e5ffb6c0 Compacted 1@1 + 1@2 files => 4487 bytes
+2026/09/13-09:25:57.341355 76f6e5ffb6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/09/13-09:25:57.341412 76f6e5ffb6c0 Delete type=2 #205
+2026/09/13-09:25:57.341481 76f6e5ffb6c0 Delete type=2 #213
+2026/09/13-09:25:57.341542 76f6e5ffb6c0 Manual compaction at level-1 from '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 137 : 1 .. '!journal.pages!LootHandoutsUmbr01.UmbLootRumors01' @ 0 : 0; will stop at (end)

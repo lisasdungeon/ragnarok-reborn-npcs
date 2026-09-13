@@ -1,15 +1,15 @@
-2026/09/13-09:06:03.428227 77e5627bd6c0 Recovering log #185
-2026/09/13-09:06:03.432192 77e5627bd6c0 Delete type=0 #185
-2026/09/13-09:06:03.432214 77e5627bd6c0 Delete type=3 #184
-2026/09/13-09:06:03.451241 77e5617bb6c0 Level-0 table #189: started
-2026/09/13-09:06:03.453290 77e5617bb6c0 Level-0 table #189: 86906 bytes OK
-2026/09/13-09:06:03.455651 77e5617bb6c0 Delete type=0 #187
-2026/09/13-09:06:03.455760 77e5617bb6c0 Manual compaction at level-0 from '!actors!EwoklinNPC0000001' @ 72057594037927935 : 1 .. '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 0 : 0; will stop at (end)
-2026/09/13-09:06:03.455787 77e5617bb6c0 Manual compaction at level-1 from '!actors!EwoklinNPC0000001' @ 72057594037927935 : 1 .. '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 0 : 0; will stop at '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 2214 : 1
-2026/09/13-09:06:03.455791 77e5617bb6c0 Compacting 1@1 + 1@2 files
-2026/09/13-09:06:03.457791 77e5617bb6c0 Generated table #190@1: 93 keys, 86906 bytes
-2026/09/13-09:06:03.457807 77e5617bb6c0 Compacted 1@1 + 1@2 files => 86906 bytes
-2026/09/13-09:06:03.460253 77e5617bb6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
-2026/09/13-09:06:03.460337 77e5617bb6c0 Delete type=2 #183
-2026/09/13-09:06:03.460447 77e5617bb6c0 Delete type=2 #189
-2026/09/13-09:06:03.460516 77e5617bb6c0 Manual compaction at level-1 from '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 2214 : 1 .. '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 0 : 0; will stop at (end)
+2026/09/13-09:25:57.279550 76f6e6ffd6c0 Recovering log #213
+2026/09/13-09:25:57.287097 76f6e6ffd6c0 Delete type=3 #212
+2026/09/13-09:25:57.287147 76f6e6ffd6c0 Delete type=0 #213
+2026/09/13-09:25:57.305594 76f6e5ffb6c0 Level-0 table #217: started
+2026/09/13-09:25:57.307599 76f6e5ffb6c0 Level-0 table #217: 86953 bytes OK
+2026/09/13-09:25:57.309760 76f6e5ffb6c0 Delete type=0 #215
+2026/09/13-09:25:57.309877 76f6e5ffb6c0 Manual compaction at level-0 from '!actors!EwoklinNPC0000001' @ 72057594037927935 : 1 .. '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 0 : 0; will stop at (end)
+2026/09/13-09:25:57.309907 76f6e5ffb6c0 Manual compaction at level-1 from '!actors!EwoklinNPC0000001' @ 72057594037927935 : 1 .. '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 0 : 0; will stop at '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 2586 : 1
+2026/09/13-09:25:57.309912 76f6e5ffb6c0 Compacting 1@1 + 1@2 files
+2026/09/13-09:25:57.311804 76f6e5ffb6c0 Generated table #218@1: 93 keys, 86953 bytes
+2026/09/13-09:25:57.311815 76f6e5ffb6c0 Compacted 1@1 + 1@2 files => 86953 bytes
+2026/09/13-09:25:57.313665 76f6e5ffb6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/09/13-09:25:57.313725 76f6e5ffb6c0 Delete type=2 #217
+2026/09/13-09:25:57.313797 76f6e5ffb6c0 Delete type=2 #209
+2026/09/13-09:25:57.313875 76f6e5ffb6c0 Manual compaction at level-1 from '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 2586 : 1 .. '!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001' @ 0 : 0; will stop at (end)
