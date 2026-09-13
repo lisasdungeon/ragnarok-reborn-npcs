@@ -1,11 +1,11 @@
 {
   "_id": "LootCloakShad001",
-  "name": "Cloak of Shadows",
+  "name": "Cloak of Shadows (stale test)",
   "type": "equipment",
   "img": "icons/magic/air/fog-gas-smoke-dense-gray.webp",
   "system": {
     "description": {
-      "value": "<p><em>Wondrous item (requires attunement)</em></p><p>This tattered cloak drinks the light around it. While wearing it in dim light or darkness, you have advantage on Dexterity (Stealth) checks.</p><p><em>The inner collar bears a name burned away by something colder than fire, and a single word in Abyssal: “returnable.”</em></p>",
+      "value": "<p><em>Wondrous item (requires attunement)</em></p><p>This tattered cloak drinks the light around it. While wearing it in dim light or darkness, you have advantage on Dexterity (Stealth) checks.</p><p><em>The inner collar bears a name burned away by something colder than fire, and a single word in Abyssal: \u201creturnable.\u201d</em></p>",
       "chat": ""
     },
     "source": {
