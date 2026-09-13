@@ -9,10 +9,19 @@ Art and walls come from the same geometry module, so they align by construction.
 The loose drag-and-drop Scene JSONs at the repo root are NOT written here —
 regenerate them with `python3 tools/sync-npc-sources.py` (or `npm run sync:npcs`),
 which derives them from the pack sources by stripping the compiler `_key` fields.
-"""
+
+After writing, the script self-checks scene freshness: it recompiles the scenes
+pack in a scratch dir via check-fresh.mjs --from-head and compares against the
+COMMITTED pack, so a geometry change can't ship with stale compiled scenes
+(exit 1 with a `npm run build` reminder). Set SKIP_SCENE_FRESHNESS=1 to skip;
+on exFAT checkouts (no repo node_modules) point FVTT_CLI_DIR at a native-FS
+checkout with the Foundry CLI installed, e.g.
+    FVTT_CLI_DIR=/tmp/fvtt-pack-build python3 tools/scene-tools/build_scenes.py"""
 import json
 import math
 import os
+import subprocess
+import sys
 import time
 
 from PIL import Image
@@ -455,13 +464,37 @@ def export_maps():
         print(f"{dst}: {os.path.getsize(out) // 1024} KB")
 
 
+def check_freshness():
+    """Fail loudly if the committed scenes pack no longer matches these sources.
+
+    Runs check-fresh.mjs in single-shot mode: snapshots the committed scenes
+    pack from git HEAD, freshly compiles packs/_source/ragnarok-reborn-scenes
+    into a scratch dir, and compares document sets. A mismatch means the next
+    `npm run check`/CI run would fail anyway — better to hear it now, with a
+    `npm run build` reminder, than after the commit.
+    """
+    if os.environ.get("SKIP_SCENE_FRESHNESS"):
+        print("scene freshness check skipped (SKIP_SCENE_FRESHNESS=1)")
+        return 0
+    cmd = ["node", os.path.join(MODULE, "check-fresh.mjs"),
+           "--packs", "ragnarok-reborn-scenes", "--from-head"]
+    env = dict(os.environ)  # FVTT_CLI_DIR passes through to check-fresh.mjs
+    try:
+        r = subprocess.run(cmd, cwd=MODULE, env=env)
+    except FileNotFoundError:
+        print("warn: node not found — skipped scene freshness check "
+              "(run `npm run check` before committing)")
+        return 0
+    if r.returncode != 0:
+        print("\nscene freshness check FAILED — the compiled scenes pack is stale.")
+        print("Run `npm run build` (or `node build-pack.mjs ragnarok-reborn-scenes`) "
+              "and commit packs/ragnarok-reborn-scenes together with these sources.")
+    return r.returncode
+
+
 if __name__ == "__main__":
     cav = build_cavern()
     hel = build_hellheim()
-
-    # loose drag-and-drop copies (no _keys)
-    write_json(os.path.join(ROOT, "Umbrathor's Shadow Cavern (Scene).json"), cav)
-    write_json(os.path.join(ROOT, "Vorath's Hellheim Throne Room (Scene).json"), hel)
 
     # keyed pack sources
     write_json(os.path.join(PACK_SRC, "umbrathors-shadow-cavern.json"), key_scene(cav))
@@ -471,3 +504,8 @@ if __name__ == "__main__":
 
     for s in (cav, hel):
         print(f"{s['name']}: {len(s['walls'])} walls, {len(s['lights'])} lights, {len(s['tokens'])} tokens")
+
+    # Loose drag-and-drop copies are the sync's job (single-writer rule):
+    #   python3 tools/sync-npc-sources.py
+    # Final self-check: refuse to finish if the committed scenes pack is stale.
+    sys.exit(check_freshness())

@@ -67,7 +67,7 @@ construction because both come from `geometry.py`.
 | File / path | Authoritative? | Written by | Notes |
 |---|---|---|---|
 | `Ewoklin.json`, `Ewokling.json`, `Umbrathor.json`, `Umbrathor lvl 8.json`, `Vorath lvl 10 New.json` | **YES** (actors) | humans | The authoring format. World-style summon UUIDs (`Actor.…`), no effect-ownership overrides. |
-| `tools/scene-tools/*.py` | **YES** (scenes) | humans | `geometry.py` is the single source of coordinates; `build_scenes.py` writes pack sources + `maps/*.webp`; `render_art.py` only feeds build_scenes. |
+| `tools/scene-tools/*.py` | **YES** (scenes) | humans | `geometry.py` is the single source of coordinates; `build_scenes.py` writes pack sources + `maps/*.webp` and self-checks pack freshness; `render_art.py` only feeds build_scenes. |
 | `tools/gen-playtest.py` | **YES** (checklist) | humans | Emits the journal source below. |
 | `packs/_source/ragnarok-reborn-gm-guides/*.json`, `…-handouts/*.json`, `…-loot/*.json` (except the checklist) | **YES** | humans | Hand-edited journal/item sources. |
 | `packs/_source/ragnarok-reborn-npcs/*.json` | derived | `sync-npc-sources.py` | Loose JSONs + `_key` hierarchy + compendium summon UUIDs + GM-locked `ownership`. **Never edit directly.** |
@@ -95,9 +95,17 @@ construction because both come from `geometry.py`.
 1. Edit `tools/scene-tools/geometry.py` / `build_scenes.py` — never the JSONs.
 2. `python3 tools/scene-tools/render_art.py` then
    `python3 tools/scene-tools/build_scenes.py` (writes pack sources + `maps/*.webp`).
+   The script **self-checks scene freshness** before exiting: it recompiles the
+   scenes pack into a scratch dir (`check-fresh.mjs --packs ragnarok-reborn-scenes
+   --from-head`) and compares against the committed pack — a geometry change
+   can't ship with stale compiled scenes, because the generator itself exits 1
+   with a `npm run build` reminder. (`SKIP_SCENE_FRESHNESS=1` skips; on exFAT
+   checkouts set `FVTT_CLI_DIR` to a native-FS install.)
 3. `npm run sync:npcs` → refreshes the loose Scene JSONs from the pack sources.
-4. Sanity-check before opening the PR: the scene-maps gate verifies the art files,
-   and the sync's `--check` guarantees loose and pack copies agree.
+4. Before opening the PR: the scene-maps gate verifies the art files, and the
+   sync's `--check` guarantees loose and pack copies agree — though after step 2
+   the freshness hook has already told you whether `packs/ragnarok-reborn-scenes`
+   needs a recompile-and-commit.
 
 **…a GM guide / handout / loot item:**
 Edit the JSON in `packs/_source/<pack>/` directly, then recompile. If it quotes
@@ -121,6 +129,15 @@ the workflow is just `npm run check`, so local and CI cannot drift):
 6. **verify-packs** — every source document survives the LevelDB round-trip.
 7. **scene maps** — every scene's `background.src` exists in `maps/`.
 8. **freshness** — committed packs are exactly what the sources compile to.
+
+`check-fresh.mjs` also has a self-contained single-shot mode
+(`--packs <name> --from-head`, plus `--cli-dir`/`FVTT_CLI_DIR` for checkouts
+without their own `node_modules`): snapshot the committed pack from git HEAD,
+freshly compile the listed sources, compare, exit 1 on drift.
+`tools/scene-tools/build_scenes.py` runs it automatically after every scene
+build, so the freshness verdict reaches the scene author the moment they run
+the generator — not at PR time. `build-pack.mjs` mirrors the same options
+(`<name>…` filter, `--out <dir>`) so a human can do the identical compile.
 
 On exFAT checkouts (no `node_modules` possible), use
 `npm run check -- --build-dir /tmp/fvtt-pack-build` — see the `check_all.py`
