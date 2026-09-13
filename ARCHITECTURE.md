@@ -69,7 +69,7 @@ construction because both come from `geometry.py`.
 |---|---|---|---|
 | `Ewoklin.json`, `Ewokling.json`, `Umbrathor.json`, `Umbrathor lvl 8.json`, `Vorath lvl 10 New.json` | **YES** (actors) | humans | The authoring format. World-style summon UUIDs (`Actor.…`), no effect-ownership overrides. |
 | `tools/scene-tools/*.py` | **YES** (scenes) | humans | `geometry.py` is the single source of coordinates; `build_scenes.py` writes pack sources + `maps/*.webp` and self-checks pack freshness; `render_art.py` only feeds build_scenes. |
-| `tools/gen-playtest.py` | **YES** (checklist) | humans | Derives every checklist row from the loose actor JSONs (bonus/dice/DC/statuses from the data) and the Ledger's loot rows from the loot pack sources (effect changes → pass conditions, embedded-copy dice noted). Its OVERRIDES layer carries flavor wording only. |
+| `tools/gen-playtest.py` | **YES** (checklist) | humans | Derives every checklist row from the loose actor JSONs (bonus/dice/DC/statuses from the data) and the Ledger's loot rows from the loot pack sources (effect changes → pass conditions, embedded-copy dice noted). Boss rows are linked to their encounter-runbook page by name matching; the documented-data gate refuses a link whose target page no longer exists or a boss row with no link. Its OVERRIDES layer carries flavor wording only. |
 | `packs/_source/ragnarok-reborn-gm-guides/*.json`, `…-handouts/*.json`, `…-loot/*.json` (except the checklist) | **YES** | humans | Hand-edited journal/item sources. |
 | `packs/_source/ragnarok-reborn-npcs/*.json` | derived | `sync-npc-sources.py` | Loose JSONs + `_key` hierarchy + compendium summon UUIDs + GM-locked `ownership`. **Never edit directly.** |
 | `packs/_source/ragnarok-reborn-scenes/*.json` | derived | `build_scenes.py` | Art and walls from one geometry module. **Never edit directly.** |
@@ -110,7 +110,9 @@ construction because both come from `geometry.py`.
 
 **…a GM guide / handout:**
 Edit the JSON in `packs/_source/<pack>/` directly, then recompile. If it quotes
-actor numbers, `npm run check:docs` holds it honest too.
+actor numbers, `npm run check:docs` holds it honest too. If you rename a
+runbook page or reword its activity mentions, rerun `tools/gen-playtest.py` —
+the checklist's Runbook links are name-matched against the runbook text.
 
 **…a loot item (Cloak/Amulet):**
 Edit `packs/_source/ragnarok-reborn-loot/*.json` — the effect `changes` there
