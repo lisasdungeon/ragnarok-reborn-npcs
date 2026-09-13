@@ -68,7 +68,7 @@ construction because both come from `geometry.py`.
 |---|---|---|---|
 | `Ewoklin.json`, `Ewokling.json`, `Umbrathor.json`, `Umbrathor lvl 8.json`, `Vorath lvl 10 New.json` | **YES** (actors) | humans | The authoring format. World-style summon UUIDs (`Actor.…`), no effect-ownership overrides. |
 | `tools/scene-tools/*.py` | **YES** (scenes) | humans | `geometry.py` is the single source of coordinates; `build_scenes.py` writes pack sources + `maps/*.webp` and self-checks pack freshness; `render_art.py` only feeds build_scenes. |
-| `tools/gen-playtest.py` | **YES** (checklist) | humans | Emits the journal source below. |
+| `tools/gen-playtest.py` | **YES** (checklist) | humans | Derives every checklist row from the loose actor JSONs (bonus/dice/DC/statuses from the data); its OVERRIDES layer carries flavor wording only. |
 | `packs/_source/ragnarok-reborn-gm-guides/*.json`, `…-handouts/*.json`, `…-loot/*.json` (except the checklist) | **YES** | humans | Hand-edited journal/item sources. |
 | `packs/_source/ragnarok-reborn-npcs/*.json` | derived | `sync-npc-sources.py` | Loose JSONs + `_key` hierarchy + compendium summon UUIDs + GM-locked `ownership`. **Never edit directly.** |
 | `packs/_source/ragnarok-reborn-scenes/*.json` | derived | `build_scenes.py` | Art and walls from one geometry module. **Never edit directly.** |
@@ -111,8 +111,10 @@ construction because both come from `geometry.py`.
 Edit the JSON in `packs/_source/<pack>/` directly, then recompile. If it quotes
 actor numbers, `npm run check:docs` holds it honest too.
 
-**…the playtest checklist:** edit `tools/gen-playtest.py`, run it. The
-documented-data gate will refuse rows whose numbers don't exist in the actors.
+**…the playtest checklist:** rows derive themselves — just rerun
+`python3 tools/gen-playtest.py` after any actor change and new activities appear
+automatically. Only edit the script for flavor wording (OVERRIDES/PROSE) or page
+structure; the documented-data gate still refuses values that don't exist in the actors.
 
 ## The gate — `npm run check` (CI runs the same script)
 
