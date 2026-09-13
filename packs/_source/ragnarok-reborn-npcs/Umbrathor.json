@@ -926,11 +926,11 @@
             },
             "attack": {
               "ability": "",
-              "bonus": "",
+              "bonus": "+12",
               "critical": {
                 "threshold": null
               },
-              "flat": false,
+              "flat": true,
               "type": {
                 "value": "ranged",
                 "classification": "spell"
@@ -941,7 +941,25 @@
                 "bonus": ""
               },
               "includeBase": true,
-              "parts": []
+              "parts": [
+                {
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "number": 8,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "necrotic"
+                  ],
+                  "scaling": {
+                    "mode": "",
+                    "number": null,
+                    "formula": ""
+                  }
+                }
+              ]
             },
             "visibility": {
               "identifier": "",
@@ -997,11 +1015,17 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": []
+                "statuses": [],
+                "ownership": {
+                  "default": 0
+                }
               }
             }
           },
-          "_key": "!actors.items.effects!UmbrathorCR1800001.UmbDarkBolt0001.UmbDrainEffect01"
+          "_key": "!actors.items.effects!UmbrathorCR1800001.UmbDarkBolt0001.UmbDrainEffect01",
+          "ownership": {
+            "default": 0
+          }
         }
       ],
       "folder": null,
@@ -1177,11 +1201,17 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": []
+                "statuses": [],
+                "ownership": {
+                  "default": 0
+                }
               }
             }
           },
-          "_key": "!actors.items.effects!UmbrathorCR1800001.UmbTerrifyingP01.UmbFearEffect001"
+          "_key": "!actors.items.effects!UmbrathorCR1800001.UmbTerrifyingP01.UmbFearEffect001",
+          "ownership": {
+            "default": 0
+          }
         }
       ],
       "folder": null,
@@ -1592,16 +1622,16 @@
               "identifier": ""
             },
             "healing": {
+              "number": 1,
+              "denomination": 8,
+              "bonus": "6",
+              "types": [
+                "healing"
+              ],
               "custom": {
                 "enabled": false,
                 "formula": ""
               },
-              "number": 1,
-              "denomination": 8,
-              "bonus": "6 + 1d4",
-              "types": [
-                "healing"
-              ],
               "scaling": {
                 "mode": "",
                 "number": null,
@@ -1844,11 +1874,17 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": []
+                "statuses": [],
+                "ownership": {
+                  "default": 0
+                }
               }
             }
           },
-          "_key": "!actors.items.effects!UmbrathorCR1800001.UmbShadowGrasp01.UmbGraspEff0001"
+          "_key": "!actors.items.effects!UmbrathorCR1800001.UmbShadowGrasp01.UmbGraspEff0001",
+          "ownership": {
+            "default": 0
+          }
         }
       ],
       "folder": null,
@@ -1961,16 +1997,16 @@
               "identifier": ""
             },
             "healing": {
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
               "number": 1,
               "denomination": 8,
               "bonus": "",
               "types": [
                 "healing"
               ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
               "scaling": {
                 "mode": "",
                 "number": null,
@@ -2184,11 +2220,17 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": []
+                "statuses": [],
+                "ownership": {
+                  "default": 0
+                }
               }
             }
           },
-          "_key": "!actors.items.effects!UmbrathorCR1800001.UmbNightmareVis1.UmbNightEff0001"
+          "_key": "!actors.items.effects!UmbrathorCR1800001.UmbNightmareVis1.UmbNightEff0001",
+          "ownership": {
+            "default": 0
+          }
         }
       ],
       "folder": null,
@@ -2308,11 +2350,17 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": []
+                "statuses": [],
+                "ownership": {
+                  "default": 0
+                }
               }
             }
           },
-          "_key": "!actors.items.effects!UmbrathorCR1800001.UmbCloakShad001.UmbCloakEff0001"
+          "_key": "!actors.items.effects!UmbrathorCR1800001.UmbCloakShad001.UmbCloakEff0001",
+          "ownership": {
+            "default": 0
+          }
         }
       ],
       "folder": null,
@@ -2436,11 +2484,17 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": []
+                "statuses": [],
+                "ownership": {
+                  "default": 0
+                }
               }
             }
           },
-          "_key": "!actors.items.effects!UmbrathorCR1800001.UmbAmuletNight1.UmbAmuletEff001"
+          "_key": "!actors.items.effects!UmbrathorCR1800001.UmbAmuletNight1.UmbAmuletEff001",
+          "ownership": {
+            "default": 0
+          }
         }
       ],
       "folder": null,
@@ -3016,11 +3070,17 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": []
+                "statuses": [],
+                "ownership": {
+                  "default": 0
+                }
               }
             }
           },
-          "_key": "!actors.items.effects!UmbrathorCR1800001.UmbLairActns01.UmbLairGraspEff1"
+          "_key": "!actors.items.effects!UmbrathorCR1800001.UmbLairActns01.UmbLairGraspEff1",
+          "ownership": {
+            "default": 0
+          }
         }
       ],
       "folder": null,

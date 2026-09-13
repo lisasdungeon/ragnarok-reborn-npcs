@@ -47,6 +47,21 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 
 ## Changelog
 
+### 1.3.1
+- **Fixed a data regression in the compendium NPC pack**: the pack sources had drifted
+  from the loose JSONs, so actors imported from the compendium since v1.1.0 shipped with
+  the pre-1.0.1 bug again — empty attack bonuses, no damage dice on weapon/spell attacks,
+  and legacy heal formulas. Synced from the loose files: Ewoklin +7 (2d6+4), Ewokling +5
+  (1d6+2), Umbrathor +12 (8d8) / CR 13 +9 (6d8), Vorath Shadow Fork +10 (4d8+4) and
+  Necrotic Grasp +12 (8d6), Dark Pact heals 1d8+6 / 1d6+5. Effects keep GM-locked
+  ownership; Ewoklin's Multiplicity summons from the compendium (pack-only improvement,
+  preserved).
+- **Loose JSONs now live in the repo and in every release zip**: the five NPC actors and
+  both scenes ship as drag-and-drop backups at the zip root.
+- **CI drift guard**: a sync check (`tools/sync-npc-sources.py --check`) runs on every PR —
+  the loose JSONs are the authoring format, and the pack sources are generated from them,
+  so the two can never silently diverge again.
+
 ### 1.3.0
 - **Pre-built battlemap Scenes**: the Shadow Cavern and Hellheim Throne Room now exist
   as importable Scene documents in a new *Battlemaps* pack — 134 + 79 walls including
@@ -151,10 +166,16 @@ install through the same URL via **Update Available** in Manage Modules.
 3. Open the **Compendium Packs** sidebar → *The New Ragnarok Reborn* packs → drag any
    actor onto a scene or into the Actors directory.
 
-### Option B — Manual (no module install)
-The loose `Ewoklin.json`, `Umbrathor.json`, `Umbrathor lvl 8.json`, `Vorath lvl 10 New.json`
-and `Ewokling.json` files in the parent directory can be dragged directly onto the
-Actors sidebar of any dnd5e 6.0 world, as before.
+Every release zip also carries the **loose drag-and-drop JSONs at its root** — a backup of
+the five NPC actors (`Ewoklin.json`, `Ewokling.json`, `Umbrathor.json`, `Umbrathor lvl 8.json`,
+`Vorath lvl 10 New.json`) and both battlemap scenes — importable by drag-and-drop without
+touching any compendium.
+
+### Manual (no module install)
+The same loose JSONs live in the repo root (and in every release zip): drag
+`Ewoklin.json`, `Ewokling.json`, `Umbrathor.json`, `Umbrathor lvl 8.json` or
+`Vorath lvl 10 New.json` directly onto the Actors sidebar of any dnd5e 6.0 world, and the
+two `*(Scene).json` files onto the Scenes sidebar.
 
 ## Notes
 
@@ -188,7 +209,14 @@ npm run build          # compiles all packs/_source/<pack-name> → packs/<pack-
 npm run verify         # round-trips each compiled pack back to JSON and checks every document
 npm run check:maps     # scenes must reference map art that exists in the repo
 npm run check:fresh    # committed packs must match what the sources build to (run `npm run check:fresh:snapshot` first)
+npm run sync:npcs      # regenerate NPC pack sources from the loose drag-and-drop JSONs (the authoring format)
+npm run sync:npcs:check  # fail if pack sources have drifted from the loose JSONs
 ```
+
+**Editing an NPC?** Edit the loose JSON at the repo root, then run `npm run sync:npcs` and
+rebuild — the pack sources are generated, never hand-edited. The sync re-adds the compiler
+`_key` hierarchy, converts module-actor summon UUIDs to compendium form (so Multiplicity
+works straight from the pack), and keeps effect ownership GM-locked.
 
 The build uses the official `@foundryvtt/foundryvtt-cli` (`compilePack`, LevelDB format),
 the same tool the dnd5e system itself uses. `build-pack.mjs` compiles all five packs from

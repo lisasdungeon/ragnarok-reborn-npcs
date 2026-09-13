@@ -764,8 +764,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorLegResist0001"
+      "flags": {}
     },
     {
       "_id": "VorMistyEscape01",
@@ -880,8 +879,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorMistyEscape01"
+      "flags": {}
     },
     {
       "_id": "VorAuraDespair1",
@@ -1068,16 +1066,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!VorathDemonLd0001.VorAuraDespair1.VorAuraEff00001",
-          "ownership": {
-            "default": 0
           }
         }
       ],
@@ -1086,8 +1077,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorAuraDespair1"
+      "flags": {}
     },
     {
       "_id": "VorDreadGaze001",
@@ -1254,16 +1244,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!VorathDemonLd0001.VorDreadGaze001.VorGazeEff00001",
-          "ownership": {
-            "default": 0
           }
         }
       ],
@@ -1272,8 +1255,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorDreadGaze001"
+      "flags": {}
     },
     {
       "_id": "VorMultiattack01",
@@ -1319,8 +1301,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorMultiattack01"
+      "flags": {}
     },
     {
       "_id": "VorShadowFork01",
@@ -1544,8 +1525,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorShadowFork01"
+      "flags": {}
     },
     {
       "_id": "VorNecroGrasp01",
@@ -1896,16 +1876,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!VorathDemonLd0001.VorNecroGrasp01.VorGraspEff0001",
-          "ownership": {
-            "default": 0
           }
         }
       ],
@@ -1914,8 +1887,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorNecroGrasp01"
+      "flags": {}
     },
     {
       "_id": "VorDarkBurst001",
@@ -2113,16 +2085,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!VorathDemonLd0001.VorDarkBurst001.VorBurstEff0001",
-          "ownership": {
-            "default": 0
           }
         }
       ],
@@ -2131,8 +2096,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorDarkBurst001"
+      "flags": {}
     },
     {
       "_id": "VorSpellcasting01",
@@ -2178,8 +2142,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorSpellcasting01"
+      "flags": {}
     },
     {
       "_id": "VorEldritchBlast1",
@@ -2350,8 +2313,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorEldritchBlast1"
+      "flags": {}
     },
     {
       "_id": "VorAnimateDead01",
@@ -2525,8 +2487,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorAnimateDead01"
+      "flags": {}
     },
     {
       "_id": "VorDarkPactHeal1",
@@ -2657,8 +2618,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorDarkPactHeal1"
+      "flags": {}
     },
     {
       "_id": "VorLegendaryAct01",
@@ -2704,8 +2664,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorLegendaryAct01"
+      "flags": {}
     },
     {
       "_id": "VorCastSpellLeg1",
@@ -2829,8 +2788,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorCastSpellLeg1"
+      "flags": {}
     },
     {
       "_id": "VorShadowTelep01",
@@ -2952,8 +2910,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorShadowTelep01"
+      "flags": {}
     },
     {
       "_id": "VorHorrVisage01",
@@ -3127,16 +3084,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!VorathDemonLd0001.VorHorrVisage01.VorHorrEff00001",
-          "ownership": {
-            "default": 0
           }
         }
       ],
@@ -3145,8 +3095,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorHorrVisage01"
+      "flags": {}
     },
     {
       "_id": "VorCloudkill0001",
@@ -3382,8 +3331,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorCloudkill0001"
+      "flags": {}
     },
     {
       "_id": "VorDominateP001",
@@ -3566,16 +3514,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!VorathDemonLd0001.VorDominateP001.VorDomiEff00001",
-          "ownership": {
-            "default": 0
           }
         }
       ],
@@ -3584,8 +3525,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorDominateP001"
+      "flags": {}
     },
     {
       "_id": "VorLairActns0001",
@@ -4147,16 +4087,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!VorathDemonLd0001.VorLairActns0001.VorLairGatesEff01",
-          "ownership": {
-            "default": 0
           }
         },
         {
@@ -4188,16 +4121,9 @@
           "flags": {
             "dnd5e": {
               "riders": {
-                "statuses": [],
-                "ownership": {
-                  "default": 0
-                }
+                "statuses": []
               }
             }
-          },
-          "_key": "!actors.items.effects!VorathDemonLd0001.VorLairActns0001.VorLairChainEff01",
-          "ownership": {
-            "default": 0
           }
         }
       ],
@@ -4206,8 +4132,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorLairActns0001"
+      "flags": {}
     },
     {
       "_id": "VorRegionalEff01",
@@ -4251,8 +4176,7 @@
       "ownership": {
         "default": 0
       },
-      "flags": {},
-      "_key": "!actors.items!VorathDemonLd0001.VorRegionalEff01"
+      "flags": {}
     }
   ],
   "effects": [],
@@ -4272,6 +4196,5 @@
     "modifiedTime": 1789000000003,
     "lastModifiedBy": "nrrBuilder0000000",
     "exportSource": null
-  },
-  "_key": "!actors!VorathDemonLd0001"
+  }
 }
