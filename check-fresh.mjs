@@ -3,7 +3,11 @@
 //
 // Used by the pull-request workflow in two invocations:
 //
-//   node check-fresh.mjs snapshot   → copy packs/<name> aside (.pack-snapshot/)
+//   node check-fresh.mjs snapshot [--allow-dirty]
+//                                   → copy packs/<name> aside (.pack-snapshot/).
+//                                     Default source is GIT HEAD (what CI would
+//                                     check out); --allow-dirty snapshots the
+//                                     working tree instead (dev rebuilds).
 //   ... npm run build overwrites packs/<name> from packs/_source ...
 //   node check-fresh.mjs            → extract both and compare document sets
 //
@@ -15,7 +19,7 @@
 // timestamps), so comparison is semantic: every document extracted from both
 // sides must have an identical canonical form (recursively key-sorted JSON),
 // matched by _id.
-import { extractPack } from "@foundryvtt/foundryvtt-cli";
+import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -65,16 +69,51 @@ async function extract(packDir, outDir) {
 
 // ---------------------------------------------------------------- snapshot
 if (process.argv[2] === "snapshot") {
+  const allowDirty = process.argv.includes("--allow-dirty");
+  const status = execFileSync("git", ["status", "--porcelain", "--", "packs", "packs/_source"], {
+    encoding: "utf8",
+  });
+  const dirty = status.split("\n").filter((l) => l.trim());
+  if (dirty.length && !allowDirty) {
+    console.error(
+      "packs/ or packs/_source/ has uncommitted changes; CI checks committed " +
+        "state. Commit (or revert) first, or pass --allow-dirty to snapshot the " +
+        "working tree.",
+    );
+    process.exit(1);
+  }
   fs.rmSync(SNAP, { recursive: true, force: true });
   fs.mkdirSync(SNAP);
-  for (const name of packs) {
-    fs.cpSync(path.join("packs", name), path.join(SNAP, name), { recursive: true });
+  let source = "git HEAD";
+  if (dirty.length || !fs.existsSync(".git")) {
+    // Working-tree snapshot (explicit --allow-dirty, or no git repo).
+    source = "working tree";
+    for (const name of packs) {
+      fs.cpSync(path.join("packs", name), path.join(SNAP, name), { recursive: true });
+    }
+  } else {
+    // Default: archive the committed packs so a dev with local rebuilds gets
+    // the same verdict CI would give a clean checkout. git archive entries
+    // are prefixed `packs/<name>/`, so strip those two components on extract.
+    for (const name of packs) {
+      const tarball = execFileSync("git", ["archive", "HEAD", "--", path.join("packs", name)], {
+        maxBuffer: 1024 * 1024 * 64,
+      });
+      fs.mkdirSync(path.join(SNAP, name), { recursive: true });
+      execFileSync("tar", ["-x", "--strip-components=2", "-C", path.join(SNAP, name)], {
+        input: tarball,
+      });
+    }
   }
-  console.log(`Snapshot: ${packs.length} committed packs copied to ${SNAP}/`);
+  console.log(`Snapshot: ${packs.length} committed packs copied to ${SNAP}/ (from ${source})`);
   process.exit(0);
 }
 
 // ----------------------------------------------------------------- compare
+// The CLI is imported lazily: the snapshot mode above needs only node
+// builtins (fs/git/tar), so it can run where the CLI isn't installed.
+const { extractPack } = await import("@foundryvtt/foundryvtt-cli");
+
 let failures = 0;
 for (const name of packs) {
   const snapDir = path.join(SNAP, name);

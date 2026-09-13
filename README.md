@@ -229,6 +229,7 @@ two `*(Scene).json` files onto the Scenes sidebar.
 ```
 cd ragnarok-reborn-npcs
 npm install            # not possible on exFAT drives — use a native-FS folder or /tmp
+npm run check          # THE pipeline: runs everything CI runs on a PR, in order
 npm run build          # compiles all packs/_source/<pack-name> → packs/<pack-name>
 npm run verify         # round-trips each compiled pack back to JSON and checks every document
 npm run check:maps     # scenes must reference map art that exists in the repo
@@ -237,6 +238,17 @@ npm run sync:npcs      # sync all seven drag-and-drop JSONs with the pack source
                        #   NPC actors: loose JSONs (authoring format) → pack sources
                        #   Scenes:     pack sources (from tools/scene-tools) → loose JSONs
 npm run sync:npcs:check  # fail if any of the seven have drifted
+```
+
+`npm run check` is the one-command gate — the same script (`tools/check_all.py`) that
+the *Verify PR* workflow executes on GitHub, so local and CI results can't diverge.
+It refuses to run on a tree with uncommitted `packs/` changes (CI checks committed
+state; `--allow-dirty` overrides) and takes the freshness snapshot from **git HEAD**,
+so a stale local rebuild can't produce a false pass. On exFAT drives (no
+`node_modules` in the repo), point it at a native-FS build dir that has had `npm ci`:
+
+```
+npm run check -- --build-dir /tmp/fvtt-pack-build
 ```
 
 **Editing an NPC?** Edit the loose JSON at the repo root, then run `npm run sync:npcs` and
@@ -278,8 +290,12 @@ drive (or work in a `/tmp` checkout like the manual instructions above).
 
 ## Pull-request gate
 
-Every PR targeting `master` runs the same pipeline a release would (`.github/workflows/verify.yml`):
-compile all packs, round-trip verify every document, check scene map references, and
-confirm the **committed** compiled packs match a fresh rebuild of the sources. A PR that
-edits `packs/_source/` without recommitting regenerated `packs/` output fails with the
-exact pack and document that went stale — merge is blocked until it's rebuilt.
+Every PR targeting `master` runs `npm run check` (`.github/workflows/verify.yml` just
+invokes `tools/check_all.py`): sync parity for all seven drag-and-drop JSONs,
+verification-snapshot parity, compile all packs, round-trip verify every document,
+check scene map references, and confirm the **committed** compiled packs match a fresh
+rebuild of the sources (snapshot taken from git HEAD — the same comparison a clean
+checkout would make). A PR that edits `packs/_source/` without recommitting regenerated
+`packs/` output fails with the exact pack and document that went stale — merge is
+blocked until it's rebuilt. Because CI calls the same script you run locally, "green
+locally but red on CI" can't happen from step drift.
