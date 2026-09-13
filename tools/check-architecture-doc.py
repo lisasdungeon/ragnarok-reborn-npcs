@@ -55,6 +55,7 @@ REQUIRED_PATHS = [
     "tools/check_all.py", "tools/check-documented-data.py",
     "tools/check-actor-fixes.py",
     ".github/workflows/release.yml", ".github/workflows/verify.yml",
+    ".github/workflows/nightly.yml", "tools/check-dnd5e-compat.py",
     "README.md", "module.json",
 ]
 

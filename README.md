@@ -58,6 +58,15 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 ## Changelog
 
 ### Unreleased
+- **Nightly upstream probe**: a scheduled workflow runs `tools/check-dnd5e-compat.py`
+  every night — dnd5e's latest release (via its public `system.json`) must stay
+  inside the range `module.json` now declares in its new `systems` block, and
+  the `@foundryvtt/foundryvtt-cli` devDependency's major must cover npm's
+  latest. Then it runs the full 9-step check against `npm update`d
+  latest-in-range dependencies, so a CLI patch that breaks pack compilation
+  gets caught between releases. Failures open/update one `nightly-rot` issue;
+  a green night closes it. The manifest previously declared no system
+  dependency at all — this check forced the fix.
 - **One-import demo adventure**: a new *Demo Adventure* pack bundles the five
   NPCs, both pre-built battlemaps, the magic items, and all seven journals into
   a single importable Adventure — tokens arrive pre-bound to their actors, and

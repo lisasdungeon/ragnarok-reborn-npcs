@@ -1,0 +1,102 @@
+# Nightly dependency-rot tripwire.
+#
+# The PR gate checks the repo against ITSELF. Upstream doesn't care about PRs:
+# a new dnd5e or Foundry CLI release can silently break the packs between
+# releases. So once a night:
+#
+#   1. probe upstream — dnd5e latest release's system.json vs module.json's
+#      systems range, npm CLI latest vs package.json's caret pin (exit 1 = rot)
+#   2. npm ci + `npm update` the CLI to latest-in-range, then the full 9-step
+#      `npm run check` — so pack sources that only compile/verify on an OLDER
+#      patch of the CLI are caught too (steps 6/7 exercise the real build)
+#   3. if anything failed: open (or re-note) one GitHub issue titled
+#      "Nightly dependency check failed" and attach the log
+#   4. when green again, close any open nightly-failure issue so silence means
+#      healthy. Step summaries and run links keep the history inspectable.
+#
+# Failures never block PRs or releases — this is radar, not a gate.
+name: Nightly dependency check
+
+on:
+  schedule:
+    - cron: "17 6 * * *" # daily 06:17 UTC — off the top of the hour
+  workflow_dispatch: {} # manual run from the Actions tab
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: nightly
+  cancel-in-progress: false
+
+jobs:
+  nightly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Lift the CLI (and anything else) to the newest version the declared
+      # ranges allow, commit nothing — this tree is disposable. The full check
+      # then runs against latest-in-range instead of the lockfile's snapshot.
+      - name: Update dependencies to latest in range
+        run: npm update
+
+      - name: Probe upstream compatibility (dnd5e + CLI)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 tools/check-dnd5e-compat.py
+
+      - name: Full check pipeline against latest dependencies
+        id: check
+        run: npm run check
+
+      # ---------------------------------------------------------- success →
+      - name: Close any open nightly-failure issue
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          n=$(gh issue list --state open --label nightly-rot --json number --jq 'length')
+          if [ "$n" -gt 0 ]; then
+            gh issue list --state open --label nightly-rot --json number --jq '.[].number' |
+            while read -r num; do
+              gh issue close "$num" --comment "Nightly run succeeded: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID} — upstream is compatible again."
+            done
+          else
+            echo "No open nightly-failure issues — nothing to close."
+          fi
+
+      # ------------------------------------------------------------ failure →
+      - name: Open or update the nightly-failure issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MARKER: "<!-- nightly-rot-marker -->"
+        run: |
+          {
+            echo "$MARKER"
+            echo "The nightly dependency check failed at $(date -u '+%Y-%m-%d %H:%M UTC')."
+            echo ""
+            echo "- Run: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+            echo "- Upstream probe: \`tools/check-dnd5e-compat.py\` (dnd5e latest vs \`module.json\` systems range; CLI latest vs \`package.json\`)"
+            echo "- Full pipeline: \`npm run check\` against latest-in-range dependencies"
+            echo ""
+            echo "Usual fixes: bump \`systems.verified\`/\`minimum\` in \`module.json\` after re-testing, or the CLI devDependency in \`package.json\`, then recompile the packs."
+          } > body.md
+
+          num=$(gh issue list --state open --label nightly-rot --json number,body --jq ".[] | select(.body | contains(\"$MARKER\")) | .number" | head -1)
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body-file body.md
+            echo "Re-noted existing issue #$num"
+          else
+            gh issue create --title "Nightly dependency check failed" --label nightly-rot --body-file body.md
+          fi
