@@ -37,7 +37,9 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
   *Treasures of the Shadow Tyrant*: read-aloud rumor hooks, in-world descriptions, and
   clean player rules for the **Cloak of Shadows** and **Amulet of the Night**, plus one
   GM-locked page (mechanics recap + campaign hooks). Safe to drag into chat; the GM
-  page stays hidden.
+  page stays hidden. Also: *Welcome to the New Ragnarok Reborn — Player's Guide* —
+  what the module contains (cast, places, treasures) and exactly how to drag actors,
+  scenes, and the magic items into the game, cross-linked to the item handouts.
 - **The New Ragnarok Reborn — Treasures** (Item pack) — standalone, drag-ready magic
   items: **Cloak of Shadows** (rare, attunement — Stealth advantage in dim light or
   darkness) and **Amulet of the Night** (rare, attunement — +1d6 necrotic on melee and
@@ -56,6 +58,13 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 ## Changelog
 
 ### Unreleased
+- **Player-facing guide handout**: *Welcome to the New Ragnarok Reborn — Player's
+  Guide* joins the Party Handouts pack — what's in the module (the cast, the two
+  pre-built battlemaps, the treasures), step-by-step drag-and-drop instructions for
+  actors, scenes, and the magic items (attunement + equip + toggle), and links to
+  the Cloak/Amulet item handouts. Player-readable by default. The documented-data
+  gate now sweeps player-facing guides too: any die a guide quotes must exist in
+  the actor or loot sources.
 - **Checklist rows link to the runbook**: every boss row in the playtest
   checklist carries a Runbook link to the encounter-runbook page that guides
   that activity (Compendium link — click a failed row, land on the GM
