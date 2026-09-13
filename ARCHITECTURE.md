@@ -141,7 +141,12 @@ the workflow is just `npm run check`, so local and CI cannot drift):
 4. **verification snapshot** — `docs/actor-verification.json` matches the loose JSONs.
 5. **pack snapshot** — from git HEAD (not the working tree, so a local rebuild can't fake a pass).
 6. **build** — compile all five packs from sources.
-7. **verify-packs** — every source document survives the LevelDB round-trip.
+7. **verify-packs** — every source document survives the LevelDB round-trip, and
+   the shipped playtest checklist is pinned: exactly 5 pages / 48 activity rows
+   in the compiled journal, so a derivation regression dies at release instead
+   of publishing. (Deliberately duplicated between `verify-packs.mjs` and
+   `tools/gen-playtest.py` — the two tools must agree, and a silent change to
+   either is a FAIL in the other.)
 8. **scene maps** — every scene's `background.src` exists in `maps/`.
 9. **freshness** — committed packs are exactly what the sources compile to.
 

@@ -2,11 +2,24 @@
 // For each pack: the compile output exists, is a readable LevelDB store, and
 // contains every document from the source JSONs (matched by _id, _key ignored).
 //
-//   node verify-packs.mjs            → checks all four packs
+// The playtest-checklist journal carries a pinned structural assertion: the
+// shipped journal must have exactly EXPECTED_PAGES pages and EXPECTED_ROWS
+// activity rows. This is the last line of defense before a release — if a
+// gen-playtest.py regression ever regenerates the journal wrong (rows dropped,
+// pages lost, a broken merge), the release dies here instead of publishing.
+// Intentionally duplicated from tools/gen-playtest.py's own coverage count:
+// the two tools must agree, and a silent change to one is a FAIL in the other.
+//
+//   node verify-packs.mjs            → checks all five packs
 //   node verify-packs.mjs <name>...  → checks only the listed packs
 import { extractPack } from "@foundryvtt/foundryvtt-cli";
 import fs from "node:fs";
 import path from "node:path";
+
+// --- pinned shape of the shipped playtest checklist -----------------------
+const CHECKLIST_NAME_PREFIX = "10-Minute Playtest Checklist";
+const EXPECTED_PAGES = 5;
+const EXPECTED_ROWS = 48; // 11 Ewok + 14 Umbrathor + 23 Vorath (ledger excluded)
 
 const packs = process.argv.slice(2).length
   ? process.argv.slice(2)
@@ -65,7 +78,36 @@ for (const name of packs) {
       throw new Error(`documents missing from compiled pack: ${missing.join(", ")}`);
     }
 
-    console.log(`OK  ${name}: ${found.size}/${expected.size} documents round-tripped`);
+    let extra = "";
+    if (name === "ragnarok-reborn-gm-guides") {
+      const journal = [...found.values()]
+        .find((d) => (d.name || "").startsWith(CHECKLIST_NAME_PREFIX));
+      if (!journal) {
+        throw new Error(`pinned-shape check: no journal named '${CHECKLIST_NAME_PREFIX}…' in the compiled pack`);
+      }
+      const pages = journal.pages ?? [];
+      let rows = 0;
+      for (const p of pages) {
+        const c = p?.text?.content ?? "";
+        rows += (c.match(/<tr>/g) ?? []).length - (c.match(/<tr><th/g) ?? []).length;
+      }
+      const ledger = pages.find((p) => (p.name || "").startsWith("Ledger"));
+      const ledgerRows = ledger
+        ? ((ledger.text?.content ?? "").match(/<tr>/g) ?? []).length -
+          ((ledger.text?.content ?? "").match(/<tr><th/g) ?? []).length
+        : 0;
+      const activityRows = rows - ledgerRows;
+      if (pages.length !== EXPECTED_PAGES || activityRows !== EXPECTED_ROWS) {
+        throw new Error(
+          `pinned shape changed: ${pages.length} pages / ${activityRows} activity rows ` +
+          `(expected ${EXPECTED_PAGES} / ${EXPECTED_ROWS}). If this is intentional, update ` +
+          `EXPECTED_PAGES/EXPECTED_ROWS in verify-packs.mjs together with ` +
+          `tools/gen-playtest.py.`);
+      }
+      extra = `; pinned shape: ${pages.length} pages / ${activityRows} activity rows`;
+    }
+
+    console.log(`OK  ${name}: ${found.size}/${expected.size} documents round-tripped${extra}`);
   } catch (err) {
     failures++;
     console.error(`FAIL ${name}: ${err.message}`);
