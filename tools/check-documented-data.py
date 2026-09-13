@@ -20,6 +20,11 @@ Three checks:
   DOC→DATA   every "DC n", "+n" (attack-bonus context) and "ndm+k" token in
              README.md must exist in the data, or be in TEXT_ONLY below with
              a reason (description-only riders, historical changelog values).
+  CHECKLIST  the playtest-checklist journal (tools/gen-playtest.py output) is
+             a third corpus: every activity's numbers must appear there too
+             (players verify by rolling, not by reading), and every number
+             the checklist quotes must exist in the data — so the checklist
+             cannot silently rot when an actor changes.
 
     python3 tools/check-documented-data.py        # exit 1 on any drift
     (also exposed as `npm run check:docs`; runs as step 2 of `npm run check`)
@@ -45,7 +50,17 @@ TEXT_ONLY = {
     "6d10": "Hellfire Bolt rider: 6d10 only vs frightened targets (description text)",
     "+1": "Lair-action CR adjustment (+1 CR / +1 legendary action), not an attack bonus",
     "+21": "1.3.2 changelog: the OLD stacked Hellfire Bolt bonus, kept as history",
+    "1d4": "Amulet of the Night CR 13 embedded copy's necrotic rider / Dark Pact bonus-in-darkness — description-level, not an activity",
 }
+
+# The generated playtest checklist (gen-playtest.py) — a third corpus whose
+# numbers are asserted against the actors in both directions.
+JOURNAL = os.path.join("packs", "_source", "ragnarok-reborn-gm-guides",
+                       "playtest-checklist.json")
+
+# Claims allowed to be absent from the playtest checklist, with reasons.
+# Intended to stay EMPTY — every activity's numbers belong on the checklist.
+CHECKLIST_OK = {}
 
 # Claims allowed to be absent from the README: (kind, item, activity) -> reason.
 # Intended to stay EMPTY — prefer documenting the value in README.md.
@@ -141,7 +156,6 @@ def main():
         elif ok and key in UNDOCUMENTED_OK:
             pass
 
-    # ---------------------------------------------------------- DOC → DATA
     data_bonuses = {int(c["bonus"]) for c in claims if c["kind"] == "attack" and c["bonus"]}
     data_dcs = {int(c["dc"]) for c in claims if c["kind"] == "save" and c["dc"]}
     data_dice = set()
@@ -150,6 +164,64 @@ def main():
         if c["kind"] == "heal" and c["formula"]:
             data_dice.add(c["formula"])
 
+    # ------------------------------------------------- CHECKLIST (journal)
+    journal_path = os.path.join(REPO, JOURNAL)
+    if not os.path.exists(journal_path):
+        fails.append(f"CHECKLIST missing journal source: {JOURNAL} "
+                     f"(run tools/gen-playtest.py)")
+        corpus = ""
+    else:
+        jdoc = json.load(open(journal_path, encoding="utf-8"))
+        corpus = "\n".join(
+            p.get("text", {}).get("content", "") for p in jdoc.get("pages", []))
+    if corpus:
+        def chk_has(text):
+            return re.search(rf"(?<!\d){re.escape(text)}(?!\d)", corpus) is not None
+
+        # every claim must be checkable by rolling → present in the checklist
+        covered = 0
+        for c in claims:
+            key = (c["kind"], c["item"], c["act"])
+            if c["kind"] == "attack":
+                ok = chk_has(c["bonus"]) and all(chk_has(d) for d in c["dice"])
+                want = f"{c['bonus']} and {' & '.join(c['dice'])}"
+            elif c["kind"] == "save":
+                ok = chk_has(f"DC {c['dc']}") and all(chk_has(d) for d in c["dice"])
+                want = f"DC {c['dc']}"
+                if c["dice"]:
+                    want += f" and {' & '.join(c['dice'])}"
+            else:
+                ok = chk_has(c["formula"])
+                want = c["formula"]
+            if key in CHECKLIST_OK:
+                if ok:
+                    warns.append(f"CHECKLIST_OK entry now unnecessary: {key}")
+            elif not ok:
+                fails.append(f"DATA→CHK  {who(c)} ({c['actor']}): {want} is not on "
+                             f"the playtest checklist — add a row or extend gen-playtest.py")
+            else:
+                covered += 1
+
+        # every number the checklist quotes must exist in the data
+        chk_dcs = {int(tok) for tok in re.findall(r"DC (\d+)", corpus)}
+        for tok in sorted(chk_dcs, key=int):
+            if tok not in data_dcs:
+                fails.append(f"CHK→DATA  checklist documents DC {tok} — no save in the "
+                             f"loose JSONs has it (data DCs: {sorted(data_dcs)})")
+        chk_prose = re.sub(r"\d+d\d+(?:\s*\+\s*\d+)?", " ", corpus)
+        for m in re.finditer(r"\+(\d+)(?!\d)", chk_prose):
+            tok = int(m.group(1))
+            if chk_prose[m.end():m.end() + 1] == "d":
+                continue
+            if tok not in data_bonuses and f"+{tok}" not in TEXT_ONLY:
+                fails.append(f"CHK→DATA  checklist quotes attack bonus +{tok} — no attack "
+                             f"in the loose JSONs has it (data bonuses: {sorted(data_bonuses)})")
+        for tok in set(re.findall(r"(?<![\d.])(\d+d\d+(?:\+\d+)?)(?!\d)", corpus)):
+            if tok not in data_dice and tok not in TEXT_ONLY:
+                fails.append(f"CHK→DATA  checklist quotes dice '{tok}' — not present in "
+                             f"any activity in the loose JSONs")
+
+    # ---------------------------------------------------------- DOC → DATA
     for tok in sorted(set(re.findall(r"DC (\d+)", readme)), key=int):
         if int(tok) not in data_dcs:
             fails.append(f"DOC→DATA  README documents DC {tok} — no save in the loose "
@@ -169,7 +241,7 @@ def main():
             fails.append(f"DOC→DATA  README documents dice '{tok}' — not present in any "
                          f"activity in the loose JSONs")
 
-    used = {t for t in TEXT_ONLY if t in readme}
+    used = {t for t in TEXT_ONLY if t in readme or t in corpus}
     for t in sorted(set(TEXT_ONLY) - used):
         warns.append(f"TEXT_ONLY entry '{t}' no longer appears in README.md — prune it")
 
@@ -185,9 +257,11 @@ def main():
     n_att = sum(1 for c in claims if c["kind"] == "attack")
     n_save = sum(1 for c in claims if c["kind"] == "save")
     n_heal = sum(1 for c in claims if c["kind"] == "heal")
+    n_chk = covered if corpus else 0
     print(f"OK  documented data matches the loose JSONs "
           f"({n_att} attacks, {n_save} saves, {n_heal} heals; "
-          f"bonuses {sorted(data_bonuses)}, DCs {sorted(data_dcs)})")
+          f"bonuses {sorted(data_bonuses)}, DCs {sorted(data_dcs)}; "
+          f"checklist covers {n_chk}/{len(claims)} claims)")
     return 0
 
 

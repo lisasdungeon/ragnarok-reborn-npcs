@@ -1,0 +1,177 @@
+{
+  "name": "10-Minute Playtest Checklist — Every Activity",
+  "pages": [
+    {
+      "name": "Overview & Setup",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>A <strong>10-minute in-Foundry smoke test</strong> that exercises every activity on all five actors (plus both magic items) by actually rolling them. If every box checks out, the compendium data is behaving exactly as documented — no JSON reading required.</p><p><strong>Setup (1 minute):</strong> import the five actors from the <em>New Ragnarok Reborn — NPCs</em> compendium into a blank scene, drag the <em>Cloak of Shadows</em> and <em>Amulet of the Night</em> from the loot pack onto any player token, and enable <em>GM eye</em> so you can see every chat card.</p><p><strong>How to read the table:</strong> each row is one click on an actor sheet. The <em>Should show</em> column is what the chat card must display. Any mismatch — wrong bonus, wrong dice, missing effect, empty recharge — is a data bug: note it and compare against the release's <code>check-actor-fixes.py</code> output before reporting.</p><p>Budget: <strong>3 min</strong> for the Ewoks, <strong>4 min</strong> for Umbrathor, <strong>3 min</strong> for Vorath. Empty checkbox = untested.</p>",
+        "markdown": ""
+      },
+      "_id": "PlayTestPrep00001",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 100000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_key": "!journal.pages!PlayTestChecklist01.PlayTestPrep00001"
+    },
+    {
+      "name": "Ewoklin & Ewokling (3 min)",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<table><thead><tr><th>#</th><th>Activity</th><th>Roll</th><th>Should show</th></tr></thead><tbody><tr><td>1</td><td>Ewoklin — Claws</td><td>Attack roll</td><td><code>+7</code> to hit; <code>2d6+4</code> slashing</td></tr><tr><td>2</td><td>Ewoklin — Primitive Weapon</td><td>Melee Attack roll</td><td><code>+7</code>; <code>2d8+4</code> piercing</td></tr><tr><td>3</td><td>Ewoklin — Primitive Weapon</td><td>Thrown (20/60) roll</td><td><code>+7</code>; <code>2d8+4</code> piercing</td></tr><tr><td>4</td><td>Ewoklin — Mischievous Surge</td><td>Fey Chaos — DC 15 WIS save</td><td><code>6d6</code> psychic on fail, half on success; random rider on fail</td></tr><tr><td>5</td><td>Ewoklin — Evasive Scamper</td><td>Scamper (utility)</td><td>no roll — free reposition without opportunity attacks</td></tr><tr><td>6</td><td>Ewoklin — Multiplicity (1/Day)</td><td>Split into Ewoklings</td><td>pick 1–4; that many real Ewokling tokens spawn from the compendium</td></tr><tr><td>7</td><td>Ewokling — Claws</td><td>Attack roll</td><td><code>+5</code>; <code>1d6+2</code> slashing</td></tr><tr><td>8</td><td>Ewokling — Primitive Spear</td><td>Melee Attack roll</td><td><code>+5</code>; <code>1d6+2</code> piercing</td></tr><tr><td>9</td><td>Ewokling — Primitive Spear</td><td>Thrown (20/60) roll</td><td><code>+5</code>; <code>1d6+2</code> piercing</td></tr><tr><td>10</td><td>Ewokling — Mischievous Spark</td><td>Fey Spark — DC 13 WIS save</td><td><code>2d6</code> psychic on fail, half on success; Laughter on fail</td></tr><tr><td>11</td><td>Ewokling — Evasive Tumble (1/Day)</td><td>Tumble (utility)</td><td>no roll — disengage-style reposition</td></tr></tbody></table><p><strong>Surge riders (row 4)</strong> — a failed save applies one random effect for 1 minute; roll it three times if you can spare the clicks:</p><ul><li><strong>Laughter</strong> — target gains <em>incapacitated</em> (status icon visible)</li><li><strong>Fear of Technology</strong> — no icon; refusal flavor only (state it aloud)</li><li><strong>Battle Fury</strong> — attack rolls improve by 2, AC reduced by 2 while active</li></ul><p>Recharge chips: Surge recharges on 5–6, Spark on 6 — verify the little die badge on the item appears after a short-rest recovery or a manual recharge.</p>",
+        "markdown": ""
+      },
+      "_id": "PlayTestEwoks001",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 200000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_key": "!journal.pages!PlayTestChecklist01.PlayTestEwoks001"
+    },
+    {
+      "name": "Umbrathor (4 min)",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<table><thead><tr><th>#</th><th>Activity</th><th>Roll</th><th>Should show</th></tr></thead><tbody><tr><td>12</td><td>Dark Bolt</td><td>Attack roll</td><td><code>+12</code>; <code>8d8</code> necrotic (<code>6d8</code> on the Level 8 copy)</td></tr><tr><td>13</td><td>Terrifying Presence</td><td>Fear Save — DC 20 WIS</td><td>frightened 1 minute on fail</td></tr><tr><td>14</td><td>Shadow Grasp</td><td>Grasp Save — DC 20 STR</td><td>restrained + <code>3d8</code> necrotic (CR 18 copy)</td></tr><tr><td>15</td><td>Nightmare Visions (2 Actions)</td><td>Nightmare Save — DC 20 WIS</td><td><code>8d8</code> psychic; stunned on fail (CR 18 copy only)</td></tr><tr><td>16</td><td>Summon Shadows (1/Encounter)</td><td>Summon 1d4 Shadows</td><td>1–4 official dnd5e <em>Shadow</em> tokens spawn</td></tr><tr><td>17</td><td>Shadow Step</td><td>Teleport</td><td>no roll — teleports to a point in dim light/darkness</td></tr><tr><td>18</td><td>Dark Pact</td><td>Dark Pact Healing</td><td>heals <code>1d8+6</code> (<code>1d6+5</code> Level 8); description adds bonus healing in darkness</td></tr><tr><td>19</td><td>Dark Rejuvenation</td><td>Rejuvenate</td><td>heals <code>1d8</code> (<code>1d6</code> Level 8) — no other card effects</td></tr></tbody></table><table><thead><tr><th>#</th><th>Lair action</th><th>Roll</th><th>Should show</th></tr></thead><tbody><tr><td>20</td><td>Lair — Shadow Flood</td><td>DC 20 CON save</td><td>no damage — darkness closes in (scene effect)</td></tr><tr><td>21</td><td>Lair — Shadow Tendrils</td><td>DC 20 DEX save</td><td><code>4d8</code> necrotic, half on success (Level 8: <code>3d8</code>)</td></tr><tr><td>22</td><td>Lair — Creeping Chill</td><td>DC 20 CON save</td><td><code>2d10</code> cold, half on success (Level 8: <code>2d8</code>)</td></tr><tr><td>23</td><td>Lair — Shadow Grasp</td><td>DC 20 STR save</td><td><code>3d8</code> necrotic + restrained on fail</td></tr><tr><td>24</td><td>Lair — Shadow Step</td><td>Utility</td><td>no roll — repositions</td></tr></tbody></table><p><strong>Level 8 vs CR 18:</strong> the Level 8 copy has no Nightmare Visions and smaller dice everywhere (rows show both where they differ). Test whichever you imported; the parenthetical values cover the other one. The Level 8 copy's attack is <code>+9</code> and <strong>every one of its saves is DC 18</strong> (vs the CR 18 copy's +12 / DC 20).</p><p><strong>Dark Bolt on-hit:</strong> a hit should apply <em>Max HP Reduced</em> to the target (effect appears on the victim's sheet; hp.max drops). Check row 12's target after the hit.</p><p>Lair actions: enable the lair from the <em>Lair Actions (Shadow Cavern)</em> item (initiative 20), or just roll each activity manually from the item — manual rolls are enough for this checklist.</p>",
+        "markdown": ""
+      },
+      "_id": "PlayTestUmbra001",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 300000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_key": "!journal.pages!PlayTestChecklist01.PlayTestUmbra001"
+    },
+    {
+      "name": "Vorath (3 min)",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<table><thead><tr><th>#</th><th>Activity</th><th>Roll</th><th>Should show</th></tr></thead><tbody><tr><td>25</td><td>Shadow Fork</td><td>Attack roll</td><td><code>+10</code>; <code>4d8+4</code> necrotic</td></tr><tr><td>26</td><td>Necrotic Grasp</td><td>Attack roll</td><td><code>+12</code>; <code>8d6</code> necrotic; on hit applies <em>Max HP Reduced</em></td></tr><tr><td>27</td><td>Necrotic Grasp</td><td>Max HP Drain — DC 20 CON save</td><td>secondary save activity on the same item</td></tr><tr><td>28</td><td>Dark Burst (Recharge 5–6)</td><td>Dark Burst — DC 20 DEX save</td><td><code>10d8</code> necrotic, half on success; blinded on fail; recharges 5–6</td></tr><tr><td>29</td><td>Eldritch Blast</td><td>Cast — attack roll</td><td><code>+12</code> to hit (flat, exactly as printed); <code>1d10</code> force per beam</td></tr><tr><td>30</td><td>Eldritch Blast</td><td>beam count</td><td>one extra beam per 2 spell-caster levels beyond the first — set the level on the cast dialog and confirm the card rolls the right number of beams</td></tr><tr><td>31</td><td>Cloudkill</td><td>Cast (utility)</td><td>no roll — consumes a slot and starts concentration only; the cloud does the damage</td></tr><tr><td>32</td><td>Cloudkill</td><td>Enter / Start of Turn — DC 20 CON save</td><td><code>5d8</code> poison, half on success</td></tr><tr><td>33</td><td>Dominate Person</td><td>Cast — DC 20 WIS save</td><td>charmed 1 minute on fail; consumes a slot</td></tr><tr><td>34</td><td>Aura of Despair</td><td>Despair Save — DC 20 WIS</td><td><code>3d6</code> psychic + frightened on fail</td></tr><tr><td>35</td><td>Dreadful Gaze</td><td>Gaze Save — DC 20 WIS</td><td>paralyzed on fail</td></tr><tr><td>36</td><td>Horrifying Visage (Costs 2 Actions)</td><td>Visage Save — DC 20 WIS</td><td>frightened on fail</td></tr><tr><td>37</td><td>Legendary Resistance (2/Day)</td><td>Persevere (utility)</td><td>no roll — auto-success counter decrements</td></tr><tr><td>38</td><td>Animate Dead</td><td>Raise Zombie</td><td>one official dnd5e <em>Zombie</em> spawns</td></tr><tr><td>39</td><td>Dark Pact Healing</td><td>Heal</td><td>heals <code>1d8+6</code></td></tr><tr><td>40</td><td>Legendary: Cast a Spell</td><td>Cast Eldritch Blast</td><td>same flat <code>+12</code> card as row 29</td></tr><tr><td>41</td><td>Legendary: Shadow Teleportation</td><td>Teleport</td><td>no roll</td></tr></tbody></table><table><thead><tr><th>#</th><th>Lair action</th><th>Roll</th><th>Should show</th></tr></thead><tbody><tr><td>42</td><td>Lair — Hellfire Bolt</td><td>Attack roll</td><td><code>+12</code>; <code>3d10</code> fire (plus the <code>6d10</code> rider vs frightened targets, per the description text)</td></tr><tr><td>43</td><td>Lair — Gates of Dread</td><td>DC 20 WIS save</td><td>frightened on fail</td></tr><tr><td>44</td><td>Lair — Ember Storm</td><td>DC 20 DEX save</td><td><code>2d10</code> fire, half on success</td></tr><tr><td>45</td><td>Lair — Throne of Chains</td><td>DC 20 STR save</td><td>restrained on fail</td></tr><tr><td>46</td><td>Lair — Shadow Step</td><td>Utility</td><td>no roll</td></tr></tbody></table><p><strong>Spell DCs are flat 20</strong> — every save Vorath forces shows DC 20 in the chat card regardless of his abilities. If a card shows a computed DC, that's the pre-1.3.2 bug: re-import the actor.</p><p><strong>Legendary actions</strong> (rows 40–41) appear under the actor's legendary actions bar; rows 40–41 can be rolled from the items directly if you don't want to drive the action economy.</p><p>Lair actions: enable from <em>Lair Actions (Hellheim Throne Room)</em> (initiative 20) or roll manually as above.</p>",
+        "markdown": ""
+      },
+      "_id": "PlayTestVorath01",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 400000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_key": "!journal.pages!PlayTestChecklist01.PlayTestVorath01"
+    },
+    {
+      "name": "Ledger & Verdict",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 2
+      },
+      "text": {
+        "format": 1,
+        "content": "<table><thead><tr><th></th><th>Check</th><th>Pass condition</th></tr></thead><tbody><tr><td>A</td><td>Recharge counters</td><td>after Surge/Spark/Dark Burst, the item shows its recharge die (5–6 / 6 / 5–6) and comes back after a rest or manual recharge</td></tr><tr><td>B</td><td>Duration chips</td><td>failed riders (frightened, charmed, paralyzed, restrained, stunned, incapacitated) show status icons and expire after their 1-minute duration</td></tr><tr><td>C</td><td>Concentration</td><td>Cloudkill's Cast marks Vorath concentrating; a second concentration spell prompts to drop it</td></tr><tr><td>D</td><td>Legendary actions</td><td>Vorath's legendary action counter is visible and spends on rows 40–41</td></tr><tr><td>E</td><td>Cloak of Shadows</td><td>dragged item applies its effect to the wearer: advantage on Stealth checks</td></tr><tr><td>F</td><td>Amulet of the Night</td><td>weapon attacks gain a necrotic rider — <code>1d6</code> on the standalone item (<code>1d4</code> on the CR 13 embedded copy, matching its own text)</td></tr><tr><td>G</td><td>Summons</td><td>every spawned token (Ewoklings, Shadows, Zombie) has a working sheet with its own attacks — click one attack to confirm</td></tr><tr><td>H</td><td>Death housekeeping</td><td>0 HP shows defeated; Dark Pact healing at 0 HP revives him conscious</td></tr></tbody></table><p><strong>Verdict:</strong> 46/46 activity rows and A–H all checked with zero surprises — the pack is table-ready. Any mismatch: note the row, then run <code>python3 tools/check-actor-fixes.py --verify &lt;exported-actor.json&gt;</code> against the release's snapshot to pinpoint which value drifted, and compare with the changelog to see when it broke.</p><p><em>This checklist is generated from the same data the CI gate asserts — its expected values cannot silently drift from the actors.</em></p>",
+        "markdown": ""
+      },
+      "_id": "PlayTestLedger01",
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {
+        "tooltip": "",
+        "type": "rule"
+      },
+      "sort": 500000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_key": "!journal.pages!PlayTestChecklist01.PlayTestLedger01"
+    }
+  ],
+  "_id": "PlayTestChecklist01",
+  "_key": "!journal!PlayTestChecklist01",
+  "flags": {
+    "core": {
+      "viewMode": 2
+    }
+  },
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "sort": 400000,
+  "_stats": {
+    "duplicateSource": null,
+    "coreVersion": "13.344",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.1",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "exportSource": null
+  }
+}
