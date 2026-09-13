@@ -1,12 +1,14 @@
-"""Builds the two importable Scene JSONs + optimized map images.
+"""Builds the scene pack sources + optimized map images.
 
 Outputs:
-  ../"Umbrathor's Shadow Cavern (Scene).json"          loose, drag-and-drop (no _keys)
-  ../"Vorath's Hellheim Throne Room (Scene).json"      loose, drag-and-drop
   ../ragnarok-reborn-npcs/packs/_source/ragnarok-reborn-scenes/*.json   keyed pack sources
   ../ragnarok-reborn-npcs/maps/*.webp                  optimized map art
 
 Art and walls come from the same geometry module, so they align by construction.
+
+The loose drag-and-drop Scene JSONs at the repo root are NOT written here —
+regenerate them with `python3 tools/sync-npc-sources.py` (or `npm run sync:npcs`),
+which derives them from the pack sources by stripping the compiler `_key` fields.
 """
 import json
 import math
