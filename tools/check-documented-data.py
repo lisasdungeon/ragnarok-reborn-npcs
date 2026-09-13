@@ -29,6 +29,10 @@ Three checks:
              part of this corpus: every loot effect die must appear on the
              checklist, and every dice value the checklist quotes must exist
              either in an activity or in a loot effect change.
+  RUNBOOKS   the checklist's Runbook links (row → encounter-runbook page)
+             must point at pages that actually exist in the pack sources,
+             and every boss row (Umbrathor/Vorath pages) must carry one —
+             a runbook edit that orphans an activity fails the PR.
 
     python3 tools/check-documented-data.py        # exit 1 on any drift
     (also exposed as `npm run check:docs`; runs as step 2 of `npm run check`)
@@ -74,6 +78,14 @@ UNDOCUMENTED_OK = {}
 # (tools/gen-playtest.py), so their effect dice are asserted against the
 # checklist in the same two-way way as activity data.
 LOOT_DIR = os.path.join("packs", "_source", "ragnarok-reborn-loot")
+
+# Checklist rows allowed to have no Runbook link, keyed by the row's Activity
+# label (item name substring) → reason. Intended to stay near-empty.
+RUNBOOK_OK = {
+    "Cast a Spell (Legendary)":
+        "same card as the Eldritch Blast row; the legendary action economy is "
+        "covered in the runbook's phase text rather than by its own page",
+}
 
 
 def dice_str(part):
@@ -281,6 +293,39 @@ def main():
                                  f"the checklist's Ledger row — the row is derived; "
                                  f"rerun tools/gen-playtest.py")
 
+        # ---- RUNBOOK links: targets exist, and every boss row carries one
+        valid_pages = set()
+        guide_dir = os.path.join(REPO, "packs", "_source",
+                                 "ragnarok-reborn-gm-guides")
+        for fn in sorted(os.listdir(guide_dir)):
+            if not fn.endswith(".json") or fn == os.path.basename(JOURNAL):
+                continue
+            j = json.load(open(os.path.join(guide_dir, fn), encoding="utf-8"))
+            for p in j.get("pages", []):
+                valid_pages.add((j["_id"], p["name"]))
+        for m in re.finditer(
+                r"@UUID\[JournalEntry\.([^.]+)\.JournalEntryPage\.\{([^}]+)\}\]",
+                corpus):
+            if (m.group(1), m.group(2)) not in valid_pages:
+                fails.append(f"CHK→GUIDE  checklist links to page '{m.group(2)}' in "
+                             f"journal {m.group(1)} — no such page in the pack sources "
+                             f"(runbook renamed? rerun tools/gen-playtest.py)")
+        boss_pages = [p for p in jdoc.get("pages", [])
+                      if p.get("name", "").startswith(("Umbrathor", "Vorath"))]
+        for p in boss_pages:
+            for row in re.findall(r"<tr>(.*?)</tr>", p["text"]["content"]):
+                cells = re.findall(r"<td>(.*?)</td>", row)
+                if len(cells) != 5:
+                    continue
+                label, link_cell = cells[1], cells[4]
+                if "@UUID[" in link_cell:
+                    continue
+                if any(k in label for k in RUNBOOK_OK):
+                    continue
+                fails.append(f"DATA→GUIDE {label}: checklist row has no Runbook link "
+                             f"and the runbook never names this activity — add guidance "
+                             f"to the runbook or list it in RUNBOOK_OK with a reason")
+
     # ---------------------------------------------------------- DOC → DATA
     for tok in sorted(set(re.findall(r"DC (\d+)", readme)), key=int):
         if int(tok) not in data_dcs:
@@ -319,11 +364,12 @@ def main():
     n_heal = sum(1 for c in claims if c["kind"] == "heal")
     n_chk = covered if corpus else 0
     n_loot = len(loot)
+    n_links = len(re.findall(r"@UUID\[JournalEntry", corpus))
     print(f"OK  documented data matches the loose JSONs "
           f"({n_att} attacks, {n_save} saves, {n_heal} heals; "
           f"bonuses {sorted(data_bonuses)}, DCs {sorted(data_dcs)}; "
           f"loot: {n_loot} items, dice {sorted(loot_dice)}; "
-          f"checklist covers {n_chk}/{len(claims)} claims)")
+          f"checklist covers {n_chk}/{len(claims)} claims, {n_links} runbook links)")
     return 0
 
 

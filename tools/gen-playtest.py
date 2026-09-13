@@ -12,6 +12,11 @@ derived from the loot pack sources — their effect changes are parsed into pass
 conditions, and copies embedded in the actor JSONs with different values are
 noted automatically. Edit a loot item's effect and the row follows.
 
+Boss rows carry a Runbook link: the generator matches each activity against
+the encounter runbooks by name (activity name first, then item name) and links
+to the page that guides it, so a failed roll jumps straight to the GM advice.
+The documented-data gate verifies every emitted link target exists.
+
 Actors with two variants (Umbrathor CR 18 / Level 8) are reconciled: rows come
 from the primary file, and whenever the secondary's same-named activity has
 different values, a "(Level 8: …)" parenthetical is appended automatically.
@@ -34,6 +39,54 @@ ATTACK_KEYS = {
     "rwak": "ranged weapon attacks", "mwak": "melee weapon attacks",
 }
 SKILL_LABELS = {"ste": "Stealth"}   # extend as loot effects gain skill keys
+
+# Row → runbook-page links: boss actors' activities are matched against their
+# encounter runbook's pages by name (activity name first, then item name, then
+# the item name sans parenthetical). Coverage is asserted by the
+# documented-data gate — a runbook that stops naming an activity fails the PR.
+RUNBOOK_MAP = {
+    "Umbrathor.json": "umbrathor-encounter-runbook.json",
+    "Umbrathor lvl 8.json": "umbrathor-encounter-runbook.json",
+    "Vorath lvl 10 New.json": "vorath-encounter-runbook.json",
+}
+GUIDE_DIR = os.path.join("packs", "_source", "ragnarok-reborn-gm-guides")
+
+_runbook_pages = {}   # runbook file → [(page name, page text)] in sort order
+_runbook_ids = {}     # runbook file → journal _id
+
+
+def load_runbooks():
+    for fn in set(RUNBOOK_MAP.values()):
+        d = json.load(open(os.path.join(REPO, GUIDE_DIR, fn), encoding="utf-8"))
+        _runbook_ids[fn] = d["_id"]
+        _runbook_pages[fn] = [(p["name"], p["text"]["content"])
+                              for p in sorted(d.get("pages", []),
+                                              key=lambda p: p.get("sort", 0))]
+
+
+def _strip_suffix(s):
+    return re.sub(r"\s*\([^)]*\)\s*$", "", s)
+
+
+def find_runbook_page(fname, item, aname):
+    """Name of the runbook page that guides this activity, or None."""
+    pages = _runbook_pages[RUNBOOK_MAP[fname]]
+    for probe in dict.fromkeys([aname, item, _strip_suffix(item)]):
+        if not probe:
+            continue
+        for pname, content in pages:
+            if probe in content:
+                return pname
+    return None
+
+
+def runbook_link(fname, item, aname):
+    """Compendium link anchor for the row's Runbook cell, or ''."""
+    pname = find_runbook_page(fname, item, aname) if fname in RUNBOOK_MAP else None
+    if not pname:
+        return ""
+    jid = _runbook_ids[RUNBOOK_MAP[fname]]
+    return f"@UUID[JournalEntry.{jid}.JournalEntryPage.{{{pname}}}]{{{pname}}}"
 
 GROUPS = [
     {"page_id": "PlayTestEwoks001", "page_name": "Ewoklin & Ewokling (3 min)",
@@ -144,7 +197,8 @@ OVERVIEW = (
     "The <em>Should show</em> column is what the chat card must display. Any mismatch — "
     "wrong bonus, wrong dice, missing effect, empty recharge — is a data bug: note it and "
     "compare against the release's <code>check-actor-fixes.py</code> output before "
-    "reporting.</p>"
+    "reporting. The <em>Runbook</em> column links straight to the matching page of the "
+    "encounter runbook, so a failed roll lands on the GM guidance for that ability.</p>"
     "<p>Budget: <strong>3 min</strong> for the Ewoks, <strong>4 min</strong> for "
     "Umbrathor, <strong>3 min</strong> for Vorath. Empty checkbox = untested. This "
     "checklist is generated from the actor data — a new activity on any actor appears "
@@ -431,6 +485,7 @@ def build_rows(fname, alt_fname=None):
             aname = act.get("name", "")
             is_lair = item["name"].startswith("Lair Actions")
             roll, show = derive(item, act, fname)
+            link = runbook_link(fname, item["name"], aname)
             if alt_fname:
                 alt_act = alt_act_for(item["name"], aname)
                 if alt_act is not None:
@@ -439,14 +494,17 @@ def build_rows(fname, alt_fname=None):
                         vl = VARIANT_LABEL.get(alt_fname, "variant")
                         tail = f"{vl} lair: " if is_lair else f"{vl}: "
                         show += f" ({tail}<code>{alt_short}</code>)"
-            rows.append((item["name"], aname, roll, show, is_lair))
+            rows.append((item["name"], aname, roll, show, is_lair, link))
     for item_name, roll, show in EXTRAS.get(fname, []):
-        is_lair = item_name.startswith("Lair Actions")
-        extra = (item_name, "", roll, show, is_lair)
-        # Insert right after the item's last derived row so numbering flows.
-        pos = max((i for i, r in enumerate(rows) if r[0] == item_name),
-                  default=len(rows) - 1) + 1
-        rows.insert(pos, extra)
+            is_lair = item_name.startswith("Lair Actions")
+            extra = (item_name, "", roll, show, is_lair, "")
+            # Insert right after the item's last derived row so numbering flows.
+            pos = max((i for i, r in enumerate(rows) if r[0] == item_name),
+                      default=len(rows) - 1) + 1
+            # inherit the item's runbook link (extras are follow-ups to it)
+            src = next((r for r in rows if r[0] == item_name), None)
+            extra = extra[:5] + (src[5] if src else "",)
+            rows.insert(pos, extra)
     # variant-only activities become extra rows (an item that exists on both
     # sides is already covered by the reconciled parenthetical above)
     if alt_fname:
@@ -460,7 +518,8 @@ def build_rows(fname, alt_fname=None):
                 aname = a.get("name", it["name"])
                 roll, show = derive(it, a, alt_fname)
                 rows.append((it["name"], aname, f"{roll} ({alt_label} only)", show,
-                             it["name"].startswith("Lair Actions")))
+                             it["name"].startswith("Lair Actions"),
+                             runbook_link(alt_fname, it["name"], aname)))
     return rows
 
 
@@ -497,20 +556,23 @@ def main():
 
     n = 0
     pages = []
+    links = 0
+    load_runbooks()
     for g in GROUPS:
         main_rows, lair_rows = [], []
         multi = len(g["actors"]) > 1
         for fname, alt in g["actors"]:
             prefix = fname[:-len(".json")] if multi else ""
-            for item_name, aname, roll, show, is_lair in build_rows(fname, alt):
+            for item_name, aname, roll, show, is_lair, link in build_rows(fname, alt):
                 n += 1
                 label = f"{item_name} — {aname}" if aname and aname != item_name else item_name
+                links += bool(link)
                 cell = [str(n), f"{prefix} — {label}" if prefix else label,
-                        roll, show]
+                        roll, show, link]
                 (lair_rows if is_lair else main_rows).append(cell)
-        content = table(main_rows, ["#", "Activity", "Roll", "Should show"])
+        content = table(main_rows, ["#", "Activity", "Roll", "Should show", "Runbook"])
         if lair_rows:
-            content += table(lair_rows, ["#", "Lair action", "Roll", "Should show"])
+            content += table(lair_rows, ["#", "Lair action", "Roll", "Should show", "Runbook"])
         content += PROSE[g["prose"]]
         total_rows = n
         pages.append(page(g["page_id"], g["page_name"], content,
@@ -542,7 +604,8 @@ def main():
         f.write("\n")
     print(f"wrote {os.path.relpath(OUT, REPO)}  "
           f"({len(journal['pages'])} pages, {total_rows} activity rows — derived from "
-          f"{len(_actors)} actor JSONs and {len(loot_names)} loot items")
+          f"{len(_actors)} actor JSONs and {len(loot_names)} loot items; "
+          f"{links} rows linked to runbook pages)")
 
 
 if __name__ == "__main__":
