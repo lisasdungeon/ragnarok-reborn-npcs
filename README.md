@@ -55,7 +55,7 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 
 ## Changelog
 
-### Unreleased
+### 1.3.3
 - **Scene freshness moves to the generator**: `tools/scene-tools/build_scenes.py`
   now self-checks after every run — it freshly recompiles the scenes pack and
   compares against the committed one (`check-fresh.mjs --packs ragnarok-reborn-scenes
