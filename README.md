@@ -56,6 +56,14 @@ party handouts and drag-ready loot, built for Foundry **v14** (minimum 14.367).
 ## Changelog
 
 ### Unreleased
+- **Checklist rows link to the runbook**: every boss row in the playtest
+  checklist carries a Runbook link to the encounter-runbook page that guides
+  that activity (Compendium link — click a failed row, land on the GM
+  advice). The generation is name-matched and gated: a runbook edit that
+  orphans an activity fails `npm run check`. Filling the coverage gap the
+  gate exposed, the Vorath runbook now also guides Dreadful Gaze (DC 20 WIS,
+  paralyzed rider), Eldritch Blast (at-will pressure, +12/1d10 per beam),
+  and Dark Pact Healing (1d8+6, six uses per long rest).
 - **The Ledger's loot rows are derived too**: `tools/gen-playtest.py` now parses
   the Cloak/Amulet effect `changes` from the loot pack sources (attack kinds,
   dice, damage type, light condition) instead of hardcoding them, and
